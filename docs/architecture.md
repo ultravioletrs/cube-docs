@@ -2,7 +2,7 @@
 
 Cube AI is built on top of Magistrala, Ollama and a custom proxy server. All these host the Cube AI API that hosts the AI models and protects prompts and user data securely.
 
-![](./img/architecture.png)
+![Architecture Image](./img/architecture.png)
 
 ## Magistrala
 
