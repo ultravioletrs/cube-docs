@@ -1,0 +1,24 @@
+copyright: Copyright (c) Ultraviolet
+repo_url: https://github.com/ultravioletrs/cube-docs.git
+site_description: Cube AI Documentation
+site_name: Cube AI
+site_url: ""
+edit_uri: ""
+
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - toc:
+      permalink: "#"
+
+nav:
+  - Overview: index.md
+  - Architecture: architecture.md
+  - Getting Started: getting-started.md
+  - Attestation: attestation.md
+  - Developer's Guide: developer-guide.md
