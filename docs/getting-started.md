@@ -37,7 +37,7 @@ x-frame-options: DENY
 x-xss-protection: 1; mode=block
 content-length: 591
 
-{"access_token":"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjY2NjE2MjgsImlhdCI6MTcyNjY1ODAyOCwiaXNzIjoibWFnaXN0cmFsYS5hdXRoIiwidHlwZSI6MCwidXNlciI6IjY1OGU0NGI5LTlkNGYtNDRjMi05Y2ZmLWE0OTVhZTg2YmU5ZSJ9.zvEm-z166e_gOekc47qCKVIGLSR8J1SrXjU3x9mqsGTynnrDMVul09mzuY3aXxijnmxm5brHKSw7gCwzTAGniQ","refresh_token":"eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjY3NDQ0MjgsImlhdCI6MTcyNjY1ODAyOCwiaXNzIjoibWFnaXN0cmFsYS5hdXRoIiwidHlwZSI6MSwidXNlciI6IjY1OGU0NGI5LTlkNGYtNDRjMi05Y2ZmLWE0OTVhZTg2YmU5ZSJ9.mqvZpNKmN_p_NnoJ9jCnZobVov1ZM4AmL9cMI3VFJWYzeIpYg2QBB4jrtBq4SHGIm_hH3AhPZNgQAIfUFSb_kg"}
+{"access_token":"<access_token>","refresh_token":"<refresh_token>"}
 ```
 
 The access token is the `access_token` field in the response will be used to authenticate with the API.
@@ -56,7 +56,7 @@ The access token is the `access_token` field in the response will be used to aut
       "title": "Ollama",
       "provider": "ollama",
       "model": "llama3:8b",
-      "apiKey": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjY2NjY2NDksImlhdCI6MTcyNjY2MzA0OSwiaXNzIjoibWFnaXN0cmFsYS5hdXRoIiwidHlwZSI6MCwidXNlciI6Ijg1NWMwMWQwLWQ3M2YtNGFlNS1iN2QzLTRjNmU2ZTc1YzU0NyJ9.o6tL1fXPaiLldLk6ntVff-8IKGLvuondTLLxerHsZWjvfnoFq72jU7rFGXbZDBhZUzs3yjIJ8emn02Q9Zr4TOg",
+      "apiKey": "<access_token>",
       "apiBase": "http://157.245.247.202/ollama"
     }
   ],
@@ -64,13 +64,13 @@ The access token is the `access_token` field in the response will be used to aut
     "title": "Starcoder 2 3b",
     "provider": "ollama",
     "model": "starcoder2:3b",
-    "apiKey": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjY2NjY2NDksImlhdCI6MTcyNjY2MzA0OSwiaXNzIjoibWFnaXN0cmFsYS5hdXRoIiwidHlwZSI6MCwidXNlciI6Ijg1NWMwMWQwLWQ3M2YtNGFlNS1iN2QzLTRjNmU2ZTc1YzU0NyJ9.o6tL1fXPaiLldLk6ntVff-8IKGLvuondTLLxerHsZWjvfnoFq72jU7rFGXbZDBhZUzs3yjIJ8emn02Q9Zr4TOg",
+    "apiKey": "<access_token>",
     "apiBase": "http://157.245.247.202/ollama"
   },
   "embeddingsProvider": {
     "provider": "ollama",
     "model": "nomic-embed-text",
-    "apiKey": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjY2NjY2NDksImlhdCI6MTcyNjY2MzA0OSwiaXNzIjoibWFnaXN0cmFsYS5hdXRoIiwidHlwZSI6MCwidXNlciI6Ijg1NWMwMWQwLWQ3M2YtNGFlNS1iN2QzLTRjNmU2ZTc1YzU0NyJ9.o6tL1fXPaiLldLk6ntVff-8IKGLvuondTLLxerHsZWjvfnoFq72jU7rFGXbZDBhZUzs3yjIJ8emn02Q9Zr4TOg",
+    "apiKey": "<access_token>",
     "apiBase": "http://157.245.247.202/ollama"
   },
   "requestOptions": {
