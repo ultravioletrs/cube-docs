@@ -1,6 +1,6 @@
 # Getting Started
 
-Connect to Cube AI deployed instance of port `:6193`. Login with you username and password. If you can't ask the instance adminisrator to create a new user, you can create a new user.
+Connect to Cube AI deployed instance on port `:6193`. Login with your username and password. If you can't log in ask the instance administrator to create a new user.
 
 ## Create a new user
 
@@ -19,10 +19,10 @@ Connect to Cube AI deployed instance of port `:6193`. Login with you username an
 Get a token from using your login credentials.
 
 ```bash
-curl -ksSiX POST https://162.243.173.49/users/tokens/issue -H "Content-Type: application/json" -d @- << EOF
+curl -ksSiX POST https://<cube-ai-instance>/users/tokens/issue -H "Content-Type: application/json" -d @- << EOF
 {
-  "identity": "admin@example.com",
-  "secret": "m2N2Lfno"
+  "identity": "<your_email>",
+  "secret": "<your_password>"
 }
 EOF
 ```
@@ -57,7 +57,7 @@ The access token is the `access_token` field in the response will be used to aut
       "provider": "ollama",
       "model": "llama3:8b",
       "apiKey": "<access_token>",
-      "apiBase": "http://157.245.247.202/ollama"
+      "apiBase": "<cube-ai-instance>/ollama"
     }
   ],
   "tabAutocompleteModel": {
@@ -65,13 +65,13 @@ The access token is the `access_token` field in the response will be used to aut
     "provider": "ollama",
     "model": "starcoder2:3b",
     "apiKey": "<access_token>",
-    "apiBase": "http://157.245.247.202/ollama"
+    "apiBase": "<cube-ai-instance>/ollama"
   },
   "embeddingsProvider": {
     "provider": "ollama",
     "model": "nomic-embed-text",
     "apiKey": "<access_token>",
-    "apiBase": "http://157.245.247.202/ollama"
+    "apiBase": "<cube-ai-instance>/ollama"
   },
   "requestOptions": {
     "verifySsl": false
