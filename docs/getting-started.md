@@ -46,18 +46,7 @@ The `access_token` field in the response is your API token, which will be used f
 
 1. Download and install [VS Code](https://code.visualstudio.com/).
 2. In VS Code, download and install the [Continue extension](https://www.continue.dev/). This extension connects Cube AI models to your coding environment for assistance.
-3. Open the Continue extension, click the settings icon (`Configure Continue`), and open the `.continue/config.json` file.
-
-### Alternative Ways to Open `.continue/config.json`
-
-- **File Explorer:**
-  - Navigate to the `.continue` folder in your project’s root directory and open `config.json`.
-
-- **Command Palette:**
-  - Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac), type "Continue: Open config.json", and press Enter.
-
-### Configuring `config.json`
-
+3. Open the Continue extension, click the settings icon (`Configure Continue`), and open the `.continue/config.json` file (alternatively, you can navigate to the `.continue` folder in your project’s root directory via File Explorer or press `Ctrl+Shift+P` and type "Continue: Open config.json" in the Command Palette).
 4. Edit the `.continue/config.json` file to look like this:
 
 ```json
