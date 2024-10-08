@@ -80,7 +80,13 @@ The Cube AI UI can then be accessed through your browser at:
 http://localhost:3001
 ```
 
-You can log in using the administrator credentials.
+## Hardware Abstraction Layer (HAL) for Confidential Computing
+
+For detailed instructions on setting up and building Cube HAL, please refer to the [HAL Buildroot README](https://github.com/ultravioletrs/cube/blob/d995e64e43eeb51cb0c50481cc9bbc0e619e3a6d/buildroot/linux/README.md). This document covers:
+
+- Cloning the Buildroot and Cube repositories
+- Configuring and building Cube HAL
+- Running Cube HAL in a virtual machine
 
 ## Cleaning up your Dockerized Cube AI Setup
 
