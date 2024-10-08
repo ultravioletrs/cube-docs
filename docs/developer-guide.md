@@ -37,6 +37,25 @@ cd cube/docker
 docker compose pull
 ```
 
+## Building Docker Images
+
+The Docker images for Cube AI can be built using the following commands in the project's root directory:
+
+1. **Build the Cube Proxy image**:
+   Navigate to the `proxy` directory and run:
+
+   ```bash
+   cd proxy
+   make latest
+   ```
+
+2. **Building development Docker images**:
+   For a development build of the Docker images, use the following command:
+
+   ```bash
+   make docker-dev
+   ```
+
 ## Running Services with Docker Compose
 
 To run the Cube AI services using Docker Compose, ensure you have your environment variables set in the `docker/.env` file and run:
@@ -62,3 +81,37 @@ http://localhost:3001
 ```
 
 You can log in using the administrator credentials.
+
+## Cleaning up your Dockerized Cube AI Setup
+
+If you want to stop and remove the Cube AI services, volumes, and networks created during the setup, follow these steps:
+
+### Stop and Remove Running Containers
+
+First, stop all running containers:
+
+```bash
+docker-compose down
+```
+
+### Remove Volumes and Networks
+
+```bash
+docker-compose down --volumes --remove-orphans
+```
+
+### Remove Images (Optional)
+
+If you also want to remove the Docker images you pulled or built, run:
+
+```bash
+docker rmi $(docker images -q ghcr.io/ultravioletrs/cube/*)
+```
+
+### Clean Build Artifacts
+
+To clean up the build artifacts and remove compiled files, use:
+
+```bash
+make clean
+```
