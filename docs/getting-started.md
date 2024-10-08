@@ -1,8 +1,6 @@
 # Getting Started
 
-Before logging in or interacting with Cube AI, you need to make sure that Cube AI has been deployed and is running. Deployment can be done by the instance administrator or by you if you have the necessary access permissions.
-
-### Steps to Connect
+Before logging in or interacting with Cube AI, you need to make sure that Cube AI has been deployed and is running. Deployment can be done by the instance administrator or by you if you have the necessary access permissions. Therefore, to Connect:
 
 1. Ensure that Cube AI is deployed and running on your instance.
 2. Connect to the deployed Cube AI instance on port `6193` using your login credentials (username and password).
@@ -10,7 +8,7 @@ Before logging in or interacting with Cube AI, you need to make sure that Cube A
 
 ## Create a new user
 
-If you are the administrator, follow [this demonstration](https://jam.dev/c/f8d3fa47-7505-4201-b8ca-c0f724826237) to learn how to create a new user. Below are the summarized steps:
+If you are the instance administrator (or have administrator credentials), follow [this demonstration](https://jam.dev/c/f8d3fa47-7505-4201-b8ca-c0f724826237) to create a new user. Below are the summarized steps:
 
 1. Log in with admin credentials
 2. Create a new domain (if needed)
