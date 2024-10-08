@@ -1,22 +1,29 @@
 # Getting Started
 
-Connect to Cube AI deployed instance on port `:6193`. Login with your username and password. If you can't log in ask the instance administrator to create a new user.
+Before logging in or interacting with Cube AI, you need to make sure that Cube AI has been deployed and is running. Deployment can be done by the instance administrator or by you if you have the necessary access permissions.
+
+### Steps to Connect
+
+1. Ensure that Cube AI is deployed and running on your instance.
+2. Connect to the deployed Cube AI instance on port `6193` using your login credentials (username and password).
+3. If you are unable to log in, contact the administrator of the instance and request that they create a new user account for you.
 
 ## Create a new user
 
-Follow [this demonstration](https://jam.dev/c/f8d3fa47-7505-4201-b8ca-c0f724826237) to learn how to create a new user. Below are the summarized steps:
+If you are the administrator, follow [this demonstration](https://jam.dev/c/f8d3fa47-7505-4201-b8ca-c0f724826237) to learn how to create a new user. Below are the summarized steps:
 
-1. Admin login with their credentials
-2. Create a new domain if there is none
-3. Login to the new domain or already existing domain
+1. Log in with admin credentials
+2. Create a new domain (if needed)
+3. Login to the newly created domain (or already existing domain)
 4. Click profile icon and navigate to `Manage Users`
 5. Click create
 6. Fill in the form
 7. Click `Create`
+8. Share the login credentials (username and password) with the new user
 
 ## Login
 
-Get a token from using your login credentials.
+Once the administrator creates your account and shares your login details, use the credentials to log in to Cube AI and obtain an authentication token as shown below.
 
 ```bash
 curl -ksSiX POST https://<cube-ai-instance>/users/tokens/issue -H "Content-Type: application/json" -d @- << EOF
@@ -27,7 +34,7 @@ curl -ksSiX POST https://<cube-ai-instance>/users/tokens/issue -H "Content-Type:
 EOF
 ```
 
-You'll receive a response similar to this:
+Be sure to replace `<your_email>` and `<your_password>` with your actual login details. You'll receive a response similar to this:
 
 ```bash
 HTTP/2 201
@@ -40,7 +47,7 @@ content-length: 591
 {"access_token":"<access_token>","refresh_token":"<refresh_token>"}
 ```
 
-The `access_token` field in the response is your API token, which will be used for authentication in future API calls.
+The `access_token` field in the response is your API token, which will be used for authentication in future API calls. The `refresh_token` field is a token you can use to obtain a new access token once the current one expires.
 
 ## VS Code Setup
 
