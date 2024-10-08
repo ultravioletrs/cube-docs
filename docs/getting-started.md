@@ -79,6 +79,6 @@ The `access_token` field in the response is your API token, which will be used f
 }
 ```
 
-For a more detailed explanation of how to connect to Cube AI with the continue extension, check out [this video demonstration](https://www.youtube.com/embed/BGpv_iTB2NE?si=2qwUc4p99MYkSROK).
+For a more detailed explanation of how to connect to Cube AI with the continue extension, check out [this video demonstration](https://www.youtube.com/watch?v=BGpv_iTB2NE).
 
 ---
