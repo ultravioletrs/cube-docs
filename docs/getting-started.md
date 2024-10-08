@@ -4,7 +4,7 @@ Connect to Cube AI deployed instance on port `:6193`. Login with your username a
 
 ## Create a new user
 
-[This is a demonstration of how to create a new user](https://jam.dev/c/f8d3fa47-7505-4201-b8ca-c0f724826237). You can use the same steps to create a new user.
+Follow [this demonstration](https://jam.dev/c/f8d3fa47-7505-4201-b8ca-c0f724826237) to learn how to create a new user. Below are the summarized steps:
 
 1. Admin login with their credentials
 2. Create a new domain if there is none
@@ -27,7 +27,7 @@ curl -ksSiX POST https://<cube-ai-instance>/users/tokens/issue -H "Content-Type:
 EOF
 ```
 
-The response will look something like this:
+You'll receive a response similar to this:
 
 ```bash
 HTTP/2 201
@@ -40,14 +40,14 @@ content-length: 591
 {"access_token":"<access_token>","refresh_token":"<refresh_token>"}
 ```
 
-The access token is the `access_token` field in the response will be used to authenticate with the API.
+The `access_token` field in the response is your API token, which will be used for authentication in future API calls.
 
 ## VS Code Setup
 
-1. Download and intall [VS Code](https://code.visualstudio.com/)
-2. In VS Code download and install the [continue extention](https://www.continue.dev/). This extenstion will help us connect with the Cube AI running models and use them as coding assistance.
-3. Open tthe continue extension and click the setting icon `Configure Continue`. This will open the `.continue/config.json` file.
-4. Edit the `config.json` file to look something like this:
+1. Download and install [VS Code](https://code.visualstudio.com/).
+2. In VS Code, download and install the [Continue extension](https://www.continue.dev/). This extension connects Cube AI models to your coding environment for assistance.
+3. Open the Continue extension, click the settings icon (`Configure Continue`), and open the `.continue/config.json` file (alternatively, you can navigate to the `.continue` folder in your project’s root directory via File Explorer or press `Ctrl+Shift+P` and type "Continue: Open config.json" in the Command Palette).
+4. Edit the `.continue/config.json` file to look like this:
 
 ```json
 {
@@ -79,6 +79,4 @@ The access token is the `access_token` field in the response will be used to aut
 }
 ```
 
-This is a demonstration of how to connect to Cube AI with the continue extension.
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BGpv_iTB2NE?si=2qwUc4p99MYkSROK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+For a more detailed explanation of how to connect to Cube AI with the continue extension, check out [this video demonstration](https://www.youtube.com/watch?v=BGpv_iTB2NE).
