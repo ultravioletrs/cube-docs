@@ -5,7 +5,7 @@ This guide will help you get started with developing, deploying, and running Cub
 ## Cloning the Repository
 
 ```bash
-https://github.com/ultravioletrs/cube.git
+git clone https://github.com/ultravioletrs/cube.git
 cd cube
 ```
 
@@ -34,24 +34,18 @@ http://localhost:3001
 
 ## Building Docker Images
 
-You can build the Docker images for Cube AI and related services using the following commands in the project's root directory.
+You can build the Docker images for Cube AI and related services using the `make` command in the project's root directory.
 
-To build the Cube Proxy image, use the `docker/Dockerfile` provided in the project.
+To build the production Docker image, use:
 
 ```bash
-docker build -t ghcr.io/ultravioletrs/cube/proxy:latest -f docker/Dockerfile .
+make docker
 ```
 
-For development builds, use the `docker/Dockerfile.dev` provided in the project.
+For the development Docker image, use:
 
 ```bash
-docker build -t cube-proxy:dev -f docker/Dockerfile.dev .
-```
-
-If you prefer using `make`, the `Makefile` in the project includes a command to build the latest Docker image:
-
-```bash
-make latest
+make docker-dev
 ```
 
 ## Hardware Abstraction Layer (HAL) for Confidential Computing
@@ -76,12 +70,6 @@ Remove volumes and vetworks:
 
 ```bash
 docker compose down --volumes --remove-orphans
-```
-
-If you also want to remove the Docker images you pulled or built, run:
-
-```bash
-docker rmi $(docker images -q "ghcr.io/ultravioletrs/cube/*")
 ```
 
 To clean up the build artifacts and remove compiled files, use:
