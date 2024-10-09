@@ -5,8 +5,8 @@ This guide will help you get started with developing, deploying, and running Cub
 ## Cloning the Repository
 
 ```bash
-   https://github.com/ultravioletrs/cube.git
-   cd cube
+https://github.com/ultravioletrs/cube.git
+cd cube
 ```
 
 ## Pulling Docker Images
