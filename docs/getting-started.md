@@ -8,6 +8,14 @@ Before logging in or interacting with Cube AI, you need to make sure that Cube A
 
 Port `6193` is our default port for accessing Cube AI deployment. It is configurable through the `.env` file, meaning you can change it to any port that suits your deployment needs as described in [this guide](https://github.com/ultravioletrs/cube/blob/main/hal/ubuntu/README.md)
 
+For example, to customize the port:
+
+```bash
+UV_CUBE_UI_BASE_URL=http://<your-instance-ip>:<your-preferred-port>
+```
+
+If you are running Cube AI on a different port, make sure to update the environment variable accordingly.
+
 ## Create a new user
 
 If you are the instance administrator (or have administrator credentials), follow [this demonstration](https://jam.dev/c/f8d3fa47-7505-4201-b8ca-c0f724826237) to create a new user. Below are the summarized steps:
