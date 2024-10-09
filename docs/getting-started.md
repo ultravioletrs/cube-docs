@@ -6,7 +6,7 @@ Before logging in or interacting with Cube AI, you need to make sure that Cube A
 2. Connect to the deployed Cube AI instance on port `6193` using your login credentials (username and password).
 3. If you are unable to log in, contact the administrator of the instance and request that they create a new user account for you.
 
-Port `6193` is our default port for accessing Cube AI deployment. It is user-definable and configurable through the `.env` file, meaning you can change it to any port that suits your deployment needs as described in [this guide](https://github.com/ultravioletrs/cube/blob/main/hal/ubuntu/README.md)
+Port `6193` is our default port for accessing Cube AI deployment. It is configurable through the `.env` file, meaning you can change it to any port that suits your deployment needs as described in [this guide](https://github.com/ultravioletrs/cube/blob/main/hal/ubuntu/README.md)
 
 For example, to customize the port:
 
