@@ -34,7 +34,9 @@ http://localhost:3001
 
 ## Open Web UI Integration
 
-Open Web UI is integrated into Cube AI to allow interaction with the LLM models. Once the services are up and running, access the Open Web UI through your browser at:
+Open Web UI is integrated into Cube AI to allow interaction with the LLM models. For more detailed information on installation, setup, and configuration, you can refer to the [Open Web UI documentation](https://docs.openwebui.com/).
+
+Once Cube AI services are up and running, you can access the Open Web UI through your browser at:
 
 ```bash
 http://<your-server-ip-address>:3000
@@ -50,7 +52,7 @@ To resolve the error:
 
 - Click on your **profile icon** in the top-right corner of the Open Web UI interface.
 - Navigate to **Settings**.
-- Select **Admin Settings**
+- Select **Admin Settings**.
 - In the **Admin Panel**, select **Connections** from the sidebar.
 - Under the **Ollama API** section, click the **refresh** icon next to the Ollama API URL (`http://ollama:11434`).
 - After refreshing, you should see a confirmation message stating **"Server connection verified"**. This should reset the connection to the Ollama service and resolve the "Bad Request" error.
