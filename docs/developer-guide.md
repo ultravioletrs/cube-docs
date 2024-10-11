@@ -34,7 +34,7 @@ http://localhost:3001
 
 ## Open Web UI Integration
 
-Open Web UI is integrated into Cube AI to help in monitoring key performance metrics of the models, including response time, token processing speed, evaluation durations, and error rates. This helps ensure optimal model performance and allows for real-time adjustments. For more detailed setup and configuration instructions, refer to the [Open Web UI documentation](https://docs.openwebui.com/).
+Open Web UI is integrated into Cube AI to help in monitoring key performance metrics of the models, including response token/s, prompt token/s, total duration, and load duration. This is essential for ensuring that the models are running efficiently and providing optimal performance. For more detailed setup and configuration instructions, refer to the [Open Web UI documentation](https://docs.openwebui.com/).
 
 To access Open Web UI, once Cube AI services are up and running, open your browser and navigate to:
 
