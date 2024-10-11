@@ -32,20 +32,6 @@ For example, if you have deployed locally, use:
 http://localhost:3001
 ```
 
-## Cube AI UI
-
-Once Cube AI services are up and running, you can access the Cube AI UI through your browser. Use the following address:
-
-```bash
-http://<your-server-ip-address>:3001
-```
-
-If you have deployed it on your local machine, access it at:
-
-```bash
-http://localhost:3001
-```
-
 ## Open Web UI Integration
 
 Open Web UI is integrated into Cube AI to allow interaction with the LLM models. Once the services are up and running, access the Open Web UI through your browser at:
