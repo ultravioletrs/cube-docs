@@ -34,9 +34,9 @@ http://localhost:3001
 
 ## Open Web UI Integration
 
-Open Web UI is integrated into Cube AI to allow interaction with the LLM models. For more detailed information on installation, setup, and configuration, you can refer to the [Open Web UI documentation](https://docs.openwebui.com/).
+Open Web UI is integrated into Cube AI to help in monitoring key performance metrics of the models, including response time, token processing speed, evaluation durations, and error rates. This helps ensure optimal model performance and allows for real-time adjustments. For more detailed setup and configuration instructions, refer to the [Open Web UI documentation](https://docs.openwebui.com/).
 
-Once Cube AI services are up and running, you can access the Open Web UI through your browser at:
+To access Open Web UI, once Cube AI services are up and running, open your browser and navigate to:
 
 ```bash
 http://<your-server-ip-address>:3000
