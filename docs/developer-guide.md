@@ -32,6 +32,31 @@ For example, if you have deployed locally, use:
 http://localhost:3001
 ```
 
+## Open Web UI Integration
+
+Open Web UI is integrated into Cube AI to help in debugging and monitoring key performance metrics of the models, including response token/s, prompt token/s, total duration, and load duration. For more detailed setup and configuration instructions, refer to the [Open Web UI documentation](https://docs.openwebui.com/).
+
+To access Open Web UI, once Cube AI services are up and running, open your browser and navigate to:
+
+```bash
+http://<your-server-ip-address>:3000
+```
+
+While it should work out of the box, occasionally, when you submit a prompt through the Open Web UI, you might encounter an error like this:
+
+```bash
+Ollama: 400, message='Bad Request', url='http://ollama:11434/api/chat'
+```
+
+To resolve the error:
+
+- Click on your **profile icon** in the top-right corner of the Open Web UI interface.
+- Navigate to **Settings**.
+- Select **Admin Settings**.
+- In the **Admin Panel**, select **Connections** from the sidebar.
+- Under the **Ollama API** section, click the **refresh** icon next to the Ollama API URL (`http://ollama:11434`).
+- After refreshing, you should see a confirmation message stating **"Server connection verified"**. This should reset the connection to the Ollama service and resolve the "Bad Request" error.
+
 ## Building Docker Images
 
 You can build the Docker images for Cube AI and related services using the `make` command in the project's root directory.
