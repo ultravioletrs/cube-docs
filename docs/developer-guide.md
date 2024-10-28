@@ -81,7 +81,7 @@ For detailed instructions on setting up and building Cube HAL, please refer to [
 - Configuring and building Cube HAL
 - Running Cube HAL in a virtual machine
 
-# Fine-Tuning Base Model on Custom Dataset
+## Fine-Tuning Base Model on Custom Dataset
 
 To enhance the performance of the base model on domain-specific tasks or particular code styles, you may want to fine-tune it on a custom dataset. This process will help adapt the model to your specific requirements.
 
@@ -100,7 +100,9 @@ To enhance the performance of the base model on domain-specific tasks or particu
 ## Step 1: Prepare Your Code Dataset
 
 The dataset should ideally be in the form of **prompt-completion** pairs, where:
+
 - **Prompt**: Represents the input, such as a function header, code snippet, or a specific code-related query.
+
 - **Completion**: Represents the corresponding code or solution that completes the prompt.
 
 For more information on dataset formats, refer to the [TRL Dataset Formats Documentation](https://huggingface.co/docs/trl/dataset_formats).
@@ -125,7 +127,7 @@ dataset = dataset.map(preprocess)
 
 ## Step 2: Initialize the Model and a Trainer
 
-For demonstration purposes, we will use the Qwen-Coder model here, but you can replace it with any other suitable model from from Hugging Face’s `transformers` library. You can initialize the model with a **Supervised Fine-Tuning (SFT) trainer**, which is suitable for direct input-output training using labeled data. Other trainers are available for different training objectives. For more information on other trainers, see the [TRL Trainer Documentation](https://huggingface.co/docs/trl/main/en/trainer_overview). 
+For demonstration purposes, we will use the Qwen-Coder model here, but you can replace it with any other suitable model from from Hugging Face’s `transformers` library. You can initialize the model with a **Supervised Fine-Tuning (SFT) trainer**, which is suitable for direct input-output training using labeled data. Other trainers are available for different training objectives. For more information on other trainers, see the [TRL Trainer Documentation](https://huggingface.co/docs/trl/main/en/trainer_overview).
 
 ```python
 from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments, Trainer
