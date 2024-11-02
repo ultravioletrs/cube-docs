@@ -102,13 +102,14 @@ cd magistrala-ui-new
 
 ## Step 2: Customize the UI
 
-Make any necessary changes to the UI, such as updating the theme, font, logos, or favicons.
-Ensure your configuration files and assets (like logos) are placed in a directory, for example, `~/cube/ui`. This directory should contain:
+Make any necessary changes to the UI, such as updating the theme, font, logos, or favicons. Ensure that all required configuration files and assets (like logos and favicons) are in a dedicated directory, such as `~/cube/ui`. This directory should include:
 
-- `config.json`
+- `config.json` – containing UI settings like theme options, logo configurations, and metadata.
 - Logo files (e.g., `defaultLogo.svg` and `altLogo.svg`)
 - Favicon files (e.g., `defaultFavicon.svg` and `altFavicon.svg`)
-- Other assets and settings as required
+- Additional assets and settings as required.
+
+For detailed customization instructions, refer to the [Customization of the UI section](https://github.com/absmach/magistrala-ui-new/tree/main) in the README.
 
 ## Step 3: Set the UI Type
 
