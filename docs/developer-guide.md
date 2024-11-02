@@ -1,6 +1,3 @@
-Here is the modified version with corrected heading levels:
-
-```markdown
 # Developer Guide
 
 This guide will help you get started with developing, deploying, and running Cube AI.
