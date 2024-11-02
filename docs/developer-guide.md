@@ -73,6 +73,102 @@ For the development Docker image, use:
 make docker-dev
 ```
 
+# Customizing and Building the `cube-ai` UI Image
+
+This guide covers the steps required to customize the `cube-ai` UI, build a Docker image for it, and manually push it to GitHub Container Registry (GHCR).
+
+### Prerequisites
+
+- Access to the private `magistrala-ui` GitHub repository.
+- A GitHub Personal Access Token (PAT) with the necessary permissions to push images to `ghcr.io`.
+
+### Required GitHub PAT Permissions
+
+For publishing images to GHCR, the PAT should have the following permissions:
+
+- **write:packages** – To upload and publish package versions.
+- **read:packages** – To download and install packages.
+- **delete:packages** – To delete packages (if cleanup is required).
+- **repo** – Full control of private repositories (required for accessing private repos).
+
+## Step 1: Clone the `magistrala-ui` Repository
+
+First, clone the private `magistrala-ui` repository, which contains the UI source code:
+
+```bash
+git clone https://github.com/absmach/magistrala-ui-new.git
+cd magistrala-ui-new
+```
+
+## Step 2: Customize the UI
+
+Make any necessary changes to the UI, such as updating the theme, font, logos, or favicons.
+Ensure your configuration files and assets (like logos) are placed in a directory, for example, `~/cube/ui`. This directory should contain:
+
+- `config.json`
+- Logo files (e.g., `defaultLogo.svg` and `altLogo.svg`)
+- Favicon files (e.g., `defaultFavicon.svg` and `altFavicon.svg`)
+- Other assets and settings as required
+
+## Step 3: Set the UI Type
+
+Update the `.env` file in the `magistrala-ui-new` directory to specify the UI type to `cube-ai`:
+
+```env
+NEXT_PUBLIC_UI_TYPE=cube-ai
+```
+
+## Step 4: Build the `cube-ai` UI Docker Image
+
+From the `magistrala-ui-new` directory, run the following `make` command to build the Docker image for the `cube-ai` UI:
+
+```bash
+make CONFIG_DIR_SOURCE=~/cube/ui dockers_cube_ai
+```
+
+- `CONFIG_DIR_SOURCE` should point to your configuration directory from step 2 above (e.g., `~/cube/ui`).
+- This command will generate a Docker image tagged as `ghcr.io/absmach/magistrala-ui-new/ui-cube-ai`.
+
+## Step 5: Save the Docker Image to a File
+
+To make the image portable, save it to a `.tar` file:
+
+```bash
+docker save -o ~/magistrala-ui-cube-ai.tar ghcr.io/absmach/magistrala-ui-new/ui-cube-ai
+```
+
+## Step 6: Load the Docker Image
+
+```bash
+docker load -i ~/magistrala-ui-cube-ai.tar
+```
+
+## Step 7: Retag the Image for GHCR
+
+Retag the image to match the repository under GHCR:
+
+```bash
+docker tag ghcr.io/absmach/magistrala-ui-new/ui-cube-ai:latest ghcr.io/ultravioletrs/cube/ui:latest
+```
+
+## Step 8: Log in to GHCR
+
+Use your GitHub Personal Access Token (PAT) to log in to GHCR:
+
+```bash
+echo "YOUR_GITHUB_PAT" | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
+```
+
+Replace `YOUR_GITHUB_PAT` with your PAT and `YOUR_GITHUB_USERNAME` with your GitHub username.
+
+## Step 9: Push the Image to GHCR
+
+Push the tagged image to GHCR repository:
+
+```bash
+docker push ghcr.io/ultravioletrs/cube/ui:latest
+```
+
 ## Hardware Abstraction Layer (HAL) for Confidential Computing
 
 For detailed instructions on setting up and building Cube HAL, please refer to [this guide](https://github.com/ultravioletrs/cube/blob/main/hal/buildroot/README.md). It covers:
