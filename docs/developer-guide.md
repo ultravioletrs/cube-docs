@@ -81,6 +81,10 @@ For detailed instructions on setting up and building Cube HAL, please refer to [
 - Configuring and building Cube HAL
 - Running Cube HAL in a virtual machine
 
+## Private Model Upload
+
+- Set up and build Cube HAL as described above.
+
 ## Fine-Tuning Base Model on Custom Code Dataset
 
 To enhance the performance of the base model on domain-specific tasks or particular code styles, you may want to fine-tune it on a custom code dataset. This process will help adapt the model to your specific requirements.
