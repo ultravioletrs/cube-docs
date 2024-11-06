@@ -126,27 +126,25 @@ NEXT_PUBLIC_UI_TYPE=cube-ai
 From the `magistrala-ui-new` directory, run the following `make` command to build the Docker image for the `cube-ai` UI:
 
 ```bash
-make CONFIG_DIR_SOURCE=~/cube/ui dockers_cube_ai
+CONFIG_DIR_SOURCE=~/cube/ui make dockers_cube_ai
 ```
 
 - `CONFIG_DIR_SOURCE` should point to your configuration directory from step 2 above (e.g., `~/cube/ui`).
 - This command will generate a Docker image tagged as `ghcr.io/absmach/magistrala-ui-new/ui-cube-ai`.
 
-### Step 5: Save the Docker Image to a File
+### Step 5: Save and Load the Docker Image as a File (Optional)
 
-To make the image portable, save it to a `.tar` file:
+If you need to transfer the Docker image to another environment or keep a backup, you can save it as a `.tar` file and reload it when needed:
 
 ```bash
+# Save the Docker image to a file
 docker save -o ~/magistrala-ui-cube-ai.tar ghcr.io/absmach/magistrala-ui-new/ui-cube-ai
-```
 
-### Step 6: Load the Docker Image
-
-```bash
+# Load the Docker image from the file (optional for use in another environment)
 docker load -i ~/magistrala-ui-cube-ai.tar
 ```
 
-### Step 7: Retag the Image for GHCR
+### Step 6: Retag the Image for GHCR
 
 Retag the image to match the repository under GHCR:
 
@@ -154,7 +152,7 @@ Retag the image to match the repository under GHCR:
 docker tag ghcr.io/absmach/magistrala-ui-new/ui-cube-ai:latest ghcr.io/ultravioletrs/cube/ui:latest
 ```
 
-### Step 8: Log in to GHCR
+### Step 7: Log in to GHCR
 
 Use your GitHub Personal Access Token (PAT) to log in to GHCR:
 
@@ -164,7 +162,7 @@ echo "YOUR_GITHUB_PAT" | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password
 
 Replace `YOUR_GITHUB_PAT` with your PAT and `YOUR_GITHUB_USERNAME` with your GitHub username.
 
-### Step 9: Push the Image to GHCR
+### Step 8: Push the Image to GHCR
 
 Push the tagged image to GHCR repository:
 
