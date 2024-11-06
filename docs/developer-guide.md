@@ -83,7 +83,11 @@ For detailed instructions on setting up and building Cube HAL, please refer to [
 
 ## Private Model Upload
 
-- Set up and build Cube HAL as described above.
+- Pack your model files into a single `.tar.gz` file
+- Set up and build Cube HAL as described above
+- SSH into the CVM as described in this [SSH guide](https://github.com/ultravioletrs/cube/blob/main/hal/buildroot/ssh.md)
+- Copy the `.tar.gz` file into the CVM using scp as despribed in the SSH guide above
+- Untar model and copy into ollama container
 
 ## Fine-Tuning Base Model on Custom Code Dataset
 
