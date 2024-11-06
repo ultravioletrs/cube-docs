@@ -83,11 +83,53 @@ For detailed instructions on setting up and building Cube HAL, please refer to [
 
 ## Private Model Upload
 
-- Pack your model files into a single `.tar.gz` file
-- Set up and build Cube HAL as described above
-- SSH into the CVM as described in this [SSH guide](https://github.com/ultravioletrs/cube/blob/main/hal/buildroot/ssh.md)
-- Copy the `.tar.gz` file into the CVM using scp as despribed in the SSH guide above
-- Untar model and copy into ollama container
+1. **Package the Model Files**
+
+   Compress your model files into a `.tar.gz` archive for easy transfer:
+
+   ```bash
+   tar -czvf model-name.tar.gz /path/to/model/files
+   ```
+
+2. **Set Up Cube HAL**
+
+   Follow the instructions in the _Hardware Abstraction Layer (HAL) for Confidential Computing_ section above to set up and build Cube HAL on your CVM.
+
+3. **Clone the Cube AI Repository**
+
+   Clone the Cube AI repository into the CVM:
+
+   ```bash
+   git clone https://github.com/ultravioletrs/cube.git
+   ```
+
+4. **Pull and Start Containers**
+
+   Log in to the CVM and start the containers as outlined in the [Cube HAL buildroot guide](https://github.com/ultravioletrs/cube/tree/main/hal/buildroot).
+
+5. **Enable SSH and Access the CVM**
+
+   Enable SSH on the CVM by following the steps in the [SSH guide](https://github.com/ultravioletrs/cube/blob/main/hal/buildroot/ssh.md).
+
+6. **Transfer the Model Archive to the CVM**
+
+   Use `scp` to securely copy the `.tar.gz` file from your local machine to the CVM, as described in the [SSH guide](https://github.com/ultravioletrs/cube/blob/main/hal/buildroot/ssh.md).
+
+7. **Decompress and Extract the Model Files on the CVM**  
+   Since BusyBox `tar` lacks support for `.gz` decompression, first use `gunzip` to decompress, then extract the `.tar` file:
+
+   ```bash
+   gunzip model-name.tar.gz
+   tar -xvf model-name.tar
+   ```
+
+8. **Copy the Extracted Model Files to the `ollama` Container**
+
+   Once extracted, copy the model files into the running `ollama` container:
+
+   ```bash
+   docker cp /path/to/extracted/files ollama:/path/to/target/directory/in/container
+   ```
 
 ## Fine-Tuning Base Model on Custom Code Dataset
 
