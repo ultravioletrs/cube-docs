@@ -75,7 +75,7 @@ make docker-dev
 
 ## Customizing and Building the `cube-ai` UI Image
 
-This guide covers the steps required to customize the `cube-ai` UI, build a Docker image for it, and manually push it to GitHub Container Registry (GHCR).
+This guide covers the steps required to customize the `cube-ai` UI, build a Docker image for it, and push it to GitHub Container Registry (GHCR).
 
 ### Prerequisites
 
@@ -102,14 +102,14 @@ cd magistrala-ui-new
 
 ### Step 2: Customize the UI
 
-Make any necessary changes to the UI, such as updating the theme, font, logos, or favicons. Ensure that all required configuration files and assets (like logos and favicons) are in a dedicated directory, such as `~/cube/ui`. This directory should include:
+Make any necessary changes to the UI, such as updating the theme, font, logos, or favicons. Ensure that all required configuration files and assets (like logos and favicons) are in the dedicated `ui` directory in `cube` repository. This directory should include:
 
 - `config.json` – containing UI settings like theme options, logo configurations, and metadata.
 - `globals.css` – defining global styles, which will be applied to the UI.
 - Logo files (e.g., `defaultLogo.svg` and `altLogo.svg`) – these will be copied to the `public` directory for use across the application.
 - Favicon files (e.g., `defaultFavicon.svg` and `altFavicon.svg`) – also stored in the `public` directory.
 
-**Note:** The file names for logo and favicon files do not need to follow a specific naming convention, as long as they have the `.svg` extension. The build process will copy all `.svg` files in your configuration directory to the `public` directory. However, it’s recommended to use descriptive names (e.g., `defaultLogo.svg`, `altLogo.svg`) for clarity and ease of identification.
+**Note:** The file names for logo and favicon files do not need to follow a specific naming convention, as long as they have the `.svg` extension. The build process will copy all `.svg` files in the configuration directory to the `public` directory. However, it’s recommended to use descriptive names (e.g., `defaultLogo.svg`, `altLogo.svg`) for clarity and ease of identification.
 
 For detailed customization instructions, refer to the [Customization of the UI section](https://github.com/absmach/magistrala-ui-new/blob/bc3086526451a0247216ac81b4edb4b6f1e2bb02/README.md#customization-of-the-ui) in the README.
 
@@ -123,25 +123,18 @@ NEXT_PUBLIC_UI_TYPE=cube-ai
 
 ### Step 4: Build the `cube-ai` UI Docker Image
 
-From the `magistrala-ui-new` directory, run the following `make` command to build the Docker image for the `cube-ai` UI:
+In the `magistrala-ui-new` directory, run:
 
 ```bash
-CONFIG_DIR_SOURCE=~/cube/ui make dockers_cube_ai
+CONFIG_DIR_SOURCE=<path_to_ui_config_directory> make dockers_cube_ai
 ```
 
-- `CONFIG_DIR_SOURCE` should point to your configuration directory from step 2 above (e.g., `~/cube/ui`).
-- This command will generate a Docker image tagged as `ghcr.io/absmach/magistrala-ui-new/ui-cube-ai`.
+Replace `<path_to_ui_config_directory>` with your Cube repository’s UI config path from Step 2.
 
-### Step 5: Save and Load the Docker Image as a File (Optional)
-
-If you need to transfer the Docker image to another environment or keep a backup, you can save it as a `.tar` file and reload it when needed:
+**Example:**
 
 ```bash
-# Save the Docker image to a file
-docker save -o ~/magistrala-ui-cube-ai.tar ghcr.io/absmach/magistrala-ui-new/ui-cube-ai
-
-# Load the Docker image from the file (optional for use in another environment)
-docker load -i ~/magistrala-ui-cube-ai.tar
+CONFIG_DIR_SOURCE=~/Documents/cube/ui make dockers_cube_ai
 ```
 
 ### Step 6: Retag the Image for GHCR
