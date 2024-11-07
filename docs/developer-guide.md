@@ -288,12 +288,14 @@ To make the fine-tuned model deployable on a variety of platforms, you can conve
     %cd llama.cpp
     !make
     model.push_to_hub_gguf(
-        "J1997/QwenMag-1.5B",
+        "hf_username/model_name",
         tokenizer=tokenizer,
         quantization_method=["q4_k_m", "q5_k_m", "q8_0", "f16"],
         token="hf_token"
     )
 ```
+
+For a complete notebook fine-tuning Qwen 2.5 Coder 1.5B, refer to [Fine-Tuning Qwen 2.5 Coder 1.5B](Fine_Tuning_Qwen_2.5_Coder_1.5b.ipynb)
 
 ## Cleaning up your Dockerized Cube AI Setup
 
