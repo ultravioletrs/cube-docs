@@ -81,70 +81,119 @@ For detailed instructions on setting up and building Cube HAL, please refer to [
 - Configuring and building Cube HAL
 - Running Cube HAL in a virtual machine
 
-## Fine-Tuning Base Model on Custom Dataset
+## Fine-Tuning Base Model on Custom Code Dataset
 
-To enhance the performance of the base model on domain-specific tasks or particular code styles, you may want to fine-tune it on a custom dataset. This process will help adapt the model to your specific requirements.
+To enhance the performance of the base model on domain-specific tasks or particular code styles, you may want to fine-tune it on a custom code dataset. This process will help adapt the model to your specific requirements.
 
-## Prerequisites
+### Prerequisites
 
 1. **Python Environment**: Ensure you have Python 3.8 or above.
 
 2. **Dependencies**:
+
    - `transformers`: for model handling. For more information, see the [transformers Documentation](https://huggingface.co/docs/transformers/index).
    - `datasets`: for data handling. For more information, see the [datasets library](https://huggingface.co/docs/datasets/index).
    - `torch`: for model training. Alternative is `TensorFlow` with `Keras`. For more information, see the [TensorFlow Documentation](https://www.tensorflow.org/).
    - `peft`: for parameter-efficient fine-tuning (PEFT) if needed. For more information, see the [PEFT Documentation](https://huggingface.co/docs/peft/index).
+   - `unsloth`: for advanced model handling and integration of LoRA adapters and other fine-tuning techniques. For more information, see the [unsloth GitHub Repository](https://github.com/unslothai/unsloth).
+   - **Optional Libraries**: Install additional packages for LoRA fine-tuning, data handling, and model quantization on Google Colab. Execute the following in Colab:
 
-3. **Code Database**: You can use a public dataset from Hugging Face’s [datasets library](https://huggingface.co/datasets) or your own dataset.
+   ```python
+   !pip install torch==2.5.0+cu121 -f https://download.pytorch.org/whl/cu121/torch_stable.html
+   !pip install "unsloth[colab-new] @ git+https://github.com/unslothai/unsloth.git"
+   !pip install --no-deps xformers "trl<0.9.0" peft accelerate bitsandbytes
+   ```
 
-## Step 1: Prepare Your Code Dataset
+3. **Code Database**: You can use a public code dataset from Hugging Face’s [datasets library](https://huggingface.co/datasets) or your own code dataset.
 
-The dataset should ideally be in the form of **prompt-completion** pairs, where:
+4. **Google Drive (Optional)**: Mount Google Drive if you're using Colab and need a place to store datasets and model outputs.
 
-- **Prompt**: Represents the input, such as a function header, code snippet, or a specific code-related query.
+   ```python
+   from google.colab import drive
+   drive.mount('/content/drive')
+   ```
 
-- **Completion**: Represents the corresponding code or solution that completes the prompt.
+5. **Ollama**: Install Ollama for model deployment.
 
-For more information on dataset formats, refer to the [TRL Dataset Formats Documentation](https://huggingface.co/docs/trl/dataset_formats).
+   ```bash
+   !curl -fsSL https://ollama.com/install.sh | sh
+   ```
 
-You can use `datasets` to load and preprocess the data. Here’s an example setup:
+### Step 1: Prepare Your Code Dataset
+
+Organize your dataset into **prompt-input-completion** pairs:
+
+- **Prompt**: The task or question, e.g., "Write a function to reverse a string."
+- **Input**: Additional context to guide the model, like sample data or requirements.
+- **Completion**: The expected solution, such as the completed function code.
+
+This structure enables effective model learning by linking each prompt and input to the correct completion. For more details, refer to the [TRL Dataset Formats Documentation](https://huggingface.co/docs/trl/dataset_formats).
 
 ```python
 from datasets import load_dataset
+from transformers import AutoTokenizer
 
-# Load your dataset. Replace `your_code_dataset` with your dataset name.
-dataset = load_dataset("your_code_dataset")
-# Alternatively, load from a CSV file or custom data.
-# dataset = load_dataset("csv", data_files="path/to/your/data.csv")
+# Load your dataset - replace `your_code_dataset` with your dataset name or path to your file
+# Example: If using a custom CSV file, specify the path as shown below.
+dataset = load_dataset("csv", data_files="path/to/your/data.csv")
 
-# Preprocess to fit the format expected by the model
-def preprocess(example):
-    example["text"] = f"Prompt: {example['prompt']} Completion: {example['completion']}"
-    return example
+# Initialize tokenizer (replace with your specific model)
+tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-Coder-1.5B")
 
-dataset = dataset.map(preprocess)
+# Define a structured template for formatting
+formatted_prompt_template = """Below is an instruction, an input, and a response that completes the request.
+
+### Instruction:
+{}
+
+### Input:
+{}
+
+### Response:
+{}"""
+
+# Define a function to format each example in prompt-input-completion structure
+def format_prompt_input_completion_pairs(examples):
+    combined_texts = [
+        formatted_prompt_template.format(prompt, input_text, completion) + tokenizer.eos_token
+        for prompt, input_text, completion in zip(examples["prompt"], examples["input"], examples["completion"])
+    ]
+    return {"text": combined_texts}
+
+# Apply the formatting function to the dataset in batches for efficiency
+formatted_dataset = dataset.map(format_prompt_input_completion_pairs, batched=True)
 ```
 
-## Step 2: Initialize the Model and a Trainer
-
-For demonstration purposes, we will use the Qwen-Coder model here, but you can replace it with any other suitable model from from Hugging Face’s `transformers` library. You can initialize the model with a **Supervised Fine-Tuning (SFT) trainer**, which is suitable for direct input-output training using labeled data. Other trainers are available for different training objectives. For more information on other trainers, see the [TRL Trainer Documentation](https://huggingface.co/docs/trl/main/en/trainer_overview).
+Save the formatted dataset if working on Google Colab with Google Drive:
 
 ```python
-from transformers import AutoModelForCausalLM, AutoTokenizer, TrainingArguments, Trainer
-
-# Load Qwen-Coder model and tokenizer
-model_name = "Qwen/Qwen2.5-Coder-1.5B"
-model = AutoModelForCausalLM.from_pretrained(model_name)
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-
-# Tokenize the dataset
-def tokenize_function(examples):
-    return tokenizer(examples["text"], truncation=True, padding="max_length", max_length=512)
-
-tokenized_dataset = dataset.map(tokenize_function, batched=True)
+output_file_path = '/content/drive/MyDrive/formatted_dataset.jsonl'
+with open(output_file_path, 'w', encoding='utf-8') as output_file:
+    for entry in formatted_dataset:
+        json.dump({"text": entry["text"]}, output_file)
+        output_file.write('\n')
 ```
 
-## Step 3: Define Training Arguments
+### Step 3: Add LoRA Adapters (Optional for Parameter-Efficient Fine-Tuning)
+
+LoRA (Low-Rank Adaptation) adapters help reduce memory usage and improve training efficiency by modifying specific layers of the model.
+
+```python
+from unsloth import FastLanguageModel
+
+model = FastLanguageModel.get_peft_model(
+    model,
+    r=16,
+    target_modules=["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
+    lora_alpha=8,
+    lora_dropout=0.1,
+    bias="none",
+    use_gradient_checkpointing="unsloth",
+    random_state=3407
+)
+```
+
+### Step 4: Define Training Arguments
 
 Set up your training arguments for fine-tuning. Adjust the following values based on the dataset size, available hardware, and specific requirements.
 
@@ -162,7 +211,23 @@ training_args = TrainingArguments(
 )
 ```
 
-## Step 4: Initialize the SFT Trainer
+For PEFT models using LoRA, you might want to adjust batch sizes, accumulation steps, and number of epochs to better suit smaller datasets.
+
+```python
+training_args = TrainingArguments(
+    per_device_train_batch_size=1,
+    gradient_accumulation_steps=8,
+    num_train_epochs=2,
+    learning_rate=5e-5,
+    fp16=not is_bfloat16_supported(),
+    bf16=is_bfloat16_supported(),
+    logging_steps=1,
+    optim="adamw_8bit",
+    output_dir="outputs",
+)
+```
+
+### Step 5: Initialize the SFT Trainer
 
 Use the Hugging Face `Trainer` to manage the training process.
 
@@ -175,7 +240,20 @@ trainer = Trainer(
 )
 ```
 
-## Step 5: Train the Model
+For LoRA fine-tuning, use `SFTTrainer` instead:
+
+```python
+from trl import SFTTrainer
+trainer = SFTTrainer(
+    model=model,
+    tokenizer=tokenizer,
+    train_dataset=formatted_dataset,
+    dataset_text_field="text",
+    max_seq_length=2048,
+)
+```
+
+### Step 6: Train the Model
 
 Start the fine-tuning process. This may take some time depending on your dataset size and compute resources.
 
@@ -183,7 +261,7 @@ Start the fine-tuning process. This may take some time depending on your dataset
 trainer.train()
 ```
 
-## Step 6: Evaluate the Model (Optional)
+### Step 7: Evaluate the Model (Optional)
 
 After training, evaluate the model on a test dataset to check its performance.
 
@@ -192,7 +270,7 @@ eval_results = trainer.evaluate()
 print(f"Evaluation results: {eval_results}")
 ```
 
-## Step 7: Save and Export the Model
+### Step 8: Save and Export the Model
 
 Save the fine-tuned model to the local disk, or optionally push it to the Hugging Face Hub.
 
@@ -202,11 +280,20 @@ trainer.save_model("path/to/save/qwen_coder_finetuned")
 # trainer.push_to_hub()
 ```
 
-## Additional Tips
+### Step 9: Convert to GGUF Format Using `llama.cpp`
 
-- **Hyperparameter Tuning**: Experiment with different learning rates, batch sizes, and number of epochs to find the best settings for your task.
-- **Parameter-Efficient Fine-Tuning**: If you have limited resources, consider using PEFT (Parameter-Efficient Fine-Tuning) methods like LoRA (Low-Rank Adaptation), available in the `peft` library.
-- **GPU Usage**: Use a GPU for faster training. You can enable GPU in the environment with `torch.cuda.is_available()` to verify.
+To make the fine-tuned model deployable on a variety of platforms, you can convert it to GGUF formats using `llama.cpp`.
+
+```python
+    %cd llama.cpp
+    !make
+    model.push_to_hub_gguf(
+        "J1997/QwenMag-1.5B",
+        tokenizer=tokenizer,
+        quantization_method=["q4_k_m", "q5_k_m", "q8_0", "f16"],
+        token="hf_token"
+    )
+```
 
 ## Cleaning up your Dockerized Cube AI Setup
 
