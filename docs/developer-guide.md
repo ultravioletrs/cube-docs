@@ -93,19 +93,11 @@ For detailed instructions on setting up and building Cube HAL, please refer to [
 
 2. **Set Up Cube HAL**
 
-   Follow the instructions in the _Hardware Abstraction Layer (HAL) for Confidential Computing_ section above to set up and build Cube HAL on your CVM.
+   Follow the Hardware Abstraction Layer (HAL) for Confidential Computing setup to:
 
-3. **Clone the Cube AI Repository**
-
-   Clone the Cube AI repository into the CVM:
-
-   ```bash
-   git clone https://github.com/ultravioletrs/cube.git
-   ```
-
-4. **Pull and Start Containers**
-
-   Log in to the CVM and start the containers as outlined in the [Cube HAL buildroot guide](https://github.com/ultravioletrs/cube/tree/main/hal/buildroot).
+   - Install Buildroot
+   - Clone the Cube AI repository
+   - Pull and start Cube AI docker containers
 
 5. **Enable SSH and Access the CVM**
 
@@ -113,10 +105,10 @@ For detailed instructions on setting up and building Cube HAL, please refer to [
 
 6. **Transfer the Model Archive to the CVM**
 
-   Use `scp` to securely copy the `.tar.gz` file from your local machine to the CVM, as described in the [SSH guide](https://github.com/ultravioletrs/cube/blob/main/hal/buildroot/ssh.md).
+   Use `scp` to securely copy the `.tar.gz` file from step 1 to the CVM, as described in the [SSH guide](https://github.com/ultravioletrs/cube/blob/main/hal/buildroot/ssh.md).
 
 7. **Decompress and Extract the Model Files on the CVM**  
-   Since BusyBox `tar` lacks support for `.gz` decompression, first use `gunzip` to decompress, then extract the `.tar` file:
+  Use `gunzip` to decompress, then extract the `.tar` file:
 
    ```bash
    gunzip model-name.tar.gz
