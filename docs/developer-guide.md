@@ -134,7 +134,7 @@ Replace `<path_to_ui_config_directory>` with your Cube repository’s UI config 
 **Example:**
 
 ```bash
-CONFIG_DIR_SOURCE=~/Documents/cube/ui make dockers_cube_ai
+CONFIG_DIR_SOURCE=../cube/ui make dockers_cube_ai
 ```
 
 ### Step 6: Retag the Image for GHCR
