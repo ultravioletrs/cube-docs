@@ -85,7 +85,7 @@ For detailed instructions on setting up and building Cube HAL, please refer to [
 
 1. **Package the Model Files**
 
-   Compress your model files into a `.tar.gz` archive for easy transfer:
+   First, compress your model files into a `.tar.gz` archive to prepare them for transfer:
 
    ```bash
    tar -czvf model-name.tar.gz /path/to/model/files
@@ -99,29 +99,31 @@ For detailed instructions on setting up and building Cube HAL, please refer to [
    - Clone the Cube AI repository
    - Pull and start Cube AI docker containers
 
-5. **Enable SSH and Access the CVM**
+3. **Enable SSH and Access the CVM**
 
-   Enable SSH on the CVM by following the steps in the [SSH guide](https://github.com/ultravioletrs/cube/blob/main/hal/buildroot/ssh.md).
+   SSH is needed to securely connect and transfer files to the CVM. Follow the steps in the [SSH guide](https://github.com/ultravioletrs/cube/blob/main/hal/buildroot/ssh.md) to enable SSH access on the CVM.
 
-6. **Transfer the Model Archive to the CVM**
+4. **Transfer the Model Archive to the CVM**
 
-   Use `scp` to securely copy the `.tar.gz` file from step 1 to the CVM, as described in the [SSH guide](https://github.com/ultravioletrs/cube/blob/main/hal/buildroot/ssh.md).
+   Once SSH is set up, use `scp` to securely copy the `.tar.gz` file from step 1 to the CVM. For detailed steps, refer to the [SSH guide](https://github.com/ultravioletrs/cube/blob/main/hal/buildroot/ssh.md).
 
-7. **Decompress and Extract the Model Files on the CVM**  
-  Use `gunzip` to decompress, then extract the `.tar` file:
+5. **Decompress and Extract the Model Files on the CVM**  
+  After transferring the archive to the CVM, log in to the CVM and use `gunzip` to decompress the `.tar.gz` file, then extract the `.tar` file:
 
-   ```bash
-   gunzip model-name.tar.gz
-   tar -xvf model-name.tar
-   ```
+    ```bash
+    gunzip model-name.tar.gz
+    tar -xvf model-name.tar
+    ```
 
-8. **Copy the Extracted Model Files to the `ollama` Container**
+6. **Copy the Extracted Model Files to the `ollama` Container**
 
-   Once extracted, copy the model files into the running `ollama` container:
+   With the model files unpacked, copy them to the `ollama` container running on the CVM:
 
    ```bash
    docker cp /path/to/extracted/files ollama:/path/to/target/directory/in/container
    ```
+
+   Replace `/path/to/extracted/files` with the path of the unpacked files on the CVM and `/path/to/target/directory/in/container` with the destination directory inside the `ollama` container.
 
 ## Fine-Tuning Base Model on Custom Code Dataset
 
