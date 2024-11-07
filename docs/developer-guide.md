@@ -164,6 +164,8 @@ def format_prompt_input_completion_pairs(examples):
 formatted_dataset = dataset.map(format_prompt_input_completion_pairs, batched=True)
 ```
 
+If your code dataset has several files like in a github repository, first convert them into a single text file to streamline preprocessing. To do this, use [Repomix](https://github.com/yamadashy/repomix). With the generated `repomix-output.txt`, create prompt-input-completion pairs by segmenting each function or code block in line with your chosen prompt.
+
 Save the formatted dataset if working on Google Colab with Google Drive:
 
 ```python
