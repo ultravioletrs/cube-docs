@@ -132,10 +132,10 @@ MG_UI_NAME=Cube AI
 In the `magistrala-ui-new` directory, run:
 
 ```bash
-CONFIG_DIR_SOURCE=<path_to_ui_config_directory> make dockers_cube_ai
+CONFIG_DIR_SOURCE=<absolute_path_to_ui_config_directory> make dockers_cube_ai
 ```
 
-Replace `<path_to_ui_config_directory>` with your Cube repository’s UI config path from Step 2.
+Replace `<absolute_path_to_ui_config_directory>` with your Cube repository’s UI config path from Step 2.
 
 **Example:**
 
