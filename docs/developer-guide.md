@@ -124,7 +124,7 @@ NEXT_PUBLIC_UI_TYPE=cube-ai
 Update the `.env` file in the `magistrala-ui-new` directory to specify the UI name to `Cube AI`:
 
 ```env
-MG_UI_NAME=Cube AI
+MG_UI_NAME="Cube AI"
 ```
 
 ### Step 4: Build the `cube-ai` UI Docker Image
