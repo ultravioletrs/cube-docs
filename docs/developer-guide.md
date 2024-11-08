@@ -113,7 +113,7 @@ Make any necessary changes to the UI, such as updating the theme, font, logos, o
 
 For detailed customization instructions, refer to the [Customization of the UI section](https://github.com/absmach/magistrala-ui-new/blob/bc3086526451a0247216ac81b4edb4b6f1e2bb02/README.md#customization-of-the-ui) in the README.
 
-### Step 3: Set the UI Type
+### Step 3: Set the UI Type and Organization Name
 
 Update the `.env` file in the `magistrala-ui-new` directory to specify the UI type to `cube-ai`:
 
