@@ -353,7 +353,7 @@ First, stop all running containers:
 docker compose down
 ```
 
-Remove volumes and vetworks:
+Remove volumes and networks:
 
 ```bash
 docker compose down --volumes --remove-orphans
