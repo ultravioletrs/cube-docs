@@ -81,6 +81,50 @@ For detailed instructions on setting up and building Cube HAL, please refer to [
 - Configuring and building Cube HAL
 - Running Cube HAL in a virtual machine
 
+## Private Model Upload
+
+1. **Package the Model Files**
+
+   First, compress your model files into a `.tar.gz` archive to prepare them for transfer:
+
+   ```bash
+   tar -czvf model-name.tar.gz /path/to/model/files
+   ```
+
+2. **Set Up Cube HAL**
+
+   Follow the Hardware Abstraction Layer (HAL) for Confidential Computing setup to:
+
+   - Install Buildroot
+   - Clone the Cube AI repository
+   - Pull and start Cube AI docker containers
+
+3. **Enable SSH and Access the CVM**
+
+   SSH is needed to securely connect and transfer files to the CVM. Follow the steps in the [SSH guide](https://github.com/ultravioletrs/cube/blob/main/hal/buildroot/ssh.md) to enable SSH access on the CVM.
+
+4. **Transfer the Model Archive to the CVM**
+
+   Once SSH is set up, use `scp` to securely copy the `.tar.gz` file from step 1 to the CVM. For detailed steps, refer to the [SSH guide](https://github.com/ultravioletrs/cube/blob/main/hal/buildroot/ssh.md).
+
+5. **Decompress and Extract the Model Files on the CVM**  
+  After transferring the archive to the CVM, log in to the CVM and use `gunzip` to decompress the `.tar.gz` file, then extract the `.tar` file:
+
+    ```bash
+    gunzip model-name.tar.gz
+    tar -xvf model-name.tar
+    ```
+
+6. **Copy the Extracted Model Files to the `ollama` Container**
+
+   With the model files unpacked, copy them to the `ollama` container running on the CVM:
+
+   ```bash
+   docker cp /path/to/extracted/files ollama:/path/to/target/directory/in/container
+   ```
+
+   Replace `/path/to/extracted/files` with the path of the unpacked files on the CVM and `/path/to/target/directory/in/container` with the destination directory inside the `ollama` container.
+
 ## Fine-Tuning Base Model on Custom Code Dataset
 
 To enhance the performance of the base model on domain-specific tasks or particular code styles, you may want to fine-tune it on a custom code dataset. This process will help adapt the model to your specific requirements.
