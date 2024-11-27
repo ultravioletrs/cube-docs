@@ -10,6 +10,7 @@ Port `6193` is our default port for accessing Cube AI deployment. It is configur
 For example, to customize the port:
 
 ```bash
+UI_PORT=<your-preferred-port>
 UV_CUBE_NEXTAUTH_URL=http://<your-instance-ip>:<your-preferred-port>
 ```
 
