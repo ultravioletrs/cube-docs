@@ -68,29 +68,88 @@ The `access_token` field in the response is your API token, which will be used f
 {
   "models": [
     {
-      "title": "Ollama",
+      "title": "tinyllama",
       "provider": "ollama",
-      "model": "llama3:8b",
-      "apiKey": "<access_token>",
-      "apiBase": "<cube-ai-instance>/ollama"
+      "model": "tinyllama:1.1b",
+      "apiKey": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzE2MDI0ODEsImlhdCI6MTczMTU5ODg4MSwiaXNzIjoibWFnaXN0cmFsYS5hdXRoIiwidHlwZSI6MCwidXNlciI6IjI4MzY2MzE4LTNiM2MtNGRlZS1iZTEwLTRlZmIxNjYyMmVjZiJ9.LQGiH24I_QvkZ1q0TUOzCcr4mrMI9Qt-1fBltq33i6RXAu9tEZ01rng8KIwpa-hTxFOKWC3iwB3FRKyw-r9Z-g",
+      "apiBase": "http://<yourr-ollama-instance>/ollama"
     }
   ],
   "tabAutocompleteModel": {
     "title": "Starcoder 2 3b",
     "provider": "ollama",
-    "model": "starcoder2:3b",
-    "apiKey": "<access_token>",
-    "apiBase": "<cube-ai-instance>/ollama"
+    "model": "starcoder2:7b",
+    "apiKey": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzE2MDI0ODEsImlhdCI6MTczMTU5ODg4MSwiaXNzIjoibWFnaXN0cmFsYS5hdXRoIiwidHlwZSI6MCwidXNlciI6IjI4MzY2MzE4LTNiM2MtNGRlZS1iZTEwLTRlZmIxNjYyMmVjZiJ9.LQGiH24I_QvkZ1q0TUOzCcr4mrMI9Qt-1fBltq33i6RXAu9tEZ01rng8KIwpa-hTxFOKWC3iwB3FRKyw-r9Z-g",
+    "apiBase": "http://<yourr-ollama-instance>/ollama"
   },
   "embeddingsProvider": {
     "provider": "ollama",
     "model": "nomic-embed-text",
-    "apiKey": "<access_token>",
-    "apiBase": "<cube-ai-instance>/ollama"
+    "apiKey": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzE2MDI0ODEsImlhdCI6MTczMTU5ODg4MSwiaXNzIjoibWFnaXN0cmFsYS5hdXRoIiwidHlwZSI6MCwidXNlciI6IjI4MzY2MzE4LTNiM2MtNGRlZS1iZTEwLTRlZmIxNjYyMmVjZiJ9.LQGiH24I_QvkZ1q0TUOzCcr4mrMI9Qt-1fBltq33i6RXAu9tEZ01rng8KIwpa-hTxFOKWC3iwB3FRKyw-r9Z-g",
+    "apiBase": "http://<yourr-ollama-instance>/ollama"
   },
   "requestOptions": {
     "verifySsl": false
-  }
+  },
+  "customCommands": [
+    {
+      "name": "test",
+      "prompt": "{{{ input }}}\n\nWrite a comprehensive set of unit tests for the selected code. It should setup, run tests that check for correctness including important edge cases, and teardown. Ensure that the tests are complete and sophisticated. Give the tests just as chat output, don't edit any file.",
+      "description": "Write unit tests for highlighted code"
+    }
+  ],
+  "contextProviders": [
+    {
+      "name": "code",
+      "params": {}
+    },
+    {
+      "name": "docs",
+      "params": {}
+    },
+    {
+      "name": "diff",
+      "params": {}
+    },
+    {
+      "name": "terminal",
+      "params": {}
+    },
+    {
+      "name": "problems",
+      "params": {}
+    },
+    {
+      "name": "folder",
+      "params": {}
+    },
+    {
+      "name": "codebase",
+      "params": {}
+    }
+  ],
+  "slashCommands": [
+    {
+      "name": "edit",
+      "description": "Edit selected code"
+    },
+    {
+      "name": "comment",
+      "description": "Write comments for the selected code"
+    },
+    {
+      "name": "share",
+      "description": "Export the current chat session to markdown"
+    },
+    {
+      "name": "cmd",
+      "description": "Generate a shell command"
+    },
+    {
+      "name": "commit",
+      "description": "Generate a git commit message"
+    }
+  ]
 }
 ```
 
