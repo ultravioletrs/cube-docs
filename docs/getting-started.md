@@ -71,7 +71,7 @@ The `access_token` field in the response is your API token, which will be used f
       "title": "tinyllama",
       "provider": "ollama",
       "model": "tinyllama:1.1b",
-      "apiKey": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzE2MDI0ODEsImlhdCI6MTczMTU5ODg4MSwiaXNzIjoibWFnaXN0cmFsYS5hdXRoIiwidHlwZSI6MCwidXNlciI6IjI4MzY2MzE4LTNiM2MtNGRlZS1iZTEwLTRlZmIxNjYyMmVjZiJ9.LQGiH24I_QvkZ1q0TUOzCcr4mrMI9Qt-1fBltq33i6RXAu9tEZ01rng8KIwpa-hTxFOKWC3iwB3FRKyw-r9Z-g",
+      "apiKey": "<access_token>",
       "apiBase": "http://<yourr-ollama-instance>/ollama"
     }
   ],
@@ -79,13 +79,13 @@ The `access_token` field in the response is your API token, which will be used f
     "title": "Starcoder 2 3b",
     "provider": "ollama",
     "model": "starcoder2:7b",
-    "apiKey": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzE2MDI0ODEsImlhdCI6MTczMTU5ODg4MSwiaXNzIjoibWFnaXN0cmFsYS5hdXRoIiwidHlwZSI6MCwidXNlciI6IjI4MzY2MzE4LTNiM2MtNGRlZS1iZTEwLTRlZmIxNjYyMmVjZiJ9.LQGiH24I_QvkZ1q0TUOzCcr4mrMI9Qt-1fBltq33i6RXAu9tEZ01rng8KIwpa-hTxFOKWC3iwB3FRKyw-r9Z-g",
+    "apiKey": "<access_token>",
     "apiBase": "http://<yourr-ollama-instance>/ollama"
   },
   "embeddingsProvider": {
     "provider": "ollama",
     "model": "nomic-embed-text",
-    "apiKey": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MzE2MDI0ODEsImlhdCI6MTczMTU5ODg4MSwiaXNzIjoibWFnaXN0cmFsYS5hdXRoIiwidHlwZSI6MCwidXNlciI6IjI4MzY2MzE4LTNiM2MtNGRlZS1iZTEwLTRlZmIxNjYyMmVjZiJ9.LQGiH24I_QvkZ1q0TUOzCcr4mrMI9Qt-1fBltq33i6RXAu9tEZ01rng8KIwpa-hTxFOKWC3iwB3FRKyw-r9Z-g",
+    "apiKey": "<access_token>",
     "apiBase": "http://<yourr-ollama-instance>/ollama"
   },
   "requestOptions": {
