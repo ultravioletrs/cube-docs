@@ -23,13 +23,13 @@ You can run/start Cube AI services using Docker Compose as described in [this gu
 To properly access Cube AI UI deployed on a different server, update the IP address entries in `docker/.env` as described in the above guide to point to your server IP address. The Cube AI UI can then be accessed through your browser at:
 
 ```bash
-http://<your-server-ip-address>:3001
+http://<your-server-ip-address>:6193
 ```
 
 For example, if you have deployed locally, use:
 
 ```bash
-http://localhost:3001
+http://localhost:6193
 ```
 
 ## Open Web UI Integration
