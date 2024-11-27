@@ -72,7 +72,7 @@ The `access_token` field in the response is your API token, which will be used f
       "provider": "ollama",
       "model": "tinyllama:1.1b",
       "apiKey": "<access_token>",
-      "apiBase": "http://<yourr-ollama-instance>/ollama"
+      "apiBase": "http://<your-ollama-instance>/ollama"
     }
   ],
   "tabAutocompleteModel": {
@@ -80,13 +80,13 @@ The `access_token` field in the response is your API token, which will be used f
     "provider": "ollama",
     "model": "starcoder2:7b",
     "apiKey": "<access_token>",
-    "apiBase": "http://<yourr-ollama-instance>/ollama"
+    "apiBase": "http://<your-ollama-instance>/ollama"
   },
   "embeddingsProvider": {
     "provider": "ollama",
     "model": "nomic-embed-text",
     "apiKey": "<access_token>",
-    "apiBase": "http://<yourr-ollama-instance>/ollama"
+    "apiBase": "http://<your-ollama-instance>/ollama"
   },
   "requestOptions": {
     "verifySsl": false
