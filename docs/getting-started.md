@@ -62,7 +62,7 @@ The `access_token` field contains your API token, which is required for making a
 
 To maximize Cube AI’s potential within your development environment, you’ll need to integrate it with Visual Studio Code (VS Code) using the **Continue extension**. This extension enables you to directly interact with LLMs in TEE inside VS Code, providing intelligent code completion, code suggestions, and contextual insights.
 
-### Steps for Setting Up:
+### Steps for Setting Up
 
 1. **Download and install** [Visual Studio Code (VS Code)](https://code.visualstudio.com/).
 2. In VS Code, **download and install** the [Continue extension](https://www.continue.dev/), which connects Cube AI models to your development environment for enhanced coding assistance.
