@@ -1,0 +1,727 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Cube AI Documentation">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../architecture/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.17">
+    
+    
+      
+        <title>Getting Started - Cube AI</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.bcfcd587.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#getting-started" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Cube AI" class="md-header__button md-logo" aria-label="Cube AI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Cube AI
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Getting Started
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ultravioletrs/cube-docs.git" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Cube AI" class="md-nav__button md-logo" aria-label="Cube AI" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Cube AI
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ultravioletrs/cube-docs.git" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#administrator-and-user-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Administrator and User Accounts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Administrator and User Accounts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#administrator-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Administrator Access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-user-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a New User Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-admin-user-login" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Admin User Login
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-vs-code-for-cube-ai-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up VS Code for Cube AI Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting Up VS Code for Cube AI Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-for-setting-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps for Setting Up
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../architecture/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Architecture
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../attestation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Attestation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../developer-guide/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developer's Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#administrator-and-user-accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Administrator and User Accounts
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Administrator and User Accounts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#administrator-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      Administrator Access
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-user-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a New User Account
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#non-admin-user-login" class="md-nav__link">
+    <span class="md-ellipsis">
+      Non-Admin User Login
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-vs-code-for-cube-ai-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up VS Code for Cube AI Integration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting Up VS Code for Cube AI Integration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#steps-for-setting-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Steps for Setting Up
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">#</a></h1>
+<p>Before logging in or interacting with Cube AI, ensure that Cube AI has been properly deployed and is running. Deployment can be performed by the instance administrator or by you, provided you have the necessary access permissions. For a detailed guide on how to deploy Cube AI, refer to the <a href="https://github.com/ultravioletrs/cube-docs/blob/main/docs/developer-guide.md">developer guide</a>.</p>
+<p>Therefore, to connect:</p>
+<ol>
+<li>Ensure that Cube AI is deployed and running on your instance.</li>
+<li>Connect to the deployed Cube AI instance on port <code>6193</code> using your login credentials (username and password).</li>
+</ol>
+<p>Port <code>6193</code> is the default port for accessing Cube AI deployment. It is configurable through the <code>docker/.env</code> file, meaning you can change it to any port that suits your deployment needs as described in the <a href="https://github.com/ultravioletrs/cube-docs/blob/main/docs/developer-guide.md">developer guide</a>.</p>
+<h2 id="administrator-and-user-accounts">Administrator and User Accounts<a class="headerlink" href="#administrator-and-user-accounts" title="Permanent link">#</a></h2>
+<h3 id="administrator-access">Administrator Access<a class="headerlink" href="#administrator-access" title="Permanent link">#</a></h3>
+<p>If you are the instance administrator, you do not need to create a separate account for yourself. The platform is preconfigured with an administrator account that you can log into directly using your admin credentials. As the administrator, you can also generate authentication tokens for API access. Non-admin users, however, will need accounts created for them by the administrator.</p>
+<h3 id="creating-a-new-user-account">Creating a New User Account<a class="headerlink" href="#creating-a-new-user-account" title="Permanent link">#</a></h3>
+<p>As an administrator, you have the ability to create accounts for non-admin users and grant them access to Cube AI. Follow <a href="https://jam.dev/c/f8d3fa47-7505-4201-b8ca-c0f724826237">this demonstration</a> to see the process in action. Here’s a summary of the steps:</p>
+<ol>
+<li><strong>Log in</strong> using your <strong>administrator credentials</strong>.</li>
+<li><strong>Create a new domain</strong> (if one is needed).</li>
+<li><strong>Log in</strong> to the newly created domain (or an existing domain).</li>
+<li>Click on your <strong>profile icon</strong> and select <strong><code>Manage Users</code></strong>.</li>
+<li>Click <strong><code>Create</code></strong> to start creating a new user.</li>
+<li>Fill out the user details in the form.</li>
+<li>Click <strong><code>Create</code></strong> to finalize the user creation.</li>
+<li><strong>Share</strong> the username and password with the newly created user so they can log in.</li>
+</ol>
+<h3 id="non-admin-user-login">Non-Admin User Login<a class="headerlink" href="#non-admin-user-login" title="Permanent link">#</a></h3>
+<p>Once the administrator has created your account and shared the login details with you, use those credentials to log in to Cube AI. After logging in, you can obtain an authentication token for API interactions as shown below:</p>
+<pre><code class="language-bash">curl -ksSiX POST https://&lt;cube-ai-instance&gt;/users/tokens/issue -H &quot;Content-Type: application/json&quot; -d @- &lt;&lt; EOF
+{
+  &quot;identity&quot;: &quot;&lt;your_email&gt;&quot;,
+  &quot;secret&quot;: &quot;&lt;your_password&gt;&quot;
+}
+EOF
+</code></pre>
+<p>Replace <code>&lt;your_email&gt;</code> and <code>&lt;your_password&gt;</code> with the credentials provided by the administrator.</p>
+<p>You will receive a response similar to the following:</p>
+<pre><code class="language-bash">HTTP/2 201
+content-type: application/json
+date: Wed, 18 Sep 2024 11:13:48 GMT
+x-frame-options: DENY
+x-xss-protection: 1; mode=block
+content-length: 591
+
+{&quot;access_token&quot;:&quot;&lt;access_token&gt;&quot;,&quot;refresh_token&quot;:&quot;&lt;refresh_token&gt;&quot;}
+</code></pre>
+<p>The <code>access_token</code> field contains your API token, which is required for making authenticated API calls. The <code>refresh_token</code> can be used to obtain a new access token when the current one expires.</p>
+<h2 id="setting-up-vs-code-for-cube-ai-integration">Setting Up VS Code for Cube AI Integration<a class="headerlink" href="#setting-up-vs-code-for-cube-ai-integration" title="Permanent link">#</a></h2>
+<p>To maximize Cube AI’s potential within your development environment, you’ll need to integrate it with Visual Studio Code (VS Code) using the <strong>Continue extension</strong>. This extension enables you to directly interact with LLMs in TEE inside VS Code, providing intelligent code completion, code suggestions, and contextual insights.</p>
+<h3 id="steps-for-setting-up">Steps for Setting Up<a class="headerlink" href="#steps-for-setting-up" title="Permanent link">#</a></h3>
+<ol>
+<li><strong>Download and install</strong> <a href="https://code.visualstudio.com/">Visual Studio Code (VS Code)</a>.</li>
+<li>In VS Code, <strong>download and install</strong> the <a href="https://www.continue.dev/">Continue extension</a>, which connects Cube AI models to your development environment for enhanced coding assistance.</li>
+<li><strong>Open the Continue extension</strong> by clicking the settings icon (gear icon), then select <strong><code>Configure Continue</code></strong>. This will open the <code>.continue/config.json</code> file. Alternatively:</li>
+<li>You can navigate to the <code>.continue</code> folder in your project’s root directory using File Explorer.</li>
+<li>Press <code>Ctrl+Shift+P</code> to open the Command Palette and search for <strong>"Continue: Open config.json"</strong>.</li>
+<li><strong>Edit</strong> the <code>.continue/config.json</code> file to include the following configuration:</li>
+</ol>
+<pre><code class="language-json">{
+  &quot;models&quot;: [
+    {
+      &quot;title&quot;: &quot;tinyllama&quot;,
+      &quot;provider&quot;: &quot;ollama&quot;,
+      &quot;model&quot;: &quot;tinyllama:1.1b&quot;,
+      &quot;apiKey&quot;: &quot;&lt;access_token&gt;&quot;,
+      &quot;apiBase&quot;: &quot;http://&lt;your-ollama-instance&gt;/ollama&quot;
+    }
+  ],
+  &quot;tabAutocompleteModel&quot;: {
+    &quot;title&quot;: &quot;Starcoder 2 3b&quot;,
+    &quot;provider&quot;: &quot;ollama&quot;,
+    &quot;model&quot;: &quot;starcoder2:7b&quot;,
+    &quot;apiKey&quot;: &quot;&lt;access_token&gt;&quot;,
+    &quot;apiBase&quot;: &quot;http://&lt;your-ollama-instance&gt;/ollama&quot;
+  },
+  &quot;embeddingsProvider&quot;: {
+    &quot;provider&quot;: &quot;ollama&quot;,
+    &quot;model&quot;: &quot;nomic-embed-text&quot;,
+    &quot;apiKey&quot;: &quot;&lt;access_token&gt;&quot;,
+    &quot;apiBase&quot;: &quot;http://&lt;your-ollama-instance&gt;/ollama&quot;
+  },
+  &quot;requestOptions&quot;: {
+    &quot;verifySsl&quot;: false
+  },
+  &quot;customCommands&quot;: [
+    {
+      &quot;name&quot;: &quot;test&quot;,
+      &quot;prompt&quot;: &quot;{{{ input }}}\n\nWrite a comprehensive set of unit tests for the selected code. It should setup, run tests that check for correctness including important edge cases, and teardown. Ensure that the tests are complete and sophisticated. Give the tests just as chat output, don't edit any file.&quot;,
+      &quot;description&quot;: &quot;Write unit tests for highlighted code&quot;
+    }
+  ],
+  &quot;contextProviders&quot;: [
+    {
+      &quot;name&quot;: &quot;code&quot;,
+      &quot;params&quot;: {}
+    },
+    {
+      &quot;name&quot;: &quot;docs&quot;,
+      &quot;params&quot;: {}
+    },
+    {
+      &quot;name&quot;: &quot;diff&quot;,
+      &quot;params&quot;: {}
+    },
+    {
+      &quot;name&quot;: &quot;terminal&quot;,
+      &quot;params&quot;: {}
+    },
+    {
+      &quot;name&quot;: &quot;problems&quot;,
+      &quot;params&quot;: {}
+    },
+    {
+      &quot;name&quot;: &quot;folder&quot;,
+      &quot;params&quot;: {}
+    },
+    {
+      &quot;name&quot;: &quot;codebase&quot;,
+      &quot;params&quot;: {}
+    }
+  ],
+  &quot;slashCommands&quot;: [
+    {
+      &quot;name&quot;: &quot;edit&quot;,
+      &quot;description&quot;: &quot;Edit selected code&quot;
+    },
+    {
+      &quot;name&quot;: &quot;comment&quot;,
+      &quot;description&quot;: &quot;Write comments for the selected code&quot;
+    },
+    {
+      &quot;name&quot;: &quot;share&quot;,
+      &quot;description&quot;: &quot;Export the current chat session to markdown&quot;
+    },
+    {
+      &quot;name&quot;: &quot;cmd&quot;,
+      &quot;description&quot;: &quot;Generate a shell command&quot;
+    },
+    {
+      &quot;name&quot;: &quot;commit&quot;,
+      &quot;description&quot;: &quot;Generate a git commit message&quot;
+    }
+  ]
+}
+</code></pre>
+<p>Update the <code>apiKey</code> with your <code>access token</code> and the <code>apiBase</code> with the URL of your Cube AI instance (if different from the default one). These values should reflect the actual deployment settings you're working with.</p>
+<p>For a more detailed explanation of how to connect to Cube AI with the continue extension, check out <a href="https://www.youtube.com/watch?v=BGpv_iTB2NE">this video demonstration</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright (c) Ultraviolet
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.1e8ae164.min.js"></script>
+      
+    
+  </body>
+</html>
