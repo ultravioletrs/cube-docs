@@ -1,37 +1,36 @@
 # Getting Started
 
-Before logging in or interacting with Cube AI, you need to make sure that Cube AI has been deployed and is running. Deployment can be done by the instance administrator or by you if you have the necessary access permissions. Therefore, to Connect:
+Before logging in or interacting with Cube AI, ensure that Cube AI has been properly deployed and is running. Deployment can be performed by the instance administrator or by you, provided you have the necessary access permissions. For a detailed guide on how to deploy Cube AI, refer to the [developer guide](https://github.com/ultravioletrs/cube-docs/blob/main/docs/developer-guide.md).
+
+Therefore, to connect:
 
 1. Ensure that Cube AI is deployed and running on your instance.
 2. Connect to the deployed Cube AI instance on port `6193` using your login credentials (username and password).
 
-Port `6193` is our default port for accessing Cube AI deployment. It is configurable through the `.env` file, meaning you can change it to any port that suits your deployment needs as described in [this guide](https://github.com/ultravioletrs/cube/blob/main/hal/ubuntu/README.md)
+Port `6193` is the default port for accessing Cube AI deployment. It is configurable through the `docker/.env` file, meaning you can change it to any port that suits your deployment needs as described in the [developer guide](https://github.com/ultravioletrs/cube-docs/blob/main/docs/developer-guide.md).
 
-For example, to customize the port:
+## Administrator and User Accounts
 
-```bash
-UI_PORT=<your-preferred-port>
-UV_CUBE_NEXTAUTH_URL=http://<your-instance-ip>:<your-preferred-port>
-```
+### Administrator Access
 
-If you are running Cube AI on a different port, make sure to update the environment variable accordingly.
+If you are the instance administrator, you do not need to create a separate account for yourself. The platform is preconfigured with an administrator account that you can log into directly using your admin credentials. As the administrator, you can also generate authentication tokens for API access. Non-admin users, however, will need accounts created for them by the administrator.
 
-## Create a new user
+### Creating a New User Account
 
-If you are the instance administrator (or have administrator credentials), follow [this demonstration](https://jam.dev/c/f8d3fa47-7505-4201-b8ca-c0f724826237) to create a new user. Below are the summarized steps:
+As an administrator, you have the ability to create accounts for non-admin users and grant them access to Cube AI. Follow [this demonstration](https://jam.dev/c/f8d3fa47-7505-4201-b8ca-c0f724826237) to see the process in action. Here’s a summary of the steps:
 
-1. Log in with admin credentials
-2. Create a new domain (if needed)
-3. Login to the newly created domain (or already existing domain)
-4. Click profile icon and navigate to `Manage Users`
-5. Click create
-6. Fill in the form
-7. Click `Create`
-8. Share the login credentials (username and password) with the new user
+1. **Log in** using your **administrator credentials**.
+2. **Create a new domain** (if one is needed).
+3. **Log in** to the newly created domain (or an existing domain).
+4. Click on your **profile icon** and select **`Manage Users`**.
+5. Click **`Create`** to start creating a new user.
+6. Fill out the user details in the form.
+7. Click **`Create`** to finalize the user creation.
+8. **Share** the username and password with the newly created user so they can log in.
 
-## Login
+### Non-Admin User Login
 
-Once the administrator creates your account and shares your login details, use the credentials to log in to Cube AI and obtain an authentication token as shown below.
+Once the administrator has created your account and shared the login details with you, use those credentials to log in to Cube AI. After logging in, you can obtain an authentication token for API interactions as shown below:
 
 ```bash
 curl -ksSiX POST https://<cube-ai-instance>/users/tokens/issue -H "Content-Type: application/json" -d @- << EOF
@@ -42,7 +41,9 @@ curl -ksSiX POST https://<cube-ai-instance>/users/tokens/issue -H "Content-Type:
 EOF
 ```
 
-Be sure to replace `<your_email>` and `<your_password>` with your actual login details. You'll receive a response similar to this:
+Replace `<your_email>` and `<your_password>` with the credentials provided by the administrator.
+
+You will receive a response similar to the following:
 
 ```bash
 HTTP/2 201
@@ -55,14 +56,20 @@ content-length: 591
 {"access_token":"<access_token>","refresh_token":"<refresh_token>"}
 ```
 
-The `access_token` field in the response is your API token, which will be used for authentication in future API calls. The `refresh_token` field is a token you can use to obtain a new access token once the current one expires.
+The `access_token` field contains your API token, which is required for making authenticated API calls. The `refresh_token` can be used to obtain a new access token when the current one expires.
 
-## VS Code Setup
+## Setting Up VS Code for Cube AI Integration
 
-1. Download and install [VS Code](https://code.visualstudio.com/).
-2. In VS Code, download and install the [Continue extension](https://www.continue.dev/). This extension connects Cube AI models to your coding environment for assistance.
-3. Open the Continue extension, click the settings icon (`Configure Continue`), and open the `.continue/config.json` file (alternatively, you can navigate to the `.continue` folder in your project’s root directory via File Explorer or press `Ctrl+Shift+P` and type "Continue: Open config.json" in the Command Palette).
-4. Edit the `.continue/config.json` file to look like this:
+To maximize Cube AI’s potential within your development environment, you’ll need to integrate it with Visual Studio Code (VS Code) using the **Continue extension**. This extension enables you to directly interact with LLMs in TEE inside VS Code, providing intelligent code completion, code suggestions, and contextual insights.
+
+### Steps for Setting Up:
+
+1. **Download and install** [Visual Studio Code (VS Code)](https://code.visualstudio.com/).
+2. In VS Code, **download and install** the [Continue extension](https://www.continue.dev/), which connects Cube AI models to your development environment for enhanced coding assistance.
+3. **Open the Continue extension** by clicking the settings icon (gear icon), then select **`Configure Continue`**. This will open the `.continue/config.json` file. Alternatively:
+   - You can navigate to the `.continue` folder in your project’s root directory using File Explorer.
+   - Press `Ctrl+Shift+P` to open the Command Palette and search for **"Continue: Open config.json"**.
+4. **Edit** the `.continue/config.json` file to include the following configuration:
 
 ```json
 {
@@ -152,5 +159,7 @@ The `access_token` field in the response is your API token, which will be used f
   ]
 }
 ```
+
+Update the `apiKey` with your `access token` and the `apiBase` with the URL of your Cube AI instance (if different from the default one). These values should reflect the actual deployment settings you're working with.
 
 For a more detailed explanation of how to connect to Cube AI with the continue extension, check out [this video demonstration](https://www.youtube.com/watch?v=BGpv_iTB2NE).

@@ -1,8 +1,10 @@
 # Developer Guide
 
-This guide will help you get started with developing, deploying, and running Cube AI.
+This guide will help you get started with developing, testing, deploying, and running Cube AI.
 
 ## Cloning the Repository
+
+Clone Cube AI repository by running:
 
 ```bash
 git clone https://github.com/ultravioletrs/cube.git
@@ -11,6 +13,8 @@ cd cube
 
 ## Pulling Docker Images
 
+Pull the Docker images by running:
+
 ```bash
 cd cube/docker/
 docker compose pull
@@ -18,23 +22,82 @@ docker compose pull
 
 ## Running Services with Docker Compose
 
-You can run/start Cube AI services using Docker Compose as described in [this guide](https://github.com/ultravioletrs/cube/blob/main/hal/ubuntu/README.md).
+If you are running Cube AI on your local machine:
 
-To properly access Cube AI UI deployed on a different server, update the IP address entries in `docker/.env` as described in the above guide to point to your server IP address. The Cube AI UI can then be accessed through your browser at:
+1. **Update the Environment File**  
+   Open the `docker/.env` file and set the `UV_CUBE_NEXTAUTH_URL` to point to `localhost` using the specified UI port (default is `6193`):
 
-```bash
-http://<your-server-ip-address>:6193
-```
+   ```bash
+   UV_CUBE_NEXTAUTH_URL=http://localhost:${UI_PORT}
+   ```
 
-For example, if you have deployed locally, use:
+2. **Start the Docker Containers**  
+   Run the following command to start the services:
 
-```bash
-http://localhost:6193
-```
+   ```bash
+   docker compose up -d
+   ```
+
+3. **Access the UI**  
+   Open your browser and navigate to:
+
+   ```bash
+   http://localhost:6193
+   ```
+
+If you are running Cube AI on a different server (e.g., a virtual machine or cloud instance):
+
+1. **Update the Environment File**  
+    Open the `docker/.env` file and replace the placeholders with your server's IP address and UI port. For example, if your server's IP address is `209.18.187.53` and you are using the default port `6193`, update the file as follows:
+
+   ```bash
+   UI_PORT=6193
+   UV_CUBE_NEXTAUTH_URL=http://209.18.187.53:${UI_PORT}
+   ```
+
+   You can set a custom port if `6193` is unavailable or conflicts with other services. For instance, if you want to use port `8080`, update the `docker/.env` file as follows:
+
+   ```bash
+   UI_PORT=8080
+   UV_CUBE_NEXTAUTH_URL=http://209.18.187.53:${UI_PORT}
+   ```
+
+   Ensure the chosen port is open and not restricted by firewalls.
+
+2. **Start the Docker Containers**  
+   Run the following command on the server:
+
+   ```bash
+   docker compose up -d
+   ```
+
+3. **Access the UI**  
+   Open your browser and navigate to:
+
+   - For the default port:
+
+     ```bash
+     http://209.18.187.53:6193
+     ```
+
+   - For a custom port (e.g., `8080`):
+
+     ```bash
+     http://209.18.187.53:8080
+     ```
+
+After successfully deploying Cube AI, you can perform various tasks to set up and manage your instance. These include:
+
+- Managing domains
+- Managing users
+- Generating authentication tokens (using curl command)
+- Intergrating your `Cube AI` instance with `Continue` Visual Studio Code extension to leverage large language models (LLMs) directly within VS Code to assist with coding task
+
+For detailed instructions on the above tasks and more, refer to the [Getting Started Guide](https://github.com/ultravioletrs/cube-docs/blob/main/docs/getting-started.md).
 
 ## Open Web UI Integration
 
-Open Web UI is integrated into Cube AI to help in debugging and monitoring key performance metrics of the models, including response token/s, prompt token/s, total duration, and load duration. For more detailed setup and configuration instructions, refer to the [Open Web UI documentation](https://docs.openwebui.com/).
+Open Web UI is integrated into Cube AI to help in debugging and monitoring key performance metrics of the LLMs, including response token/s, prompt token/s, total duration, and load duration. For more detailed setup and configuration instructions, refer to the [Open Web UI documentation](https://docs.openwebui.com/).
 
 To access Open Web UI, once Cube AI services are up and running, open your browser and navigate to:
 
@@ -108,12 +171,12 @@ For detailed instructions on setting up and building Cube HAL, please refer to [
    Once SSH is set up, use `scp` to securely copy the `.tar.gz` file from step 1 to the CVM. For detailed steps, refer to the [SSH guide](https://github.com/ultravioletrs/cube/blob/main/hal/buildroot/ssh.md).
 
 5. **Decompress and Extract the Model Files on the CVM**  
-  After transferring the archive to the CVM, log in to the CVM and use `gunzip` to decompress the `.tar.gz` file, then extract the `.tar` file:
+   After transferring the archive to the CVM, log in to the CVM and use `gunzip` to decompress the `.tar.gz` file, then extract the `.tar` file:
 
-    ```bash
-    gunzip model-name.tar.gz
-    tar -xvf model-name.tar
-    ```
+   ```bash
+   gunzip model-name.tar.gz
+   tar -xvf model-name.tar
+   ```
 
 6. **Copy the Extracted Model Files to the `ollama` Container**
 
