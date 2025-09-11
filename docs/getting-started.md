@@ -35,8 +35,8 @@ Once the administrator has created your account and shared the login details wit
 ```bash
 curl -ksSiX POST https://<cube-ai-instance>/users/tokens/issue -H "Content-Type: application/json" -d @- << EOF
 {
-  "identity": "<your_email>",
-  "secret": "<your_password>"
+  "username": "<your_email>",
+  "password": "<your_password>"
 }
 EOF
 ```
@@ -71,93 +71,40 @@ To maximize Cube AI’s potential within your development environment, you’ll 
    - Press `Ctrl+Shift+P` to open the Command Palette and search for **"Continue: Open config.json"**.
 4. **Edit** the `.continue/config.json` file to include the following configuration:
 
-```json
-{
-  "models": [
-    {
-      "title": "tinyllama",
-      "provider": "ollama",
-      "model": "tinyllama:1.1b",
-      "apiKey": "<access_token>",
-      "apiBase": "http://<your-ollama-instance>/ollama"
-    }
-  ],
-  "tabAutocompleteModel": {
-    "title": "Starcoder 2 3b",
-    "provider": "ollama",
-    "model": "starcoder2:7b",
-    "apiKey": "<access_token>",
-    "apiBase": "http://<your-ollama-instance>/ollama"
-  },
-  "embeddingsProvider": {
-    "provider": "ollama",
-    "model": "nomic-embed-text",
-    "apiKey": "<access_token>",
-    "apiBase": "http://<your-ollama-instance>/ollama"
-  },
-  "requestOptions": {
-    "verifySsl": false
-  },
-  "customCommands": [
-    {
-      "name": "test",
-      "prompt": "{{{ input }}}\n\nWrite a comprehensive set of unit tests for the selected code. It should setup, run tests that check for correctness including important edge cases, and teardown. Ensure that the tests are complete and sophisticated. Give the tests just as chat output, don't edit any file.",
-      "description": "Write unit tests for highlighted code"
-    }
-  ],
-  "contextProviders": [
-    {
-      "name": "code",
-      "params": {}
-    },
-    {
-      "name": "docs",
-      "params": {}
-    },
-    {
-      "name": "diff",
-      "params": {}
-    },
-    {
-      "name": "terminal",
-      "params": {}
-    },
-    {
-      "name": "problems",
-      "params": {}
-    },
-    {
-      "name": "folder",
-      "params": {}
-    },
-    {
-      "name": "codebase",
-      "params": {}
-    }
-  ],
-  "slashCommands": [
-    {
-      "name": "edit",
-      "description": "Edit selected code"
-    },
-    {
-      "name": "comment",
-      "description": "Write comments for the selected code"
-    },
-    {
-      "name": "share",
-      "description": "Export the current chat session to markdown"
-    },
-    {
-      "name": "cmd",
-      "description": "Generate a shell command"
-    },
-    {
-      "name": "commit",
-      "description": "Generate a git commit message"
-    }
-  ]
-}
+```yml
+name: Local Assistant
+version: 1.0.0
+schema: v1
+models:
+  - name: tinyllama
+    provider: ollama
+    model: tinyllama:1.1b
+    apiKey: <access_token>
+    apiBase: https://<your-ollama-instance>/ollama
+    requestOptions:
+      verifySsl: false
+  - name: Starcoder 2 3b
+    provider: ollama
+    model: starcoder2:7b
+    apiKey: <access_token>
+    apiBase: https://<your-ollama-instance>/ollama
+    requestOptions:
+      verifySsl: false
+  - name: Nomic Embed Text
+    provider: ollama
+    model: nomic-embed-text
+    apiKey: <access_token>
+    apiBase: https://<your-ollama-instance>/ollama
+    requestOptions:
+      verifySsl: false
+context:
+  - provider: code
+  - provider: docs
+  - provider: diff
+  - provider: terminal
+  - provider: problems
+  - provider: folder
+  - provider: codebase
 ```
 
 Update the `apiKey` with your `access token` and the `apiBase` with the URL of your Cube AI instance (if different from the default one). These values should reflect the actual deployment settings you're working with.
