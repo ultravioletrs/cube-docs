@@ -1,7 +1,5 @@
 # Getting Started
 
-# Getting Started
-
 ## Prerequisites
 
 - Docker and Docker Compose
@@ -24,17 +22,17 @@
    ```
 
 3. **Configuration**
-Cube AI can be configured to use different backends. The default backend is Ollama.
+   Cube AI can be configured to use different backends. The default backend is Ollama.
 
-  Ollama:
-    ```bash
-    make up-ollama
-    ```
+     Ollama:
+       ```bash
+       make up-ollama
+       ```
 
-  vLLM:
-    ```bash
-    make up-vllm
-    ```
+     vLLM:
+       ```bash
+       make up-vllm
+       ```
 
 4. **Get your authentication token**
 
