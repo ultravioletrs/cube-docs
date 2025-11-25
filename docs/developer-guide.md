@@ -11,80 +11,68 @@ git clone https://github.com/ultravioletrs/cube.git
 cd cube
 ```
 
-## Pulling Docker Images
+## Building and Running
 
-Pull the Docker images by running:
+### Building Docker Images
+
+You can build the Docker images for Cube AI and related services using the `make` command in the project's root directory.
+
+To build the production Docker image, use:
 
 ```bash
-cd cube/docker/
-docker compose pull
+make docker
 ```
 
-## Running Services with Docker Compose
+For the development Docker image, use:
 
-If you are running Cube AI on your local machine:
+```bash
+make docker-dev
+```
 
-1. **Update the Environment File**  
-   Open the `docker/.env` file and set the `UV_CUBE_NEXTAUTH_URL` to point to `localhost` using the specified UI port (default is `6193`):
+### Running Services
 
-   ```bash
-   UV_CUBE_NEXTAUTH_URL=http://localhost:${UI_PORT}
-   ```
+To start the Cube AI services, simply run:
 
-2. **Start the Docker Containers**  
-   Run the following command to start the services:
+```bash
+make up
+```
 
-   ```bash
-   docker compose up -d
-   ```
+This command will start the services using the default configuration (Ollama backend).
 
-3. **Access the UI**  
-   Open your browser and navigate to:
+### Configuration
 
-   ```bash
-   http://localhost:6193
-   ```
+You can configure the services using environment variables or by modifying the `docker/.env` file.
 
-If you are running Cube AI on a different server (e.g., a virtual machine or cloud instance):
+To use the vLLM backend:
 
-1. **Update the Environment File**  
-    Open the `docker/.env` file and replace the placeholders with your server's IP address and UI port. For example, if your server's IP address is `209.18.187.53` and you are using the default port `6193`, update the file as follows:
+```bash
+make up-vllm
+```
 
-   ```bash
-   UI_PORT=6193
-   UV_CUBE_NEXTAUTH_URL=http://209.18.187.53:${UI_PORT}
-   ```
+To use the Ollama backend (default):
 
-   You can set a custom port if `6193` is unavailable or conflicts with other services. For instance, if you want to use port `8080`, update the `docker/.env` file as follows:
+```bash
+make up-ollama
+```
 
-   ```bash
-   UI_PORT=8080
-   UV_CUBE_NEXTAUTH_URL=http://209.18.187.53:${UI_PORT}
-   ```
+For custom port configurations, update the `docker/.env` file:
 
-   Ensure the chosen port is open and not restricted by firewalls.
+```bash
+UI_PORT=8080
+UV_CUBE_NEXTAUTH_URL=http://<your-ip>:${UI_PORT}
+```
 
-2. **Start the Docker Containers**  
-   Run the following command on the server:
+Then restart the services:
 
-   ```bash
-   docker compose up -d
-   ```
+```bash
+make restart
+```
 
-3. **Access the UI**  
-   Open your browser and navigate to:
+For a full list of available commands, run:
 
-   - For the default port:
-
-     ```bash
-     http://209.18.187.53:6193
-     ```
-
-   - For a custom port (e.g., `8080`):
-
-     ```bash
-     http://209.18.187.53:8080
-     ```
+```bash
+make help
+```
 
 After successfully deploying Cube AI, you can perform various tasks to set up and manage your instance. These include:
 
@@ -120,21 +108,7 @@ To resolve the error:
 - Under the **Ollama API** section, click the **refresh** icon next to the Ollama API URL (`http://ollama:11434`).
 - After refreshing, you should see a confirmation message stating **"Server connection verified"**. This should reset the connection to the Ollama service and resolve the "Bad Request" error.
 
-## Building Docker Images
 
-You can build the Docker images for Cube AI and related services using the `make` command in the project's root directory.
-
-To build the production Docker image, use:
-
-```bash
-make docker
-```
-
-For the development Docker image, use:
-
-```bash
-make docker-dev
-```
 
 ## Hardware Abstraction Layer (HAL) for Confidential Computing
 
