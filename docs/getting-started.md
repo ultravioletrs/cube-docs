@@ -11,12 +11,14 @@
 ## Quick Start
 
 1. **Clone the repository**
+
    ```bash
    git clone https://github.com/ultravioletrs/cube.git
    cd cube
    ```
 
 2. **Start Cube AI services**
+
    ```bash
    make up
    ```
@@ -34,9 +36,10 @@ Cube AI can be configured to use different backends. The default backend is Olla
     make up-vllm
     ```
 
-3. **Get your authentication token**
-   
+4. **Get your authentication token**
+
    All API requests require authentication using JWT tokens. Once the services are running, obtain a JWT token:
+
    ```bash
    curl -ksSiX POST https://localhost/users/tokens/issue \
      -H "Content-Type: application/json" \
@@ -45,8 +48,9 @@ Cube AI can be configured to use different backends. The default backend is Olla
        "password": "m2N2Lfno"
      }'
    ```
-   
+
    The response will contain your JWT token:
+
    ```json
    {
      "access_token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9...",
@@ -54,15 +58,17 @@ Cube AI can be configured to use different backends. The default backend is Olla
    }
    ```
 
-4. **Verify the installation**
-   
+5. **Verify the installation**
+
    List available models:
+
    ```bash
    curl http://localhost:8900/v1/models \
      -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
    ```
 
-5. **Make your first AI request**
+6. **Make your first AI request**
+
    ```bash
    curl http://localhost:8900/v1/chat/completions \
      -H "Content-Type: application/json" \
@@ -81,7 +87,6 @@ Cube AI can be configured to use different backends. The default backend is Olla
 ## Usage Guide
 
 The following sections describe how to manage users and integrate with development tools.
-
 
 ## Administrator and User Accounts
 

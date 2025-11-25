@@ -108,8 +108,6 @@ To resolve the error:
 - Under the **Ollama API** section, click the **refresh** icon next to the Ollama API URL (`http://ollama:11434`).
 - After refreshing, you should see a confirmation message stating **"Server connection verified"**. This should reset the connection to the Ollama service and resolve the "Bad Request" error.
 
-
-
 ## Hardware Abstraction Layer (HAL) for Confidential Computing
 
 For detailed instructions on setting up and building Cube HAL, please refer to [this guide](https://github.com/ultravioletrs/cube/blob/main/hal/buildroot/README.md). It covers:
