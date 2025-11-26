@@ -1,13 +1,90 @@
 # Getting Started
 
-Before logging in or interacting with Cube AI, ensure that Cube AI has been properly deployed and is running. Deployment can be performed by the instance administrator or by you, provided you have the necessary access permissions. For a detailed guide on how to deploy Cube AI, refer to the [developer guide](https://github.com/ultravioletrs/cube-docs/blob/main/docs/developer-guide.md).
+## Prerequisites
 
-Therefore, to connect:
+- Docker and Docker Compose
+- NVIDIA GPU with CUDA support (recommended for vLLM)
+- Hardware with TEE support (AMD SEV-SNP or Intel TDX)
 
-1. Ensure that Cube AI is deployed and running on your instance.
-2. Connect to the deployed Cube AI instance on port `6193` using your login credentials (username and password).
+## Quick Start
 
-Port `6193` is the default port for accessing Cube AI deployment. It is configurable through the `docker/.env` file, meaning you can change it to any port that suits your deployment needs as described in the [developer guide](https://github.com/ultravioletrs/cube-docs/blob/main/docs/developer-guide.md).
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/ultravioletrs/cube.git
+   cd cube
+   ```
+
+2. **Start Cube AI services**
+
+   ```bash
+   make up
+   ```
+
+3. **Configuration**
+   Cube AI can be configured to use different backends. The default backend is Ollama.
+
+     Ollama:
+       ```bash
+       make up-ollama
+       ```
+
+     vLLM:
+       ```bash
+       make up-vllm
+       ```
+
+4. **Get your authentication token**
+
+   All API requests require authentication using JWT tokens. Once the services are running, obtain a JWT token:
+
+   ```bash
+   curl -ksSiX POST https://localhost/users/tokens/issue \
+     -H "Content-Type: application/json" \
+     -d '{
+       "username": "admin@example.com",
+       "password": "m2N2Lfno"
+     }'
+   ```
+
+   The response will contain your JWT token:
+
+   ```json
+   {
+     "access_token": "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9...",
+     "refresh_token": "..."
+   }
+   ```
+
+5. **Verify the installation**
+
+   List available models:
+
+   ```bash
+   curl http://localhost:8900/v1/models \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
+   ```
+
+6. **Make your first AI request**
+
+   ```bash
+   curl http://localhost:8900/v1/chat/completions \
+     -H "Content-Type: application/json" \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+     -d '{
+       "model": "your-model-name",
+       "messages": [
+         {
+           "role": "user",
+           "content": "Hello! How can you help me today?"
+         }
+       ]
+     }'
+   ```
+
+## Usage Guide
+
+The following sections describe how to manage users and integrate with development tools.
 
 ## Administrator and User Accounts
 
