@@ -24,15 +24,15 @@
 3. **Configuration**
    Cube AI can be configured to use different backends. The default backend is Ollama.
 
-     Ollama:
-       ```bash
-       make up-ollama
-       ```
+   Ollama:
+   `bash
+    make up-ollama
+    `
 
-     vLLM:
-       ```bash
-       make up-vllm
-       ```
+   vLLM:
+   `bash
+    make up-vllm
+    `
 
 4. **Get your authentication token**
 
@@ -61,18 +61,18 @@
    List available models:
 
    ```bash
-   curl http://localhost:8900/v1/models \
+   curl -k https://localhost/proxy/api/tags \
      -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
    ```
 
 6. **Make your first AI request**
 
    ```bash
-   curl http://localhost:8900/v1/chat/completions \
+   curl -k https://localhost/proxy/v1/chat/completions \
      -H "Content-Type: application/json" \
      -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
      -d '{
-       "model": "your-model-name",
+       "model": "tinyllama:1.1b",
        "messages": [
          {
            "role": "user",
@@ -157,21 +157,21 @@ models:
     provider: ollama
     model: tinyllama:1.1b
     apiKey: <access_token>
-    apiBase: https://<your-ollama-instance>/ollama
+    apiBase: https://<your-cube-instance>/proxy
     requestOptions:
       verifySsl: false
   - name: Starcoder 2 3b
     provider: ollama
     model: starcoder2:7b
     apiKey: <access_token>
-    apiBase: https://<your-ollama-instance>/ollama
+    apiBase: https://<your-cube-instance>/proxy
     requestOptions:
       verifySsl: false
   - name: Nomic Embed Text
     provider: ollama
     model: nomic-embed-text
     apiKey: <access_token>
-    apiBase: https://<your-ollama-instance>/ollama
+    apiBase: https://<your-cube-instance>/proxy
     requestOptions:
       verifySsl: false
 context:
