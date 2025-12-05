@@ -34,9 +34,10 @@
   filter: invert(1) hue-rotate(180deg);
 }
 
-/* This is a crucial addition to prevent issues with other images */
-/* The filter should not be applied to logos, favicons, or other assets */
+/* Prevent filter from being applied to logos and SVG assets */
+/* The navbar logo uses theme-specific SVG files, so no inversion is needed */
 [data-theme='dark'] .navbar__logo img,
-[data-theme='dark'] .footer img {
+[data-theme='dark'] .footer img,
+[data-theme='dark'] img[src$='.svg'] {
   filter: none;
 }
