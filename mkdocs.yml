@@ -21,4 +21,5 @@ nav:
   - Getting Started: getting-started.md
   - Architecture: architecture.md
   - Attestation: attestation.md
+  - OpenCode Integration: opencode.md
   - Developer's Guide: developer-guide.md

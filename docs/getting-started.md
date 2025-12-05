@@ -56,19 +56,63 @@
    }
    ```
 
-5. **Verify the installation**
+4. **Create a domain**
+   
+   All API requests require a domain ID in the URL path. You can either get the domain ID from the UI or create a new domain via the API:
+   
+   ```bash
+   curl -sSiX POST http://localhost:9003/domains \
+     -H "Content-Type: application/json" \
+     -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
+     -d '{
+       "name": "Magistrala",
+       "route": "magistrala",
+       "tags": ["absmach", "IoT"],
+       "metadata": {
+         "region": "EU"
+       }
+     }'
+   ```
+   
+   The response will contain your domain information including the `id`:
+   ```json
+   {
+     "id": "d7f9b3b8-4f7e-4f44-8d47-1a6e5e6f7a2b",
+     "name": "Magistrala",
+     "route": "magistrala",
+     "tags": ["absmach", "IoT"],
+     "metadata": {
+       "region": "EU"
+     },
+     "status": "enabled",
+     "created_by": "c8c3e4f1-56b2-4a22-8e5f-8a77b1f9b2f4",
+     "created_at": "2025-10-29T14:12:01Z",
+     "updated_at": "2025-10-29T14:12:01Z"
+   }
+   ```
+   
+   **Notes:**
+   - `name` and `route` are required fields
+   - `route` must be unique and cannot be changed after creation
+   - `metadata` must be a valid JSON object
+   - The `id` is automatically generated if not provided
+   - Save the `id` value as you'll need it for all subsequent API requests
 
-   List available models:
+5. **Verify the installation**
+   
+   List available models (replace `YOUR_DOMAIN_ID` with the domain ID from step 4):
 
    ```bash
-   curl -k https://localhost/proxy/api/tags \
+   curl -k https://localhost/proxy/YOUR_DOMAIN_ID/api/tags \
      -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
    ```
 
 6. **Make your first AI request**
+   
+   Replace `YOUR_DOMAIN_ID` with your actual domain ID:
 
    ```bash
-   curl -k https://localhost/proxy/v1/chat/completions \
+   curl -k https://localhost/proxy/YOUR_DOMAIN_ID/v1/chat/completions \
      -H "Content-Type: application/json" \
      -H "Authorization: Bearer YOUR_ACCESS_TOKEN" \
      -d '{
@@ -157,21 +201,21 @@ models:
     provider: ollama
     model: tinyllama:1.1b
     apiKey: <access_token>
-    apiBase: https://<your-cube-instance>/proxy
+    apiBase: https://<your-cube-instance>/proxy/<your-domain-id>
     requestOptions:
       verifySsl: false
   - name: Starcoder 2 3b
     provider: ollama
     model: starcoder2:7b
     apiKey: <access_token>
-    apiBase: https://<your-cube-instance>/proxy
+    apiBase: https://<your-cube-instance>/proxy/<your-domain-id>
     requestOptions:
       verifySsl: false
   - name: Nomic Embed Text
     provider: ollama
     model: nomic-embed-text
     apiKey: <access_token>
-    apiBase: https://<your-cube-instance>/proxy
+    apiBase: https://<your-cube-instance>/proxy/<your-domain-id>
     requestOptions:
       verifySsl: false
 context:
@@ -184,6 +228,6 @@ context:
   - provider: codebase
 ```
 
-Update the `apiKey` with your `access token` and the `apiBase` with the URL of your Cube AI instance (if different from the default one). These values should reflect the actual deployment settings you're working with.
+Update the `apiKey` with your `access token`, the `apiBase` with the URL of your Cube AI instance, and replace `<your-domain-id>` with the domain ID from step 4. These values should reflect the actual deployment settings you're working with.
 
 For a more detailed explanation of how to connect to Cube AI with the continue extension, check out [this video demonstration](https://www.youtube.com/watch?v=BGpv_iTB2NE).
