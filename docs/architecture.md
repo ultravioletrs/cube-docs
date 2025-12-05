@@ -1,8 +1,14 @@
+---
+id: architecture
+title: Architecture
+sidebar_position: 3
+---
+
 # Architecture
 
 Cube AI is built on top of SuperMQ, Ollama and a custom proxy server. All these host the Cube AI API that hosts the AI models and protects prompts and user data securely.
 
-![Architecture Image](./img/architecture.png)
+![Architecture Image](/img/architecture.png)
 
 ## SuperMQ
 
