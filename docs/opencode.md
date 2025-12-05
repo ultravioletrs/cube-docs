@@ -43,6 +43,7 @@ curl -k -X POST https://<cube-ai-instance>/proxy/<your_domain_id>/api/pull \
 ```
 
 Other recommended models:
+
 - `qwen2.5-coder:3b` (Faster)
 - `deepseek-coder:6.7b-instruct-q4_K_M`
 
@@ -79,7 +80,7 @@ curl -k -X POST https://<cube-ai-instance>/proxy/<your_domain_id>/api/create \
   }'
 ```
 
-### 4. Verify Context Window Increase
+### 5. Verify Context Window Increase
 
 ```bash
 # Check model info
@@ -88,11 +89,11 @@ curl -k https://<cube-ai-instance>/proxy/<your_domain_id>/api/show \
   -d '{"name": "qwen2.5-coder:7b-16k"}'
 ```
 
-### 5. Install OpenCode
+### 6. Install OpenCode
 
-You can install OpenCode from [here](https://opencode.ai/docs#install).
+You can install OpenCode from the [install guide](https://opencode.ai/docs#install).
 
-### 6. Configure OpenCode
+### 7. Configure OpenCode
 
 You can configure OpenCode by editing the `~/.config/opencode/opencode.json` file. Create the file if it doesn't exist.
 
@@ -122,17 +123,17 @@ Add the following configuration, replacing `<cube-ai-instance>` with your instan
 }
 ```
 
-### 3. Verify Connection
+### 8. Verify Connection
 
 1. Open OpenCode.
 2. Run `opencode /models` to see if the Cube AI models are listed.
 
-![OpenCode models](./img/opencode-models.png)
+   ![OpenCode models](./img/opencode-models.png)
 
 3. Select a model (e.g., `cube/qwen2.5-coder:7b-16k`).
 4. Try a simple prompt to verify the connection.
 
-![OpenCode example addition](./img/opencode-example.png)
+   ![OpenCode example addition](./img/opencode-example.png)
 
 ## Supported Features
 

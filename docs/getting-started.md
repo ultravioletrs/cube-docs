@@ -56,10 +56,10 @@
    }
    ```
 
-4. **Create a domain**
-   
+5. **Create a domain**
+
    All API requests require a domain ID in the URL path. You can either get the domain ID from the UI or create a new domain via the API:
-   
+
    ```bash
    curl -sSiX POST http://localhost:9003/domains \
      -H "Content-Type: application/json" \
@@ -73,8 +73,9 @@
        }
      }'
    ```
-   
+
    The response will contain your domain information including the `id`:
+
    ```json
    {
      "id": "d7f9b3b8-4f7e-4f44-8d47-1a6e5e6f7a2b",
@@ -90,7 +91,7 @@
      "updated_at": "2025-10-29T14:12:01Z"
    }
    ```
-   
+
    **Notes:**
    - `name` and `route` are required fields
    - `route` must be unique and cannot be changed after creation
@@ -98,8 +99,8 @@
    - The `id` is automatically generated if not provided
    - Save the `id` value as you'll need it for all subsequent API requests
 
-5. **Verify the installation**
-   
+6. **Verify the installation**
+
    List available models (replace `YOUR_DOMAIN_ID` with the domain ID from step 4):
 
    ```bash
@@ -107,8 +108,8 @@
      -H "Authorization: Bearer YOUR_ACCESS_TOKEN"
    ```
 
-6. **Make your first AI request**
-   
+7. **Make your first AI request**
+
    Replace `YOUR_DOMAIN_ID` with your actual domain ID:
 
    ```bash
