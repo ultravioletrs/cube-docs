@@ -1,4 +1,8 @@
-# Developer Guide
+---
+id: developer-guide
+title: Developer's Guide
+sidebar_position: 6
+---
 
 This guide will help you get started with developing, testing, deploying, and running Cube AI.
 

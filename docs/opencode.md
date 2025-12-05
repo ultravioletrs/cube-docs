@@ -1,4 +1,8 @@
-# Using OpenCode with Cube AI
+---
+id: opencode
+title: OpenCode Integration
+sidebar_position: 5
+---
 
 This guide explains how to configure [OpenCode](https://opencode.ai) to work with your Cube AI instance. OpenCode is an AI-powered code editor that can leverage the models hosted on your Cube AI platform.
 
@@ -128,12 +132,12 @@ Add the following configuration, replacing `<cube-ai-instance>` with your instan
 1. Open OpenCode.
 2. Run `opencode /models` to see if the Cube AI models are listed.
 
-   ![OpenCode models](./img/opencode-models.png)
+   ![OpenCode models](/img/opencode-models.png)
 
 3. Select a model (e.g., `cube/qwen2.5-coder:7b-16k`).
 4. Try a simple prompt to verify the connection.
 
-   ![OpenCode example addition](./img/opencode-example.png)
+   ![OpenCode example addition](/img/opencode-example.png)
 
 ## Supported Features
 
