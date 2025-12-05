@@ -4,8 +4,6 @@ title: Attestation
 sidebar_position: 4
 ---
 
-# Attestation
-
 Attestation is a process of verifying the integrity and authenticity of software or hardware components. In the context of Cube AI, attestation is used to verify the integrity of the Cube AI API and the Ollama instances.
 
 ## Runtime Encryption

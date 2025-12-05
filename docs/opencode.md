@@ -4,8 +4,6 @@ title: OpenCode Integration
 sidebar_position: 5
 ---
 
-# Using OpenCode with Cube AI
-
 This guide explains how to configure [OpenCode](https://opencode.ai) to work with your Cube AI instance. OpenCode is an AI-powered code editor that can leverage the models hosted on your Cube AI platform.
 
 ## Prerequisites

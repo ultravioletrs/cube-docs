@@ -4,8 +4,6 @@ title: Developer's Guide
 sidebar_position: 6
 ---
 
-# Developer Guide
-
 This guide will help you get started with developing, testing, deploying, and running Cube AI.
 
 ## Cloning the Repository

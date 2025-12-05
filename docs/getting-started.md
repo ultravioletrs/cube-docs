@@ -4,8 +4,6 @@ title: Getting Started
 sidebar_position: 2
 ---
 
-# Getting Started
-
 ## Prerequisites
 
 - Docker and Docker Compose
