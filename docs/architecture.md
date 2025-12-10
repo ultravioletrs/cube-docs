@@ -4,8 +4,6 @@ title: Architecture
 sidebar_position: 3
 ---
 
-# Architecture
-
 Cube AI is built on a secure, scalable architecture designed to run Large Language Models (LLMs) inside **Trusted Execution Environments (TEEs)** while providing isolation between tenants, strong authentication, flexible backend support (Ollama and vLLM), and a unified API surface.
 
 Below is the architecture diagram created by the team:
@@ -42,20 +40,24 @@ Cube AI consists of four primary components:
 
 ## 1. SuperMQ (Users, Auth, Domains)
 
-Cube AI uses SuperMQ’s microservices as its identity and tenant-management layer:
+Cube AI uses SuperMQ’s microservices as its identity and tenant-management layer.
 
-### ✔ Users Service  
+### ✔ Users Service
+
 Stores user accounts, profile data, and associated metadata.
 
-### ✔ Auth Service  
+### ✔ Auth Service
+
 Issues JWT access tokens and validates them.  
 Cube Proxy uses this service to authenticate every request.
 
-### ✔ Domains Service  
+### ✔ Domains Service
+
 Each **domain** represents an isolated tenant.  
 Models, permissions, and policies are scoped per domain.
 
-### Why this matters  
+### Why this matters
+
 SuperMQ allows Cube AI to remain fully multi-tenant, scalable, and secure without duplicating identity logic.
 
 ---
@@ -70,7 +72,7 @@ It is responsible for:
 - Checking user permissions and domain membership  
 - Routing requests to the correct backend based on domain configuration  
 - Enforcing that all inference requests are executed **inside a Trusted Execution Environment**  
-- Normalizing requests to an OpenAI‑compatible API shape  
+- Normalizing requests to an OpenAI-compatible API shape  
 
 This component ensures that **no user ever interacts directly with Ollama or vLLM**, and that all inference happens under strict security controls.
 
@@ -78,15 +80,17 @@ This component ensures that **no user ever interacts directly with Ollama or vLL
 
 ## 3. LLM Backends (Ollama & vLLM)
 
-Cube AI supports two interchangeable inference engines:
+Cube AI supports two interchangeable inference engines.
 
-### ✔ Ollama  
+### ✔ Ollama
+
 - Lightweight, local-friendly model runner  
 - Ideal for development or smaller environments  
 - Fast model switching and easy model packaging  
 
-### ✔ vLLM  
-- High‑performance CUDA‑accelerated inference  
+### ✔ vLLM
+
+- High-performance CUDA-accelerated inference  
 - Continuous batching for high throughput  
 - Supports larger models and production workloads  
 
@@ -98,7 +102,7 @@ The backend used depends on the domain configuration and available hardware.
 
 The TEE is the foundation of Cube AI security.
 
-### What the TEE protects:
+### What the TEE protects
 
 - **User prompts**
 - **Model weights**
@@ -106,7 +110,7 @@ The TEE is the foundation of Cube AI security.
 - **Intermediate state**
 - **Responses before leaving the enclave**
 
-### Key guarantees:
+### Key guarantees
 
 - **Confidentiality:**  
   No external process (hypervisor, cloud operator, root user) can read memory inside the enclave.
@@ -121,7 +125,7 @@ This makes Cube AI fundamentally different from traditional LLM deployments.
 
 ---
 
-# End‑to‑End Request Flow
+## End-to-End Request Flow
 
 Below is the simplified flow of a request inside Cube AI:
 
@@ -134,7 +138,6 @@ Below is the simplified flow of a request inside Cube AI:
    - secures model execution  
    - protects inputs and outputs  
 4. → **LLM Backend** (Ollama or vLLM)  
-   - performs inference  
 5. → **TEE**  
 6. → **Cube Proxy**  
 7. → **Client**
@@ -143,7 +146,7 @@ This pipeline ensures all sensitive operations remain inside the secure environm
 
 ---
 
-# Summary
+## Summary
 
 Cube AI combines:
 
@@ -152,4 +155,4 @@ Cube AI combines:
 - Flexible backend support (Ollama, vLLM)  
 - Trusted Execution Environments for confidential LLM execution  
 
-Together, these components create a secure, scalable, multi‑tenant platform for running LLMs with full data protection guarantees.
+Together, these components create a secure, scalable, multi-tenant platform for running LLMs with full data protection guarantees.

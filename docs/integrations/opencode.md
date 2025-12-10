@@ -4,7 +4,7 @@ title: OpenCode Integration
 sidebar_position: 5
 ---
 
-# OpenCode Integration
+## OpenCode Integration
 
 This guide explains how to configure **OpenCode** to work with your Cube AI instance.  
 OpenCode is an AI-powered code editor that can use the models hosted through Cube AI for code generation, editing, and general LLM assistance.
@@ -18,7 +18,8 @@ Before you begin, ensure you have:
 - A running **Cube AI** instance  
 - **OpenCode** installed locally  
 - A Cube AI user account with an authentication token  
-- A Cube AI domain with at least one coding-capable model pulled (e.g., Qwen Coder models)
+- A Cube AI domain with at least one coding-capable model pulled  
+  (for example: Qwen Coder models)
 
 ---
 
@@ -32,7 +33,9 @@ If you do not already have a Cube AI access token, generate one from the UI:
 Or via API:
 
 ```bash
-curl -ksSiX POST https://<cube-ai-instance>/users/tokens/issue   -H "Content-Type: application/json"   -d '{
+curl -ksSiX POST https://<cube-ai-instance>/users/tokens/issue \
+  -H "Content-Type: application/json" \
+  -d '{
     "username": "<your_email>",
     "password": "<your_password>"
   }'
@@ -44,9 +47,9 @@ Copy the `access_token` from the response.
 
 ## 2. Pull Recommended Coding Models
 
-Before using OpenCode, ensure that coding models are available in your Cube AI domain.
+Before using OpenCode, make sure coding models are available in your Cube AI domain.
 
-The most commonly recommended ones:
+Recommended models:
 
 - `qwen2.5-coder:7b-instruct-q4_K_M`
 - `qwen2.5-coder:3b`
@@ -55,7 +58,9 @@ The most commonly recommended ones:
 Pull a model using:
 
 ```bash
-curl -k -X POST https://<cube-ai-instance>/proxy/<your_domain_id>/api/pull   -H "Authorization: Bearer <your_access_token>"   -d '{
+curl -k -X POST https://<cube-ai-instance>/proxy/<your_domain_id>/api/pull \
+  -H "Authorization: Bearer <your_access_token>" \
+  -d '{
     "name": "qwen2.5-coder:7b-instruct-q4_K_M"
   }'
 ```
@@ -64,10 +69,11 @@ curl -k -X POST https://<cube-ai-instance>/proxy/<your_domain_id>/api/pull   -H 
 
 ## 3. Verify Available Models
 
-To list all models available to your domain:
+To list all models available in your domain:
 
 ```bash
-curl -k https://<cube-ai-instance>/proxy/<your_domain_id>/v1/models   -H "Authorization: Bearer <your_access_token>"
+curl -k https://<cube-ai-instance>/proxy/<your_domain_id>/v1/models \
+  -H "Authorization: Bearer <your_access_token>"
 ```
 
 You should see the models you pulled earlier.
@@ -78,11 +84,11 @@ You should see the models you pulled earlier.
 
 Follow installation instructions from the official guide:
 
-👉 https://opencode.ai
+<https://opencode.ai>
 
 Once installed, OpenCode will create its configuration folder:
 
-```
+```text
 ~/.config/OpenCode/
 ```
 
@@ -90,9 +96,9 @@ Once installed, OpenCode will create its configuration folder:
 
 ## 5. Configure OpenCode to Use Cube AI
 
-Edit (or create) the file:
+Edit or create the configuration file:
 
-```
+```text
 ~/.config/OpenCode/config.json
 ```
 
@@ -122,23 +128,23 @@ Add:
 }
 ```
 
-### Replace:
-- `<cube-ai-instance>` → usually `localhost`  
-- `<your_domain_id>` → the domain you created  
-- `<your_access_token>` → the token from Step 1  
+### Replace
 
-### Important:
-- Use **HTTPS** (`https://...`) unless Cube AI is explicitly running without TLS.
+- `<cube-ai-instance>` → usually `localhost`  
+- `<your_domain_id>` → the domain ID  
+- `<your_access_token>` → your Cube AI token  
+
+### Important
+
+Use **HTTPS** (`https://...`) unless Cube AI is explicitly running without TLS.
 
 ---
 
 ## 6. Verify OpenCode Connection
 
-Open your OpenCode editor.
+In the OpenCode editor, run:
 
-Run:
-
-```
+```text
 opencode /models
 ```
 
@@ -146,7 +152,7 @@ You should see something like:
 
 ![OpenCode Models](/img/opencode-models.png)
 
-Select a model (e.g., `cube/qwen2.5-coder:7b-instruct-q4_K_M`).
+Select any model (example: `cube/qwen2.5-coder:7b-instruct-q4_K_M`).
 
 Try a simple request:
 
@@ -156,40 +162,45 @@ Try a simple request:
 
 ## Supported Features
 
-Once configured, OpenCode can use Cube AI for:
+### ✅ Code Generation
 
-### ✅ Code Generation  
-Autocompletions, refactors, code rewrites, explanations.
+Autocompletions, refactors, rewrites, explanations.
 
-### ✅ Chat  
-General LLM interaction, documentation queries, reasoning help.
+### ✅ Chat
 
-### ✅ Tools (if model supports it)  
-File operations, command execution, multi-step coding workflows.
+General AI interaction, reasoning, documentation queries.
+
+### ✅ Tools (if the model supports them)
+
+File operations, command execution, multi-step workflows.
 
 ---
 
 ## Troubleshooting
 
 ### ❌ Connection refused
-- Ensure Cube AI is running (`make up`)
-- Check firewall rules
-- Verify HTTPS / TLS configuration
+
+- Ensure Cube AI is running (`make up`)  
+- Check firewall rules  
+- Verify HTTPS/TLS configuration  
 
 ### ❌ Authentication error
-- Your token may have expired  
-- Check for missing `"Authorization: Bearer"` header  
-- Ensure the token belongs to the same domain
+
+- Token may have expired  
+- Ensure `"Authorization: Bearer"` header is present  
+- Confirm the token belongs to the correct domain  
 
 ### ❌ Certificate errors (self-signed certs)
-If you are running Cube locally with self-signed certificates:
 
-- Ensure OpenCode has access to your local CA certificate  
-- Or temporarily use **HTTP** instead of HTTPS for local development
+If running locally:
+
+- Import your local CA certificate, or  
+- Temporarily use **HTTP** during development  
 
 ---
 
 ## Summary
 
 You have now successfully connected OpenCode to your Cube AI instance.  
-This allows you to use powerful open-source coding models locally with full **privacy**, **TEE security**, and **domain isolation**.
+This setup allows you to use powerful open-source coding models locally with full
+**privacy**, **TEE security**, and **domain isolation**.

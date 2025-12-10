@@ -4,7 +4,7 @@ title: Attestation
 sidebar_position: 4
 ---
 
-# Attestation
+## Attestation
 
 Attestation is a security process used to verify that a system is running trusted software inside a trusted environment.  
 In Cube AI, attestation ensures that the confidential computing environment (CVM) has not been tampered with before Cube AI services start running.
@@ -67,40 +67,8 @@ Cube AI will introduce **public attestation verification** features, allowing ap
 Planned enhancements include:
 
 ### 🔹 API Endpoint for Attestation Reports
+
 Applications will be able to request:
-```
+
+```bash
 GET /attestation/report
-```
-
-### 🔹 Measurement Verification
-Clients will be able to verify:
-- Hashes of Cube AI binaries  
-- Security policy configuration  
-- Enclave identity / platform certificates  
-
-### 🔹 Automatic Verification in SDKs
-The Cube AI SDKs will automatically validate attestation before sending sensitive prompts.
-
-### 🔹 UI Display of Attestation Status
-The dashboard will show:
-- Platform identity  
-- Measurement hashes  
-- Attestation freshness  
-
----
-
-## Summary
-
-Today:
-- Attestation is **fully implemented internally**
-- It protects Cube AI’s confidential computing environment from tampering
-- It ensures all workloads run inside a trusted CVM
-- It is **not yet exposed** to users
-
-Future versions will add:
-- User-downloadable attestation reports  
-- SDK validation  
-- Transparency features in the Cube AI UI  
-- Full remote attestation workflows  
-
-Confidential computing is foundational to Cube AI’s security, and attestation is a critical part of that foundation.

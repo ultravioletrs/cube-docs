@@ -4,7 +4,7 @@ title: Getting Started
 sidebar_position: 2
 ---
 
-# Getting Started
+## Getting Started
 
 This guide introduces the basics of Cube AI using the **web interface only**.  
 No command-line tools or API calls are required.
@@ -13,9 +13,8 @@ No command-line tools or API calls are required.
 
 ## 1. Start Cube AI
 
-Start the Cube AI stack:
+Start the Cube AI stack.  
 Make sure Docker is running before executing this command.
-
 
 ```bash
 make up
@@ -23,7 +22,7 @@ make up
 
 Once the services are running, open your browser and navigate to:
 
-```
+```text
 https://localhost
 ```
 
@@ -77,9 +76,9 @@ Type a message into the chat input and press **Enter**.
 
 Examples:
 
-- “Hello!”
-- “Explain how trusted execution environments work.”
-- “Write a Python function that reverses a list.”
+- "Hello!"
+- "Explain how trusted execution environments work."
+- "Write a Python function that reverses a list."
 
 Cube AI will generate a response using the default LLM backend (Ollama unless configured otherwise).
 
@@ -90,11 +89,10 @@ Cube AI will generate a response using the default LLM backend (Ollama unless co
 If multiple models are available:
 
 1. Click the **Model Selector** at the top of the chat page  
-2. Choose a different LLM (e.g., TinyLlama, Starcoder, Qwen)
+2. Choose a different LLM (for example: TinyLlama, Starcoder, Qwen)
 
-Cube AI will switch inference to the selected model.
+Cube AI will switch inference to the selected model.  
 Available models depend on your backend configuration (Ollama or vLLM).
-
 
 ---
 
@@ -108,5 +106,6 @@ Now that you have a domain and have used the chat interface, you can explore:
 - Backend configuration (Ollama / vLLM)  
 - API access (see API documentation)
 
-For VS Code and development tooling, continue to the  
+For VS Code and development tooling, continue to the:
+
 👉 **Continue Integration** page.

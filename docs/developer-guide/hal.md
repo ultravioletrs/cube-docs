@@ -4,7 +4,7 @@ title: Hardware Abstraction Layer (HAL)
 sidebar_position: 4
 ---
 
-# Cube HAL — Hardware Abstraction Layer
+## Hardware Abstraction Layer (HAL)
 
 Cube HAL provides the confidential-computing runtime environment for Cube AI.
 
@@ -12,7 +12,6 @@ Cube HAL provides the confidential-computing runtime environment for Cube AI.
 
 1. Clone repositories  
 2. Configure Buildroot  
-3. Build image  
-4. Boot in SEV-SNP CVM  
-5. Run Cube AI stack  
-
+3. Build the image  
+4. Boot inside an SEV-SNP CVM  
+5. Run the Cube AI stack  

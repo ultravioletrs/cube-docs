@@ -4,11 +4,11 @@ title: Developer Guide
 sidebar_position: 1
 ---
 
-# Developer Guide
+## Developer Guide
 
-The Developer Guide explains how to build, run, configure, debug, and extend Cube AI.  
-It covers both the local development workflow and advanced topics such as private model
-upload and fine-tuning.
+The Developer Guide explains how to build, run, configure, debug, and extend
+Cube AI. It includes the local development workflow and advanced topics such
+as private model upload and fine-tuning.
 
 ## Sections
 

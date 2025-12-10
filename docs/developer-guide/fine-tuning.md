@@ -4,16 +4,15 @@ title: Fine-Tuning Models
 sidebar_position: 5
 ---
 
-# Fine-Tuning LLMs
+## Fine-Tuning LLMs
 
-Guide for training and deploying fine‑tuned Qwen, Mistral, etc.
+Guide for training and deploying fine-tuned Qwen, Mistral, etc.
 
 ## Steps Overview
 
-- Install deps  
+- Install dependencies  
 - Format dataset  
 - Optional: apply LoRA  
 - Train  
 - Export GGUF  
-- Upload to Cube AI  
-
+- Upload to Cube AI

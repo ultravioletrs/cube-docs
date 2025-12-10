@@ -4,7 +4,7 @@ title: Private Model Upload
 sidebar_position: 3
 ---
 
-# Uploading Private Models to Cube AI
+## Uploading Private Models to Cube AI
 
 This guide explains how to upload private models into the Ollama runtime inside a confidential VM.
 
@@ -27,4 +27,3 @@ tar -xvf model-name.tar
 ```bash
 docker cp /path/to/extracted ollama:/models/
 ```
-
