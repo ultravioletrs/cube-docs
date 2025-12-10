@@ -4,39 +4,58 @@ title: Overview
 sidebar_position: 1
 ---
 
-Cube AI is a framework for building GPT-based AI applications using confidential computing. It protects user data and the AI model by using a trusted execution environment (TEE). TEE is a secure area of a processor that ensures that code and data loaded inside it are protected with respect to confidentiality and integrity. Data confidentiality prevents unauthorized access of data from outside the TEE, while code integrity ensures that code inside the TEE remains unchanged and unaltered from unauthorized access.
+Cube AI is a secure framework for running and serving GPT-based applications using confidential computing. It deploys Large Language Models (LLMs) inside hardware-protected Trusted Execution Environments (TEEs) to ensure that both user data and model execution remain private and tamper-resistant.
+
+A TEE is a hardware-isolated environment that prevents external systems—including the host OS, hypervisor, and cloud operator—from accessing or modifying the data and code running inside it. Cube AI uses this technology to provide strong confidentiality and integrity guarantees for AI workloads.
 
 ## Key Features
 
-- **Secure Computing**: Cube AI uses secure enclaves to protect user data and AI models from unauthorized access.
-- **Trusted Execution Environment (TEE)**: Cube AI uses a trusted execution environment to ensure that AI models are executed securely and in a controlled environment.
-- **Scalability**: Cube AI can handle large amounts of data and AI models, making it suitable for applications that require high performance and scalability.
-- **Multiple LLM Backend Support**: Supports both Ollama and vLLM for flexible model deployment and high-performance inference.
-- **OpenAI-Compatible API**: Provides familiar API endpoints for easy integration with existing applications.
+- **Confidential LLM Inference**: All prompts, responses, and model weights are processed inside a hardware-protected enclave.
+- **Trusted Execution Environments (TEEs)**: Built-in support for AMD SEV-SNP and Intel TDX provides strong isolation and data protection.
+- **Scalability**: Designed to support small local deployments as well as large multi-tenant production environments.
+- **Multiple LLM Backends**: Supports both Ollama and vLLM for flexible, high-performance model serving.
+- **OpenAI-Compatible API**: Integrates easily with existing applications through familiar API endpoints.
 
 ## Supported LLM Backends
 
 ### vLLM Integration
 
-Cube AI now supports vLLM, a high-throughput and memory-efficient inference engine for Large Language Models. vLLM provides:
+Cube AI includes support for **vLLM**, a high-performance inference engine optimized for GPU workloads. vLLM offers:
 
-- **High Throughput**: Optimized for serving multiple concurrent requests with continuous batching
-- **Memory Efficiency**: Advanced memory management techniques for large models
-- **Fast Inference**: Optimized CUDA kernels and efficient attention mechanisms
-- **Model Compatibility**: Supports popular architectures including LLaMA, Mistral, Qwen, and more
+- **High Throughput**: Efficient batching and parallel request handling
+- **Memory Efficiency**: Advanced memory management for large models
+- **Fast GPU Inference**: Optimized CUDA execution
+- **Broad Model Support**: Works with LLaMA, Mistral, Qwen, and other major architectures
 
 ### Ollama Integration
 
-Cube AI also integrates with Ollama for local model deployment, providing:
+For local or lightweight deployments, Cube AI also integrates with **Ollama**, providing:
 
-- Easy model management and deployment
-- Local inference capabilities
-- Support for various open-source models
+- Simple model setup and management  
+- Local inference without external dependencies  
+- Support for a wide range of open-source models  
 
 ## Why Cube AI?
 
-Traditional GPT-based AI applications often rely on public cloud services, which can be vulnerable to security breaches and unauthorized access. The tenant for example openai, and the hardware provider for example Azure, are not always transparent about their security practices and can be easily compromised. They can also access your prompts and model responses. Cube AI addresses these privacy concerns by using TEEs. Using TEEs, Cube AI ensures that user data and AI models are protected from unauthorized access outside the TEE. This helps to maintain user privacy and ensures that AI models are used in a controlled and secure manner.
+Public cloud LLM services require trusting the provider with both your data and your model execution environment. In many cases, users have limited visibility into how prompts, responses, and model weights are handled.
 
-## How does Cube AI work?
+Cube AI eliminates this trust dependency.
 
-Cube AI uses TEEs to protect user data and AI models from unauthorized access. TEE offers an execution space that provides a higher level of security for trusted applications running on the device. In Cube AI, the TEE ensures that AI models are executed securely and in a controlled environment.
+By running models inside TEEs, Cube AI ensures that:
+
+- User data cannot be accessed by the host system or cloud operator  
+- Model weights remain protected inside the enclave  
+- Execution is verifiable and tamper-resistant  
+
+This makes Cube AI suitable for privacy-sensitive domains such as finance, healthcare, government, and enterprise AI.
+
+## How Does Cube AI Work?
+
+Cube AI processes each request inside a hardware-isolated secure enclave:
+
+1. A user sends a prompt to Cube AI  
+2. The request enters the TEE  
+3. The model executes privately inside the enclave  
+4. Only the final response leaves the secure environment  
+
+This architecture ensures confidentiality, integrity, and end-to-end protection of AI workloads.

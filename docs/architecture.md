@@ -4,18 +4,152 @@ title: Architecture
 sidebar_position: 3
 ---
 
-Cube AI is built on top of SuperMQ, Ollama and a custom proxy server. All these host the Cube AI API that hosts the AI models and protects prompts and user data securely.
+# Architecture
+
+Cube AI is built on a secure, scalable architecture designed to run Large Language Models (LLMs) inside **Trusted Execution Environments (TEEs)** while providing isolation between tenants, strong authentication, flexible backend support (Ollama and vLLM), and a unified API surface.
+
+Below is the architecture diagram created by the team:
 
 ![Architecture Image](/img/architecture.png)
 
-## SuperMQ
+---
 
-Cube AI uses SuperMQ Users and Auth Service to manage users and authentication. SuperMQ is an IoT platform that provides a secure and scalable way to manage IoT devices. Since SuperMQ is based on micro-service architecture, auth and users are separated from the core application. This allows for better scalability and security. SuperMQ is responsible for users authentication, authorization and user management. It also provides a secure way to store user data.
+## Core Components
 
-## Ollama
+Cube AI consists of four primary components:
 
-Ollama is a framework that provides a unified interface for interacting with different LLMs. Ollama is responsible for managing LLMs and their configurations. It provides a unified interface for interacting with different LLMs, allowing developers to easily switch between different LLMs without having to change their code. Ollama also provides a way to manage LLMs, including configuring LLMs, managing prompts, and managing models.
+1. **SuperMQ Services**  
+   - Users Service  
+   - Auth Service  
+   - Domains Service  
 
-## Proxy Server
+2. **Cube Proxy**  
+   - Secure request gateway  
+   - Domain-based routing  
+   - TEE access enforcement  
+   - Token validation  
 
-The proxy server is responsible for handling requests to ollama. Once a user is registered on SuperMQ and issued with an access token, the user can interact with Cube AI using the issued token. The proxy server will verify the token and ensure that the user has the necessary permissions to access the Cube AI API by checking it with the SuperMQ Auth Service. Once the request is verified, the proxy server will forward the request to the appropriate Ollama instance. The proxy server also handles authentication and authorization for the user. It ensures that only authorized users can access the Cube AI API.
+3. **LLM Backend**  
+   - Ollama  
+   - vLLM  
+
+4. **Trusted Execution Environment (TEE)**  
+   - Protects models  
+   - Protects prompts and responses  
+   - Ensures confidentiality and integrity  
+
+---
+
+## 1. SuperMQ (Users, Auth, Domains)
+
+Cube AI uses SuperMQ’s microservices as its identity and tenant-management layer:
+
+### ✔ Users Service  
+Stores user accounts, profile data, and associated metadata.
+
+### ✔ Auth Service  
+Issues JWT access tokens and validates them.  
+Cube Proxy uses this service to authenticate every request.
+
+### ✔ Domains Service  
+Each **domain** represents an isolated tenant.  
+Models, permissions, and policies are scoped per domain.
+
+### Why this matters  
+SuperMQ allows Cube AI to remain fully multi-tenant, scalable, and secure without duplicating identity logic.
+
+---
+
+## 2. Cube Proxy
+
+The **Cube Proxy** is the central entry point for all traffic.
+
+It is responsible for:
+
+- Verifying JWT tokens using the SuperMQ Auth Service  
+- Checking user permissions and domain membership  
+- Routing requests to the correct backend based on domain configuration  
+- Enforcing that all inference requests are executed **inside a Trusted Execution Environment**  
+- Normalizing requests to an OpenAI‑compatible API shape  
+
+This component ensures that **no user ever interacts directly with Ollama or vLLM**, and that all inference happens under strict security controls.
+
+---
+
+## 3. LLM Backends (Ollama & vLLM)
+
+Cube AI supports two interchangeable inference engines:
+
+### ✔ Ollama  
+- Lightweight, local-friendly model runner  
+- Ideal for development or smaller environments  
+- Fast model switching and easy model packaging  
+
+### ✔ vLLM  
+- High‑performance CUDA‑accelerated inference  
+- Continuous batching for high throughput  
+- Supports larger models and production workloads  
+
+The backend used depends on the domain configuration and available hardware.
+
+---
+
+## 4. Trusted Execution Environment (TEE)
+
+The TEE is the foundation of Cube AI security.
+
+### What the TEE protects:
+
+- **User prompts**
+- **Model weights**
+- **Threaded execution**
+- **Intermediate state**
+- **Responses before leaving the enclave**
+
+### Key guarantees:
+
+- **Confidentiality:**  
+  No external process (hypervisor, cloud operator, root user) can read memory inside the enclave.
+
+- **Integrity:**  
+  Code inside the enclave cannot be modified without detection.
+
+- **Remote Attestation:**  
+  Clients can verify that the inference occurred inside an authentic TEE with approved measurements.
+
+This makes Cube AI fundamentally different from traditional LLM deployments.
+
+---
+
+# End‑to‑End Request Flow
+
+Below is the simplified flow of a request inside Cube AI:
+
+1. **Client UI / API Client / Continue (VS Code)**  
+2. → **Cube Proxy**  
+   - verifies token  
+   - loads domain configuration  
+   - validates permissions  
+3. → **TEE**  
+   - secures model execution  
+   - protects inputs and outputs  
+4. → **LLM Backend** (Ollama or vLLM)  
+   - performs inference  
+5. → **TEE**  
+6. → **Cube Proxy**  
+7. → **Client**
+
+This pipeline ensures all sensitive operations remain inside the secure environment.
+
+---
+
+# Summary
+
+Cube AI combines:
+
+- SuperMQ for identity and domain management  
+- A secure Cube Proxy for routing, authorization, and TEE enforcement  
+- Flexible backend support (Ollama, vLLM)  
+- Trusted Execution Environments for confidential LLM execution  
+
+Together, these components create a secure, scalable, multi‑tenant platform for running LLMs with full data protection guarantees.
