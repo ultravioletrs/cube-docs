@@ -84,7 +84,7 @@ You should see the models you pulled earlier.
 
 Follow installation instructions from the official guide:
 
-<https://opencode.ai>
+[https://opencode.ai](https://opencode.ai)
 
 Once installed, OpenCode will create its configuration folder:
 

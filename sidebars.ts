@@ -40,7 +40,7 @@ const sidebars: SidebarsConfig = {
             label: 'Developer Guide',
             items: [
                 'developer-guide/index',
-                'developer-guide/open-webui',
+                'developer-guide/chat-ui',
                 'developer-guide/private-model-upload',
                 'developer-guide/hal',
                 'developer-guide/fine-tuning',
