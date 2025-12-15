@@ -60,11 +60,11 @@ The chat UI is ideal for quickly testing:
 
 Example prompts:
 
-```
+```text
 Explain what this function does and suggest improvements.
 ```
 
-```
+```text
 Generate unit tests for this TypeScript module using Jest.
 ```
 
@@ -94,5 +94,3 @@ Use the Cube AI chat UI when you want to:
 - Avoid using VS Code or external tools during debugging  
 
 The built-in chat fully replaces the old Open Web UI integration and is now the preferred way to test and debug LLM inference inside Cube AI.
-
----

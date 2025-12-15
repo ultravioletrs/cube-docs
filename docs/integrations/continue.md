@@ -17,10 +17,10 @@ This guide explains how to connect Continue with a Cube AI domain.
 ## 1. Install Requirements
 
 1. Install **Visual Studio Code**  
-   https://code.visualstudio.com
+   [https://code.visualstudio.com](https://code.visualstudio.com)
 
 2. Install the **Continue** extension  
-   https://www.continue.dev
+   [https://www.continue.dev](https://www.continue.dev)
 
 ---
 
@@ -128,4 +128,4 @@ For production deployments, always use valid TLS certificates.
 ## 6. Video Tutorial
 
 A complete walkthrough is available here:  
-https://www.youtube.com/watch?v=BGpv_iTB2NE
+[https://www.youtube.com/watch?v=BGpv_iTB2NE](https://www.youtube.com/watch?v=BGpv_iTB2NE)
