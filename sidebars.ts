@@ -23,11 +23,30 @@ const sidebars: SidebarsConfig = {
         'getting-started',
         'architecture',
         'attestation',
-        'opencode',
-        'developer-guide',
+
+        // --- Added integrations category ---
+        {
+            type: 'category',
+            label: 'Integrations',
+            items: [
+                'integrations/continue',
+                'integrations/opencode',
+            ],
+        },
+
+        // --- Added developer guide category ---
+        {
+            type: 'category',
+            label: 'Developer Guide',
+            items: [
+                'developer-guide/index',
+                'developer-guide/chat-ui',
+                'developer-guide/private-model-upload',
+                'developer-guide/hal',
+                'developer-guide/fine-tuning',
+            ],
+        },
     ],
-
-
 };
 
 export default sidebars;
