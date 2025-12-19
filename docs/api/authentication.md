@@ -4,7 +4,7 @@ title: Authentication
 sidebar_position: 2
 ---
 
-# Authentication
+## Authentication
 
 Cube AI uses **token-based authentication** provided by the SuperMQ Users and Auth services.
 All API requests must be authenticated using a valid **access token**.

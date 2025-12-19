@@ -3,7 +3,7 @@ id: translations
 title: Translations
 ---
 
-# Translations
+## Translations
 
 Translate text between languages using supported speech and language models.
 

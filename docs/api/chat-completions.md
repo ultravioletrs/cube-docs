@@ -3,7 +3,7 @@ id: chat-completions
 title: Chat Completions
 ---
 
-# Chat Completions
+## Chat Completions
 
 Cube AI supports OpenAI-compatible **Chat Completions** for conversational LLM usage.
 
