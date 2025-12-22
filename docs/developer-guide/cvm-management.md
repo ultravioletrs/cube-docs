@@ -33,6 +33,7 @@ cd /path/to/cube/hal/buildroot
 ```
 
 This launches a standard KVM-accelerated VM with:
+
 - 10GB RAM, 4 CPU cores
 - Network port forwarding (SSH: 6190, HTTP: 6191, HTTPS: 6192)
 - VirtIO networking and storage
@@ -46,6 +47,7 @@ For AMD Secure Encrypted Virtualization:
 ```
 
 This enables SEV-SNP memory encryption with:
+
 - Encrypted guest memory using `sev-snp-guest`
 - Memory backend with private memfd
 - vhost-vsock for secure guest-host communication
@@ -59,12 +61,14 @@ For Intel Trust Domain Extensions:
 ```
 
 This launches a TDX-protected VM with:
+
 - 20GB RAM, 16 CPU cores
 - Intel TDX guest object for confidential computing
 - Memory isolation and encrypted memory pages
 - Full network port forwarding for all Cube AI services
 
 **Port Mappings:**
+
 - 6190 → 22 (SSH)
 - 6191 → 80 (HTTP)
 - 6192 → 443 (HTTPS)
@@ -81,6 +85,7 @@ The `cvm-monitor.sh` script provides automated health monitoring and restart cap
 ### What It Does
 
 The monitor script:
+
 - Continuously checks if the CVM is running
 - Automatically restarts the CVM if it crashes or stops
 - Logs all events and state changes
@@ -140,7 +145,8 @@ View current CVM state and process information:
 ```
 
 Example output:
-```
+
+```text
 === CVM Status ===
 ✓ Cube CVM is running
 Cube CVM process:
@@ -179,6 +185,7 @@ For production systems, use this recommended workflow:
 ```
 
 Ensure the output shows:
+
 - ✓ Kernel image found
 - ✓ Root filesystem found
 - ✓ Certificates directory found
@@ -232,6 +239,7 @@ Check the monitor logs:
 ```
 
 Common issues:
+
 - Missing kernel or rootfs files
 - Insufficient permissions on `/dev/kvm`
 - Port conflicts (another process using 6190-6195)
@@ -246,6 +254,7 @@ newgrp kvm
 ### Monitor Doesn't Detect Running CVM
 
 The monitor checks for:
+
 - Process named `cube-ai-vm`
 - QEMU running with `/etc/cube/bzImage` and `rootfs.ext4`
 
@@ -260,6 +269,7 @@ tail -n 100 /tmp/cube-logs/cube-cvm-monitor.log
 ```
 
 Common causes:
+
 - Insufficient memory (TDX requires 20GB)
 - CPU feature incompatibility
 - Kernel or firmware issues
@@ -281,6 +291,7 @@ pkill -f cvm-monitor.sh
 ### Certificate Management
 
 Certificates are embedded in the filesystem image at build time:
+
 - Located at `/etc/cube/certs/` inside the CVM
 - Cannot be updated without rebuilding the rootfs
 - Measured as part of the trusted compute base
@@ -290,6 +301,7 @@ To update certificates, rebuild the Buildroot image with new certificate paths i
 ### Network Isolation
 
 CVMs use user-mode networking with port forwarding:
+
 - Only specified ports are accessible from the host
 - No direct network access to host resources
 - DNS configured to use public resolvers (8.8.8.8)
@@ -297,6 +309,7 @@ CVMs use user-mode networking with port forwarding:
 ### Memory Protection
 
 TDX CVMs provide:
+
 - Encrypted memory pages
 - DMA protection
 - Attestation capabilities for remote verification
@@ -336,6 +349,7 @@ CHECK_INTERVAL=60  # Check every 60 seconds
 ## Next Steps
 
 After starting your CVM:
+
 - [Configure the Cube Agent](/developer-guide/hal)
 - [Upload Private Models](/developer-guide/private-model-upload)
 - [Test with the Chat UI](/developer-guide/chat-ui)
