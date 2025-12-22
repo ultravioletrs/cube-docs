@@ -15,8 +15,9 @@ as private model upload and fine-tuning.
 - **Building and Running Cube AI**
 - **Using vLLM and Ollama Backends**
 - **Configuring the Environment**
-- **Open Web UI Integration**
+- **Chat UI**
 - **Hardware Abstraction Layer (HAL)**
+- **CVM Management**
 - **Private Model Upload**
 - **Fine-Tuning Models**
 
