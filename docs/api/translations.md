@@ -3,8 +3,6 @@ id: translations
 title: Translations
 ---
 
-## Translations
-
 Translate text between languages using supported speech and language models.
 
 > This endpoint is optional and may not be enabled in all Cube AI deployments.

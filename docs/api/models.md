@@ -3,8 +3,6 @@ id: models
 title: Models
 ---
 
-## Models
-
 This endpoint lists all models available to a specific Cube AI domain.
 
 The returned models depend on:

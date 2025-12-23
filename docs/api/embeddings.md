@@ -3,8 +3,6 @@ id: embeddings
 title: Embeddings
 ---
 
-## Embeddings
-
 The embeddings endpoint allows you to generate vector representations of text.
 These vectors can be used for semantic search, clustering, retrieval-augmented
 generation (RAG), and similarity comparisons.

@@ -3,8 +3,6 @@ id: completions
 title: Completions
 ---
 
-## Completions
-
 Cube AI supports OpenAI-compatible **text completions**.
 This endpoint is considered **legacy** and is mainly provided for compatibility with older clients.
 

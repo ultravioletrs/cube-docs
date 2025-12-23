@@ -3,8 +3,6 @@ id: speech-to-text
 title: Speech to Text
 ---
 
-## Speech to Text
-
 Cube AI supports OpenAI-compatible **speech-to-text** transcription for audio inputs,
 depending on the enabled backend and available models.
 
