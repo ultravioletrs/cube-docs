@@ -6,6 +6,7 @@ title: Models
 This endpoint lists all models available to a specific Cube AI domain.
 
 The returned models depend on:
+
 - The domain configuration
 - The selected backend (Ollama or vLLM)
 - Which models have been pulled or uploaded

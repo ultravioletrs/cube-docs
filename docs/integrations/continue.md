@@ -34,7 +34,7 @@ In Visual Studio Code:
 
 This opens the configuration file:
 
-```text
+```yaml
 .continue/config.yaml
 ```
 

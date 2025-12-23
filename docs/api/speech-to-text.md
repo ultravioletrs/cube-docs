@@ -12,7 +12,7 @@ depending on the enabled backend and available models.
 
 ## Endpoint
 
-```
+```http
 POST /proxy/{domain_id}/v1/audio/transcriptions
 ```
 

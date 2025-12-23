@@ -9,7 +9,7 @@ Translate text between languages using supported speech and language models.
 
 ## Endpoint
 
-```
+```http
 POST /proxy/{domain_id}/v1/audio/translations
 ```
 

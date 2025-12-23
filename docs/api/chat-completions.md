@@ -7,7 +7,7 @@ Cube AI supports OpenAI-compatible **Chat Completions** for conversational LLM u
 
 ## Endpoint
 
-```
+```http
 POST /proxy/{domain_id}/v1/chat/completions
 ```
 

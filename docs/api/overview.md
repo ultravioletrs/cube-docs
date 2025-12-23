@@ -16,13 +16,13 @@ through the Cube Proxy, ensuring confidentiality and domain isolation.
 
 All API requests must be sent through the Cube Proxy and are scoped to a **domain**.
 
-```
+```http
 https://<cube-ai-instance>/proxy/<domain-id>/v1
 ```
 
 Example (local development):
 
-```
+```http
 https://localhost/proxy/451477f5-828f-46ca-b3fc-c59d6fd34797/v1
 ```
 
@@ -34,7 +34,7 @@ Cube AI uses **Bearer token authentication**.
 
 You must include an access token in the `Authorization` header for every request:
 
-```
+```http
 Authorization: Bearer <access_token>
 ```
 

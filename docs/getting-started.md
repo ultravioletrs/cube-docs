@@ -22,7 +22,7 @@ make up
 
 Once the services are running, open your browser and navigate to:
 
-```text
+```http
 https://localhost
 ```
 

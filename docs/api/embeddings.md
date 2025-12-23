@@ -14,7 +14,7 @@ ensuring that input text and resulting vectors remain confidential.
 
 ## Endpoint
 
-```
+```http
 POST /proxy/{domain_id}/v1/embeddings
 ```
 

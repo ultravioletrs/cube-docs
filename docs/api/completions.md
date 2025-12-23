@@ -12,7 +12,7 @@ For new applications, **Chat Completions** are recommended.
 
 ## Endpoint
 
-```
+```http
 POST /proxy/{domain_id}/v1/completions
 ```
 

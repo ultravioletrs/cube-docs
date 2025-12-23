@@ -88,7 +88,7 @@ Follow installation instructions from the official guide:
 
 Once installed, OpenCode will create its configuration folder:
 
-```text
+```bash
 ~/.config/OpenCode/
 ```
 
@@ -98,7 +98,7 @@ Once installed, OpenCode will create its configuration folder:
 
 Edit or create the configuration file:
 
-```text
+```json
 ~/.config/OpenCode/config.json
 ```
 

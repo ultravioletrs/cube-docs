@@ -72,7 +72,7 @@ Cube AI exposes model APIs through a **domain-scoped proxy**.
 
 All OpenAI-compatible API requests must be sent to:
 
-```
+```http
 /proxy/<domain_id>/v1/
 ```
 
