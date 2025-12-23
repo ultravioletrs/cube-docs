@@ -6,7 +6,11 @@ sidebar_position: 5
 
 ## Managing Confidential VMs
 
-This guide explains how to start, monitor, and manage Confidential Virtual Machines (CVMs) for Cube AI using the provided management scripts.
+This guide explains how to start, monitor, and manage Confidential Virtual Machines (CVMs) for Cube AI using the Hardware Abstraction Layer (HAL) with Buildroot-based images and the provided management scripts.
+
+:::info
+This guide is specifically for HAL-based CVM deployments using Buildroot images. For public cloud deployments using cloud-init, please refer to the separate cloud deployment documentation.
+:::
 
 ---
 
