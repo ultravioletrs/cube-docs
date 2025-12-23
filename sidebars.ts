@@ -43,6 +43,7 @@ const sidebars: SidebarsConfig = {
                 'developer-guide/chat-ui',
                 'developer-guide/private-model-upload',
                 'developer-guide/hal',
+                'developer-guide/cvm-management',
                 'developer-guide/fine-tuning',
             ],
         },
