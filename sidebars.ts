@@ -17,6 +17,7 @@ const sidebars: SidebarsConfig = {
     // --- Core docs ---
     'intro',
     'getting-started',
+    'ui/ui-overview', 
     'architecture',
     'attestation',
 
@@ -27,6 +28,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'api/overview',
         'api/authentication',
+        'auth/pats', 
         'api/models',
         'api/chat-completions',
         'api/completions',
