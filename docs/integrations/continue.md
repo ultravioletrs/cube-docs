@@ -4,48 +4,85 @@ title: Continue for VS Code
 sidebar_position: 1
 ---
 
-## Continue Integration for VS Code
+# Continue Integration for VS Code
 
-The **Continue** extension brings Cube AI’s LLM capabilities directly into
-Visual Studio Code, enabling inline completions, refactoring help, and
-chat-based assistance.
+The **Continue** extension brings **Cube AI** LLM capabilities directly into **Visual Studio Code**, enabling:
 
-This guide explains how to connect Continue with a Cube AI domain.
+- inline code completions
+- refactoring assistance
+- chat-based explanations
+- test and documentation generation
+
+This guide shows how to connect **Continue** with a **Cube AI domain** in a few simple steps.
+
+---
+
+## What You Will Get
+
+After completing this guide, you will be able to:
+
+- use Cube AI models inside VS Code
+- chat with your codebase
+- refactor and explain code using enterprise-grade LLMs
+- keep all data inside your Cube AI deployment
+
+---
+
+## Architecture Overview
+
+Continue runs locally inside VS Code and forwards requests to Cube AI, which handles authentication, model routing, and security, while all data remains inside your Cube AI deployment.
+
+<!-- IMAGE: architecture-diagram -->
+<!-- Add diagram: Continue → Cube AI → Models -->
 
 ---
 
 ## 1. Install Requirements
 
-1. Install **Visual Studio Code**  
-   [https://code.visualstudio.com](https://code.visualstudio.com)
+### Install Visual Studio Code
+https://code.visualstudio.com
 
-2. Install the **Continue** extension  
-   [https://www.continue.dev](https://www.continue.dev)
+### Install the Continue Extension
+https://www.continue.dev
 
 ---
 
 ## 2. Open Continue Configuration
 
-In Visual Studio Code:
+In **Visual Studio Code**:
 
-1. Click the **Continue** icon  
-2. Open the **Settings / gear** menu  
+1. Click the **Continue** icon in the sidebar  
+2. Open the **Settings (⚙️)** menu  
 3. Select **Configure Continue**
 
 This opens the configuration file:
 
-```yaml
+```
 .continue/config.yaml
 ```
 
+<!-- IMAGE: continue-open-config -->
+<!-- Screenshot: Continue icon + Configure option -->
+
 ---
 
-## 3. Configure Continue to Use Cube AI
+## 3. Generate a Cube AI Access Token
 
-Replace the contents of `config.yaml` with the configuration below.
+Before configuring Continue, generate an access token in **Cube AI UI**:
 
-Before editing the file, make sure you have generated a Cube AI access token.
-You can obtain it from the Cube AI UI under **Profile → Tokens**.
+1. Open Cube AI UI
+2. Go to **Profile → Tokens**
+3. Click **Generate token**
+4. Copy the token value
+
+<!-- IMAGE: cube-token-generation -->
+<!-- Screenshot: Profile → Tokens -->
+
+---
+
+## 4. Configure Continue to Use Cube AI
+
+Replace the contents of `.continue/config.yaml` with the configuration below.
 
 ```yaml
 name: Cube AI
@@ -57,7 +94,7 @@ models:
     provider: ollama
     model: tinyllama:1.1b
     apiKey: <access_token>
-    apiBase: https://<your-cube-instance>/proxy/<your-domain-id>
+    apiBase: https://<cube-instance>/proxy/<domain-id>
     requestOptions:
       verifySsl: false
 
@@ -65,7 +102,7 @@ models:
     provider: ollama
     model: starcoder2:7b
     apiKey: <access_token>
-    apiBase: https://<your-cube-instance>/proxy/<your-domain-id>
+    apiBase: https://<cube-instance>/proxy/<domain-id>
     requestOptions:
       verifySsl: false
 
@@ -78,54 +115,66 @@ context:
   - provider: docs
 ```
 
-### Replace
+### Replace the placeholders
 
 - `<access_token>` → your Cube AI access token  
-- `<your-cube-instance>` → usually `localhost`  
-- `<your-domain-id>` → the domain ID you want VS Code to use  
+- `<cube-instance>` → usually `localhost`  
+- `<domain-id>` → Cube AI domain ID  
 
-> `verifySsl: false` should be used **only for local development**.
-
----
-
-## 4. Using Continue With Cube AI
-
-Once configured:
-
-- Press **Ctrl + L** to open the Continue chat  
-- Ask questions or request explanations  
-- Use inline completions powered by Cube AI models  
-
-Example prompts:
-
-- “Explain this function”  
-- “Refactor this TypeScript file”  
-- “Write unit tests for this module”
+⚠️ `verifySsl: false` is for local development only.
 
 ---
 
-## 5. Troubleshooting
+## 5. Verify the Connection
 
-### Connection issues
+1. Open Continue chat using **Ctrl + L**
+2. Select a configured model
+3. Ask:
 
-- Ensure Cube AI is running (`make up`)  
-- Verify that the domain exists  
-- Check that your access token is valid  
+```
+Explain what this project does
+```
 
-### SSL issues
+<!-- IMAGE: continue-chat-success -->
+<!-- Screenshot: Continue chat with response -->
 
-If you are running Cube AI locally without valid TLS certificates, set:
+---
 
+## 6. Example Prompts
+
+- Explain this function
+- Refactor this file
+- Write unit tests
+- Summarize this folder
+
+---
+
+## 7. Troubleshooting
+
+### Connection Issues
+- Ensure Cube AI is running
+- Verify domain ID
+- Check access token
+
+### Unauthorized (401)
+- Token expired or invalid
+
+### SSL Errors
 ```yaml
 requestOptions:
   verifySsl: false
 ```
 
-For production deployments, always use valid TLS certificates.
+---
+
+## 8. Video Tutorial
+
+https://www.youtube.com/watch?v=BGpv_iTB2NE
 
 ---
 
-## 6. Video Tutorial
+## Next Steps
 
-A complete walkthrough is available here:  
-[https://www.youtube.com/watch?v=BGpv_iTB2NE](https://www.youtube.com/watch?v=BGpv_iTB2NE)
+- Embeddings & RAG
+- Models overview
+- API integrations
