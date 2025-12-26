@@ -18,6 +18,8 @@ const sidebars: SidebarsConfig = {
     'intro',
     'getting-started',
     'architecture',
+    'guardrails',
+    'vllm',
     'attestation',
 
     // --- API documentation ---

@@ -14,7 +14,7 @@ Below is the architecture diagram created by the team:
 
 ## Core Components
 
-Cube AI consists of four primary components:
+Cube AI consists of five primary components:
 
 1. **SuperMQ Services**  
    - Users Service  
@@ -35,6 +35,12 @@ Cube AI consists of four primary components:
    - Protects models  
    - Protects prompts and responses  
    - Ensures confidentiality and integrity  
+
+5. **AI Guardrails**  
+   - Authentication and authorization  
+   - Domain isolation  
+   - Secure inference enforcement  
+   - Auditing and access control  
 
 ---
 
@@ -125,6 +131,22 @@ This makes Cube AI fundamentally different from traditional LLM deployments.
 
 ---
 
+## AI Guardrails and Inference Backends
+
+Cube AI enforces a strict separation between **platform security controls**
+and **model execution engines**.
+
+- **AI Guardrails** define how models are accessed, isolated, and executed  
+  → See [AI Guardrails](./guardrails.md)
+
+- **vLLM** is used as a high-performance inference backend for production workloads  
+  → See [vLLM Backend](./vllm.md)
+
+These components work together to ensure that all inference is secure,
+auditable, and isolated per domain.
+
+---
+
 ## End-to-End Request Flow
 
 Below is the simplified flow of a request inside Cube AI:
@@ -153,6 +175,7 @@ Cube AI combines:
 - SuperMQ for identity and domain management  
 - A secure Cube Proxy for routing, authorization, and TEE enforcement  
 - Flexible backend support (Ollama, vLLM)  
+- AI Guardrails for platform-level security controls  
 - Trusted Execution Environments for confidential LLM execution  
 
 Together, these components create a secure, scalable, multi-tenant platform for running LLMs with full data protection guarantees.

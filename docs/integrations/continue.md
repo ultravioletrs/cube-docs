@@ -6,6 +6,13 @@ sidebar_position: 1
 
 ## Continue Integration for VS Code
 
+> **Cube AI scope**
+>
+> Cube AI acts as a **secure LLM backend** responsible for authentication,
+> model routing, and model execution.
+> It does **not** manage editor state, files, or code context — those are handled
+> locally by the Continue extension running inside VS Code.
+
 The **Continue** extension brings Cube AI’s LLM capabilities directly into
 Visual Studio Code, enabling inline completions, refactoring help, and
 chat-based assistance.
@@ -17,7 +24,7 @@ This guide explains how to connect Continue with a Cube AI domain.
 ## 1. Install Requirements
 
 1. Install **Visual Studio Code**  
-   [https://code.visualstudio.com](https://code.visualstudio.com)
+    [https://code.visualstudio.com](https://code.visualstudio.com)
 
 2. Install the **Continue** extension  
    [https://www.continue.dev](https://www.continue.dev)
@@ -98,9 +105,9 @@ Once configured:
 
 Example prompts:
 
-- “Explain this function”  
-- “Refactor this TypeScript file”  
-- “Write unit tests for this module”
+- Explain this function  
+- Refactor this TypeScript file  
+- Write unit tests for this module  
 
 ---
 
