@@ -8,6 +8,7 @@ This endpoint allows clients to discover which models are available for inferenc
 within a specific Cube AI domain.
 
 Models in Cube AI are used by:
+
 - Chat Completions
 - Continue (VS Code integration)
 - Direct API-based inference
@@ -39,12 +40,14 @@ Each domain has an **isolated view** of available models.
 ## Backends
 
 ### Ollama
+
 When using Ollama as a backend, models are referenced by their Ollama identifiers
 (e.g. `tinyllama:1.1b`, `starcoder2:3b`).
 
 Models must be pulled into Ollama before they appear in Cube AI.
 
 ### vLLM
+
 When using vLLM, models correspond to server-side model deployments configured
 by the operator.
 

@@ -3,8 +3,6 @@ id: guardrails
 title: AI Guardrails
 ---
 
-# AI Guardrails
-
 AI Guardrails in Cube AI define the **security, isolation, and control mechanisms**
 applied around Large Language Model (LLM) inference.
 
@@ -25,6 +23,7 @@ Guardrails are not about changing how models think — they are about controllin
 > modify model weights, prompts, or training behavior.
 
 Cube AI does **not**:
+
 - train models
 - fine-tune models
 - alter model outputs for ethical or policy reasons
@@ -36,31 +35,37 @@ Cube AI does **not**:
 Cube AI guardrails provide:
 
 ### Authentication & Authorization
+
 - token-based access control
 - domain-scoped permissions
 - per-domain model visibility
 
 ### Domain Isolation
+
 - strict separation between domains
 - no data or model leakage across domains
 - isolated execution contexts
 
 ### Request Validation
+
 - validation of incoming requests
 - enforcement of API contracts
 - rejection of malformed or unauthorized calls
 
 ### Model Access Control
+
 - control which models are available per domain
 - backend-specific model exposure
 - prevention of unauthorized model usage
 
 ### Secure Execution (TEE)
+
 - all inference runs inside **Trusted Execution Environments**
 - prompts and outputs remain confidential
 - memory isolation during execution
 
 ### Auditing & Observability (Optional)
+
 - request metadata logging
 - traceability of inference calls
 - integration with audit pipelines when enabled
@@ -91,6 +96,7 @@ Without guardrails, LLM deployments risk:
 - unpredictable behavior in production
 
 Cube AI guardrails make LLM usage suitable for:
+
 - enterprise deployments
 - multi-tenant environments
 - regulated industries
@@ -103,6 +109,7 @@ Cube AI guardrails make LLM usage suitable for:
 Guardrails complement — but do not replace — application-level controls.
 
 Applications are still responsible for:
+
 - prompt design
 - output validation
 - business logic enforcement

@@ -3,8 +3,6 @@ id: vllm
 title: vLLM Backend
 ---
 
-# vLLM Backend
-
 vLLM is a **high-performance inference engine** designed to efficiently serve
 Large Language Models (LLMs) in production environments.
 
@@ -23,6 +21,7 @@ and efficient model inference** for enterprise workloads.
 > vLLM-backed models inside **Trusted Execution Environments (TEEs)**.
 
 Cube AI does **not**:
+
 - implement model training
 - modify model weights
 - manage GPU-level optimizations directly
@@ -52,6 +51,7 @@ Using vLLM as a backend allows Cube AI to:
 - support enterprise-scale workloads
 
 vLLM is particularly suitable for:
+
 - chat-based applications
 - API-driven inference
 - multi-user environments
@@ -64,12 +64,14 @@ vLLM is particularly suitable for:
 Cube AI supports multiple backends. The choice depends on workload needs.
 
 ### vLLM
+
 - optimized for throughput and concurrency
 - better suited for production and large models
 - typically GPU-backed
 - operator-managed deployments
 
 ### Ollama
+
 - simpler setup
 - suitable for development and experimentation
 - typically used with smaller models

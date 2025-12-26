@@ -3,8 +3,6 @@ id: embeddings
 title: Embeddings & RAG
 ---
 
-# Embeddings & Retrieval-Augmented Generation (RAG)
-
 Large Language Models (LLMs) are powerful, but they **do not know your private or internal data**.
 They are trained on public information and cannot access your documents, databases, or source
 code unless you explicitly provide that context.
@@ -96,15 +94,19 @@ Using RAG with Cube AI enables:
 ## Common Use Cases
 
 ### Internal Documentation Assistant
+
 Ask questions about internal docs, wikis, or README files.
 
 ### Support & Helpdesk Bots
+
 Answer customer questions using company knowledge bases.
 
 ### Codebase Search
+
 Query large repositories using natural language.
 
 ### Knowledge-Based AI Assistants
+
 Build enterprise-grade assistants backed by private data.
 
 ---
