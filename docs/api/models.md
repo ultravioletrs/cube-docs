@@ -24,6 +24,8 @@ Models in Cube AI are used by:
 
 ## What Is a Model in Cube AI?
 
+![Cube AI models registry overview](/img/models-registry.png)
+
 A *model* in Cube AI represents a **deployable inference target** exposed by the
 configured backend.
 

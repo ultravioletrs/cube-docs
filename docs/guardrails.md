@@ -32,6 +32,10 @@ Cube AI does **not**:
 
 ## What Guardrails Do
 
+![Cube AI guardrails overview](/img/cube-ai-guardrails.png)
+This diagram shows how Cube AI guardrails enforce security and isolation at the
+platform level without interfering with application logic or model behavior.
+
 Cube AI guardrails provide:
 
 ### Authentication & Authorization

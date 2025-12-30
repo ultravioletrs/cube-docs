@@ -30,6 +30,8 @@ Cube AI does **not**:
 
 ## What Is vLLM?
 
+![vLLM inference architecture](/img/vllm-architecture.png)
+
 vLLM is an open-source LLM inference engine optimized for:
 
 - high throughput
@@ -82,6 +84,8 @@ Both backends are exposed through the same Cube AI APIs.
 ---
 
 ## How Cube AI Uses vLLM
+
+![Cube AI with vLLM backend](/img/cube-vllm-flow.png)
 
 When vLLM is configured as a backend:
 

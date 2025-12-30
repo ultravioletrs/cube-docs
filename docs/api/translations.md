@@ -22,6 +22,8 @@ This feature is **optional** and may not be enabled in all Cube AI deployments. 
 
 ## How It Works
 
+![Cube AI translations flow](/img/translations-flow.png)
+
 When you call the Translations endpoint:
 
 1. Your input (text or audio) is sent securely to Cube AI.

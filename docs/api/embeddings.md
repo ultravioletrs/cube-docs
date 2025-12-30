@@ -63,8 +63,7 @@ RAG allows LLMs to answer questions using **your data**, rather than guessing.
 
 ## How RAG Works with Cube AI
 
-<!-- IMAGE: rag-flow-diagram -->
-<!-- Diagram: Documents → Embeddings → Vector Store → Retrieved Context → LLM -->
+![RAG flow with Cube AI](/img/rag-flow.png)
 
 A typical RAG flow using Cube AI looks like this:
 
