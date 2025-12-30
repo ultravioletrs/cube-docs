@@ -31,7 +31,6 @@ This guide explains how to connect Continue with a Cube AI domain.
 
    ![Continue VS Code Marketplace](/img/continue-marketplace.png)
 
-
 ---
 
 ## 2. Open Continue Configuration
@@ -43,7 +42,6 @@ In Visual Studio Code:
 3. Select **Configure Continue**
 
 ![Continue configuration](/img/continue-config.png)
-
 
 This opens the configuration file:
 
@@ -104,7 +102,6 @@ context:
 ## 4. Using Continue With Cube AI
 
 ![Continue chat example](/img/continue-chat.png)
-
 
 Once configured:
 
