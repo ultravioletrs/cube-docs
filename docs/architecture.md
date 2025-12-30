@@ -8,7 +8,7 @@ Cube AI is built on a secure, scalable architecture designed to run Large Langua
 
 Below is the architecture diagram created by the team:
 
-![Architecture Image](/img/architecture.png)
+![Cube AI architecture overview](/img/cube-ai-architecture.png)
 
 ---
 
