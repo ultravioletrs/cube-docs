@@ -81,8 +81,9 @@ embedding generation and inference inside a TEE, Cube AI ensures that neither
 raw text nor derived vectors can be accessed by infrastructure operators or
 other tenants.
 
-For more details on TEEs, see:
-- https://en.wikipedia.org/wiki/Trusted_execution_environment
+For more details on Trusted Execution Environments (TEEs), see:
+
+- [Trusted Execution Environment (Wikipedia)](https://en.wikipedia.org/wiki/Trusted_execution_environment)
 
 ---
 
