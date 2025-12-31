@@ -59,7 +59,7 @@ Cube Proxy uses this service to authenticate every request.
 
 ### ✔ Domains Service
 
-Each **domain** represents an isolated tenant.  
+Each **domain** represents an isolated tenant (workspace).  
 Models, permissions, and policies are scoped per domain.
 
 ### Why this matters
@@ -70,7 +70,8 @@ SuperMQ allows Cube AI to remain fully multi-tenant, scalable, and secure withou
 
 ## 2. Cube Proxy
 
-The **Cube Proxy** is the central entry point for all traffic.
+The **Cube Proxy** is a core architectural component and the central entry point
+for all LLM-related traffic in Cube AI.
 
 It is responsible for:
 

@@ -11,7 +11,7 @@ This is the problem that **Embeddings** and **Retrieval-Augmented Generation (RA
 
 > **Cube AI scope**
 >
-> Cube AI provides **secure embeddings generation and LLM execution inside Trusted Execution Environments (TEEs)**.
+> Cube AI provides **secure embeddings generation and LLM execution**.
 > It does **not** provide a built-in vector database or retrieval layer.
 > In a RAG setup, storing embeddings and retrieving relevant context is handled
 > by the application or integration layer outside of Cube AI.
@@ -43,8 +43,8 @@ In simple terms:
 
 > Embeddings make text **searchable by meaning**, not just by keywords.
 
-Cube AI embeddings are generated inside **Trusted Execution Environments (TEEs)**,
-ensuring that both input text and resulting vectors remain confidential.
+Cube AI embeddings are generated in a secure execution environment, ensuring
+that input text and resulting vectors remain confidential.
 
 ---
 
@@ -58,6 +58,31 @@ ensuring that both input text and resulting vectors remain confidential.
 4. The LLM generates an answer grounded in that context
 
 RAG allows LLMs to answer questions using **your data**, rather than guessing.
+
+---
+
+## Trusted Execution Environments (TEE)
+
+A Trusted Execution Environment (TEE) is a secure, isolated execution context
+provided by modern CPUs. It ensures that code and data remain protected from
+the host operating system, hypervisor, and other workloads running on the same
+machine.
+
+In Cube AI, TEEs are used to protect:
+
+- user prompts
+- embedding inputs
+- generated vectors
+- intermediate model outputs
+
+This is especially important in RAG workflows, where sensitive internal
+documents are embedded and used as context for LLM prompts. By running
+embedding generation and inference inside a TEE, Cube AI ensures that neither
+raw text nor derived vectors can be accessed by infrastructure operators or
+other tenants.
+
+For more details on TEEs, see:
+- https://en.wikipedia.org/wiki/Trusted_execution_environment
 
 ---
 
@@ -150,7 +175,7 @@ embedding vectors.
 ### Notes
 
 - Embeddings are **domain-scoped**
-- Input text is processed securely inside a TEE
+- Input text is processed securely inside a Trusted Execution Environment (TEE)
 - Cube AI does **not** store embeddings or perform retrieval
 - Use embedding models such as `nomic-embed-text` for best results
 

@@ -4,8 +4,13 @@ title: Models
 ---
 
 Cube AI exposes language models through a **domain-scoped models registry**.
-This endpoint allows clients to discover which models are available for inference
-within a specific Cube AI domain.
+
+In Cube AI, a *domain* represents an isolated workspace that groups users,
+permissions, configuration, and available models. Each domain has its own
+isolated view of which models are available for inference.
+
+This endpoint allows clients to discover which models can be used within
+a specific Cube AI domain (workspace).
 
 Models in Cube AI are used by:
 
@@ -35,7 +40,8 @@ The available models depend on:
 - Selected backend (**Ollama** or **vLLM**)
 - Models that have been pulled, loaded, or registered by the operator
 
-Each domain has an **isolated view** of available models.
+Each domain has an **isolated view** of available models, meaning that models
+enabled in one domain are not automatically visible or accessible in another.
 
 ---
 
@@ -98,7 +104,8 @@ curl -k https://localhost/proxy/<domain_id>/v1/models \
 
 ## Notes
 
-- Models are **domain-scoped**
+- Models are **domain-scoped**, meaning their visibility and usage are limited
+  to the domain (workspace) in which they are configured
 - Model identifiers are backend-specific (Ollama / vLLM)
 - Cube AI does **not** manage model training or fine-tuning
 - All inference is executed inside a Trusted Execution Environment (TEE)

@@ -12,6 +12,11 @@ in enterprise environments.
 Guardrails are not about changing how models think — they are about controlling
 **how models are accessed and used**.
 
+In Cube AI, a *domain* represents an isolated workspace that groups users,
+permissions, configuration, and available models. Guardrails are applied
+**per domain**, ensuring strong isolation and access control between different
+workspaces.
+
 ---
 
 ## Cube AI Scope
@@ -41,7 +46,7 @@ Cube AI guardrails provide:
 ### Authentication & Authorization
 
 - token-based access control
-- domain-scoped permissions
+- domain-scoped permissions (workspace-level access control)
 - per-domain model visibility
 
 ### Domain Isolation
