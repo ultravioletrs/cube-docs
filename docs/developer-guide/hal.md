@@ -35,28 +35,28 @@ Before building HAL images, ensure you have:
 
 ### 1. Clone Repositories
 
-Clone the Cube HAL repository and its Buildroot submodule:
+Clone the Cocos repository (which contains the HAL) and the Buildroot repository:
 
 ```bash
-git clone https://github.com/ultravioletrs/cube-hal.git
-cd cube-hal
-git submodule update --init --recursive
+git clone https://github.com/ultravioletrs/cocos.git
+git clone https://github.com/buildroot/buildroot.git
+cd buildroot
+git checkout 2025.08-rc3
 ```
 
 ### 2. Configure Buildroot for HAL Image
 
-Buildroot configuration defines which packages, kernel options, and system settings are included in the final image.
+Buildroot configuration defines which packages, kernel options, and system settings are included in the final image. The HAL uses Buildroot's External Tree mechanism, where the Cocos-specific configurations are in `cocos/hal/linux`.
 
 #### Load HAL Configuration
 
-Navigate to the Buildroot directory and load the Cube-specific configuration:
+Load the Cocos HAL configuration using the BR2_EXTERNAL mechanism:
 
 ```bash
-cd buildroot
-make cube_defconfig
+make BR2_EXTERNAL=../cocos/hal/linux cocos_defconfig
 ```
 
-This loads the pre-configured settings optimized for Cube AI confidential computing.
+This loads the pre-configured settings optimized for Cocos confidential computing.
 
 #### Customize Configuration (Optional)
 
@@ -177,9 +177,9 @@ curl http://localhost:11434/api/tags
 
 To update the HAL image with new certificates, packages, or configurations:
 
-1. Update the overlay directory: `cube-hal/overlay/`
-2. Modify Buildroot configuration if needed: `make menuconfig`
-3. Rebuild: `make -j$(nproc)`
+1. Update the overlay directory in the Cocos repository: `cocos/hal/linux/board/cocos/`
+2. Modify Buildroot configuration if needed: `make BR2_EXTERNAL=../cocos/hal/linux menuconfig`
+3. Rebuild in the buildroot directory: `make -j$(nproc)`
 4. Redeploy the new images to `/etc/cube/`
 5. Restart CVMs to use the updated image
 
@@ -197,7 +197,7 @@ sudo apt-get install build-essential gcc make git bc cpio \
 
 ### Kernel Build Errors
 
-Ensure kernel configuration is compatible with your target platform (TDX or SEV-SNP). Check `configs/kernel-config` for required options.
+Ensure kernel configuration is compatible with your target platform (TDX or SEV-SNP). Check `cocos/hal/linux/board/cocos/linux.config` for required kernel options.
 
 ### Out of Disk Space
 
@@ -211,7 +211,7 @@ Or start fresh:
 
 ```bash
 make distclean
-make cube_defconfig
+make BR2_EXTERNAL=../cocos/hal/linux cocos_defconfig
 ```
 
 ## Next Steps

@@ -32,7 +32,7 @@ Before starting a CVM, ensure the following files exist:
 For testing without confidential computing features:
 
 ```bash
-cd /path/to/cube/hal/buildroot
+cd /path/to/cocos/hal/cloud
 ./qemu.sh start
 ```
 
@@ -100,10 +100,10 @@ The monitor script:
 Edit these variables at the top of `cvm-monitor.sh` to customize behavior:
 
 ```bash
-VM_NAME="cube-ai-vm"              # VM identifier
-CHECK_INTERVAL=30                 # Health check interval (seconds)
-LOG_DIR="/tmp/cube-logs"          # Log file directory
-QEMU_SCRIPT="/path/to/qemu.sh"    # Path to QEMU launch script
+VM_NAME="cube-ai-vm"                        # VM identifier
+CHECK_INTERVAL=30                           # Health check interval (seconds)
+LOG_DIR="/tmp/cube-logs"                    # Log file directory
+QEMU_SCRIPT="/path/to/cocos/hal/cloud/qemu.sh"  # Path to QEMU launch script
 ```
 
 ### Basic Usage
