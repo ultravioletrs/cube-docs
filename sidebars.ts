@@ -56,6 +56,7 @@ const sidebars: SidebarsConfig = {
         'developer-guide/private-model-upload',
         'developer-guide/hal',
         'developer-guide/fine-tuning',
+        'developer-guide/guardrails',
       ],
     },
   ],
