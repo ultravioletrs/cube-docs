@@ -101,6 +101,13 @@ Navigate to `Target packages` → `Cube packages` → `cube-agent` to configure 
 - The **Certs Token** is required when using a CA URL and should be treated as sensitive credential
 - Certificate paths are baked into the image and measured as part of the attestation process
 
+**CA Configuration Details:**
+
+The agent integrates with [Abstract Machines Certs Service](https://github.com/absmach/certs)for certificate management:
+
+- **CA Base URL:** `https://cloud.prism.ultraviolet.rs`
+- **CA Documentation:** [Docs](https://github.com/absmach/certs/blob/main/README.md)
+
 #### Save Configuration
 
 After customizing, save the configuration on the interface and exit.

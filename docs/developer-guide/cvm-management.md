@@ -290,13 +290,11 @@ pkill -f cvm-monitor.sh
 
 ### Certificate Management
 
-Certificates are embedded in the filesystem image at build time. This means certificate rotation happens by rebuilding the image, not by editing a running VM.
+Certificates can be rotated on a running CVM by connecting via SSH, regenerating the certificates, and restarting the relevant services.
 
 - Located at `/etc/cube/certs/` inside the CVM
-- Cannot be updated without rebuilding the rootfs
-- Measured as part of the trusted compute base
-
-To update certificates, rebuild the Buildroot image with new certificate paths in the configuration. The rebuilt image will include the new files under the same in-guest location.
+- Can be updated by SSH into the VM and regenerating certs
+- Restart services after certificate rotation to apply changes
 
 ### Network Isolation
 
