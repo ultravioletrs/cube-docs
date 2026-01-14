@@ -181,47 +181,11 @@ define flow validate user message
 
 ## API Reference
 
-### Chat Endpoint
-
-Process messages through guardrails:
-
-```bash
-curl -X POST http://localhost/proxy/guardrails/messages \
-  -H "Content-Type: application/json" \
-  -d '{
-    "messages": [
-      {"role": "user", "content": "Hello, how are you?"}
-    ],
-    "model": "llama3.2:latest",
-    "temperature": 0.1,
-    "max_tokens": 150
-  }'
-```
-
-Response:
-
-```json
-{
-  "id": "chatcmpl-guardrails",
-  "object": "chat.completion",
-  "model": "llama3.2:latest",
-  "choices": [
-    {
-      "index": 0,
-      "message": {
-        "role": "assistant",
-        "content": "Hello! I'm doing well. How can I assist you today?"
-      },
-      "finish_reason": "stop"
-    }
-  ]
-}
-```
-
 ### Health Check
 
 ```bash
 curl http://localhost/proxy/guardrails/health
+  -H "Authorization: Bearer <token>" 
 ```
 
 Response:
@@ -242,6 +206,7 @@ Response:
 ```bash
 curl -X POST http://localhost/proxy/guardrails/configs \
   -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <token>" \
   -d '{
     "name": "production-config",
     "description": "Production guardrails configuration",
@@ -262,6 +227,7 @@ curl http://localhost/proxy/guardrails/configs
 ```bash
 curl -X POST http://localhost/proxy/guardrails/configs/{config_id}/versions \
   -H "Content-Type: application/json" \
+  -H "Authorization: Bearer <token>" \
   -d '{
     "name": "v1.0.0",
     "description": "Initial release"
@@ -271,7 +237,8 @@ curl -X POST http://localhost/proxy/guardrails/configs/{config_id}/versions \
 #### Activate Version
 
 ```bash
-curl -X POST http://localhost/proxy/guardrails/versions/{version_id}/activate
+curl -X POST http://localhost/proxy/guardrails/versions/{version_id}/activate \
+  -H "Authorization: Bearer <token>" 
 ```
 
 #### Reload Runtime
@@ -279,7 +246,8 @@ curl -X POST http://localhost/proxy/guardrails/versions/{version_id}/activate
 Force reload the active configuration:
 
 ```bash
-curl -X POST http://localhost/proxy/guardrails/reload
+curl -X POST http://localhost/proxy/guardrails/reload \
+  -H "Authorization: Bearer <token>" 
 ```
 
 ---
