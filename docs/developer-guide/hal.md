@@ -35,10 +35,10 @@ Before building HAL images, ensure you have:
 
 ### 1. Clone Repositories
 
-Clone the Cocos repository (which contains the HAL) and the Buildroot repository:
+Clone the Cube repository and the Buildroot repository:
 
 ```bash
-git clone https://github.com/ultravioletrs/cocos.git
+git clone https://github.com/ultravioletrs/cube.git
 git clone https://github.com/buildroot/buildroot.git
 cd buildroot
 git checkout 2025.08-rc3
@@ -46,17 +46,16 @@ git checkout 2025.08-rc3
 
 ### 2. Configure Buildroot for HAL Image
 
-Buildroot configuration defines which packages, kernel options, and system settings are included in the final image. The HAL uses Buildroot's External Tree mechanism, where the Cocos-specific configurations are in `cocos/hal/linux`.
+Buildroot configuration defines which packages, kernel options, and system settings are included in the final image. The HAL uses Buildroot's External Tree mechanism, where the cube-specific configurations are in `cube/hal/linux`.
 
 #### Load HAL Configuration
 
-Load the Cocos HAL configuration using the BR2_EXTERNAL mechanism:
-
+Load the Cube HAL configuration using the BR2_EXTERNAL mechanism:
 ```bash
-make BR2_EXTERNAL=../cocos/hal/linux cocos_defconfig
+make BR2_EXTERNAL=../cube/hal/linux cube_defconfig
 ```
 
-This loads the pre-configured settings optimized for Cocos confidential computing.
+This loads the pre-configured settings optimized for Cube confidential computing.
 
 #### Customize Configuration (Optional)
 
@@ -85,17 +84,13 @@ Navigate to `Target packages` → `Cube packages` → `cube-agent` to configure 
 - **Agent VMPL** - VM Privilege Level for SEV-SNP (typically `2`)
 - **Agent CA URL** - URL of the Certificate Authority for obtaining certificates (leave empty if using pre-embedded certs)
 - **Enable Attested TLS** - Enable mutual TLS with attestation (recommended for production)
-- **Server CA Certificates File** - Path to CA certificate file (default: `/etc/cube/certs/ca.pem`)
-- **Server Certificate File** - Path to server certificate (default: `/etc/cube/certs/server.crt`)
-- **Server Key File** - Path to server private key (default: `/etc/cube/certs/server.key`)
-- **Client CA Certificates File** - Path to client CA certificates (default: `/etc/cube/certs/client_ca.pem`)
 - **Certs Token** - Authentication token for certificate operations (required if using CA URL)
 - **CVM ID** - Confidential VM identifier (optional, auto-generated if empty)
 
 **Ollama Configuration:**
 
 - **ollama** - Ollama package dependency (automatically required when selected as LLM backend)
-- **Install default models** - Pre-install common models during build
+- **Install default models** - Current default models included are `tinyllama`, `starcoder2`, and `nomic-bert`)
 - **Custom models to install** - Specify additional models to include (comma-separated)
 - **Enable GPU support** - Enable GPU acceleration (requires compatible hardware)
 
@@ -108,13 +103,7 @@ Navigate to `Target packages` → `Cube packages` → `cube-agent` to configure 
 
 #### Save Configuration
 
-After customizing, save the configuration:
-
-```bash
-make savedefconfig
-```
-
-This updates the defconfig file with your changes.
+After customizing, save the configuration on the interface and exit.
 
 ### 3. Build the Image
 
@@ -124,7 +113,7 @@ Start the Buildroot build process:
 make -j$(nproc)
 ```
 
-**Build Time:** Expect 30-60 minutes for a full build depending on your system.
+**Build Time:** Expect ~1hr minutes for a full build depending on your system.
 
 **Output Files:**
 
@@ -158,7 +147,7 @@ Use the provided scripts to launch a CVM with your HAL image:
 
 See the [CVM Management](/developer-guide/cvm-management) guide for detailed CVM launch and monitoring instructions.
 
-### 6. Run the Cube AI Stack
+### 6. Run Cube AI Services
 
 Once the CVM boots, the Cube AI stack should start automatically via systemd services. Connect to verify:
 
@@ -171,47 +160,6 @@ systemctl status cube-agent
 
 # Verify Ollama is running
 curl http://localhost:11434/api/tags
-```
-
-## Updating HAL Images
-
-To update the HAL image with new certificates, packages, or configurations:
-
-1. Update the overlay directory in the Cocos repository: `cocos/hal/linux/board/cocos/`
-2. Modify Buildroot configuration if needed: `make BR2_EXTERNAL=../cocos/hal/linux menuconfig`
-3. Rebuild in the buildroot directory: `make -j$(nproc)`
-4. Redeploy the new images to `/etc/cube/`
-5. Restart CVMs to use the updated image
-
-## Troubleshooting
-
-### Build Fails with Missing Dependencies
-
-Install required build tools:
-
-```bash
-sudo apt-get update
-sudo apt-get install build-essential gcc make git bc cpio \
-    unzip rsync wget python3 libncurses-dev
-```
-
-### Kernel Build Errors
-
-Ensure kernel configuration is compatible with your target platform (TDX or SEV-SNP). Check `cocos/hal/linux/board/cocos/linux.config` for required kernel options.
-
-### Out of Disk Space
-
-Buildroot builds require significant space. Clean previous builds:
-
-```bash
-make clean
-```
-
-Or start fresh:
-
-```bash
-make distclean
-make BR2_EXTERNAL=../cocos/hal/linux cocos_defconfig
 ```
 
 ## Next Steps

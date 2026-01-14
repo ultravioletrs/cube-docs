@@ -9,7 +9,7 @@ sidebar_position: 5
 This guide explains how to start, monitor, and manage Confidential Virtual Machines (CVMs) for Cube AI using the Hardware Abstraction Layer (HAL) with Buildroot-based images and the provided management scripts. It is written as a practical, step-by-step reference so you can move from initial launch to ongoing operations without having to infer script behavior.
 
 :::info
-This guide is specifically for HAL-based CVM deployments using Buildroot images. It assumes you are running the HAL tooling locally and that your VM images follow the Buildroot layout. For public cloud deployments using cloud-init, please refer to the separate cloud deployment documentation instead.
+This guide is specifically for CVM deployments using Buildroot images. For public cloud deployments using cloud-init, please refer to the separate cloud deployment documentation instead.
 :::
 
 ---
@@ -74,11 +74,7 @@ This launches a TDX-protected VM with the following defaults. The higher resourc
 **Port Mappings:** These host ports forward into the CVM so you can reach services from the host without additional networking setup.
 
 - 6190 → 22 (SSH)
-- 6191 → 80 (HTTP)
-- 6192 → 443 (HTTPS)
 - 6193 → 7001 (Cube Agent)
-- 6194 → 11434 (Ollama)
-- 6195 → 8000 (vLLM)
 
 ---
 
