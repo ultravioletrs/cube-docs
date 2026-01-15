@@ -51,6 +51,7 @@ Buildroot configuration defines which packages, kernel options, and system setti
 #### Load HAL Configuration
 
 Load the Cube HAL configuration using the BR2_EXTERNAL mechanism:
+
 ```bash
 make BR2_EXTERNAL=../cube/hal/linux cube_defconfig
 ```
