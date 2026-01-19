@@ -14,27 +14,37 @@ Below is the architecture diagram created by the team:
 
 ## Core Components
 
-Cube AI consists of four primary components:
+Cube AI consists of five primary components:
 
-1. **SuperMQ Services**  
-   - Users Service  
-   - Auth Service  
-   - Domains Service  
+1. **SuperMQ Services**
 
-2. **Cube Proxy**  
-   - Secure request gateway  
-   - Domain-based routing  
-   - TEE access enforcement  
-   - Token validation  
+   - Users Service
+   - Auth Service
+   - Domains Service
 
-3. **LLM Backend**  
-   - Ollama  
-   - vLLM  
+2. **Cube Proxy**
 
-4. **Trusted Execution Environment (TEE)**  
-   - Protects models  
-   - Protects prompts and responses  
-   - Ensures confidentiality and integrity  
+   - Secure request gateway
+   - Domain-based routing
+   - TEE access enforcement
+   - Token validation
+
+3. **Guardrails Service**
+
+   - Input validation and filtering
+   - Output sanitization
+   - PII detection and redaction
+   - Jailbreak and prompt injection protection
+
+4. **LLM Backend**
+
+   - Ollama
+   - vLLM
+
+5. **Trusted Execution Environment (TEE)**
+   - Protects models
+   - Protects prompts and responses
+   - Ensures confidentiality and integrity
 
 ---
 
@@ -68,37 +78,72 @@ The **Cube Proxy** is the central entry point for all traffic.
 
 It is responsible for:
 
-- Verifying JWT tokens using the SuperMQ Auth Service  
-- Checking user permissions and domain membership  
-- Routing requests to the correct backend based on domain configuration  
-- Enforcing that all inference requests are executed **inside a Trusted Execution Environment**  
-- Normalizing requests to an OpenAI-compatible API shape  
+- Verifying JWT tokens using the SuperMQ Auth Service
+- Checking user permissions and domain membership
+- Routing requests to the correct backend based on domain configuration
+- Enforcing that all inference requests are executed **inside a Trusted Execution Environment**
+- Normalizing requests to an OpenAI-compatible API shape
 
 This component ensures that **no user ever interacts directly with Ollama or vLLM**, and that all inference happens under strict security controls.
 
 ---
 
-## 3. LLM Backends (Ollama & vLLM)
+## 3. Guardrails Service
+
+The **Guardrails Service** provides AI safety controls for all LLM interactions.
+
+### What Guardrails Protect Against
+
+- **Jailbreak Attempts:** Blocks prompts trying to bypass safety filters
+- **Prompt Injection:** Prevents manipulation of model behavior
+- **Toxic Content:** Filters abusive language and hate speech
+- **PII Exposure:** Detects and redacts sensitive personal information
+- **Harmful Content:** Blocks requests for illegal or dangerous information
+
+### Key Features
+
+- **Input Validation:** Filters malicious prompts before they reach the LLM
+- **Output Sanitization:** Validates and cleans LLM responses
+- **PII Detection:** Uses Microsoft Presidio for sensitive data detection
+- **Hot-Reload:** Update safety rules without service restarts
+- **Version Control:** Immutable configuration snapshots with rollback support
+
+### How It Works
+
+The Guardrails Service sits between the Cube Proxy and LLM backends:
+
+1. Requests pass through **input rails** for validation
+2. Clean requests are forwarded to the LLM
+3. Responses pass through **output rails** for sanitization
+4. Safe responses are returned to the client
+
+This ensures all AI interactions comply with safety policies and organizational guidelines.
+
+For more details on configuration and architecture, see the [Guardrails Developer Guide](developer-guide/guardrails.md).
+
+---
+
+## 4. LLM Backends (Ollama & vLLM)
 
 Cube AI supports two interchangeable inference engines.
 
 ### ✔ Ollama
 
-- Lightweight, local-friendly model runner  
-- Ideal for development or smaller environments  
-- Fast model switching and easy model packaging  
+- Lightweight, local-friendly model runner
+- Ideal for development or smaller environments
+- Fast model switching and easy model packaging
 
 ### ✔ vLLM
 
-- High-performance CUDA-accelerated inference  
-- Continuous batching for high throughput  
-- Supports larger models and production workloads  
+- High-performance CUDA-accelerated inference
+- Continuous batching for high throughput
+- Supports larger models and production workloads
 
 The backend used depends on the domain configuration and available hardware.
 
 ---
 
-## 4. Trusted Execution Environment (TEE)
+## 5. Trusted Execution Environment (TEE)
 
 The TEE is the foundation of Cube AI security.
 
@@ -129,17 +174,17 @@ This makes Cube AI fundamentally different from traditional LLM deployments.
 
 Below is the simplified flow of a request inside Cube AI:
 
-1. **Client UI / API Client / Continue (VS Code)**  
-2. → **Cube Proxy**  
-   - verifies token  
-   - loads domain configuration  
-   - validates permissions  
-3. → **TEE**  
-   - secures model execution  
-   - protects inputs and outputs  
-4. → **LLM Backend** (Ollama or vLLM)  
-5. → **TEE**  
-6. → **Cube Proxy**  
+1. **Client UI / API Client / Continue (VS Code)**
+2. → **Cube Proxy**
+   - verifies token
+   - loads domain configuration
+   - validates permissions
+3. → **TEE**
+   - secures model execution
+   - protects inputs and outputs
+4. → **LLM Backend** (Ollama or vLLM)
+5. → **TEE**
+6. → **Cube Proxy**
 7. → **Client**
 
 This pipeline ensures all sensitive operations remain inside the secure environment.
@@ -150,9 +195,10 @@ This pipeline ensures all sensitive operations remain inside the secure environm
 
 Cube AI combines:
 
-- SuperMQ for identity and domain management  
-- A secure Cube Proxy for routing, authorization, and TEE enforcement  
-- Flexible backend support (Ollama, vLLM)  
-- Trusted Execution Environments for confidential LLM execution  
+- SuperMQ for identity and domain management
+- A secure Cube Proxy for routing, authorization, and TEE enforcement
+- Guardrails Service for AI safety and compliance
+- Flexible backend support (Ollama, vLLM)
+- Trusted Execution Environments for confidential LLM execution
 
-Together, these components create a secure, scalable, multi-tenant platform for running LLMs with full data protection guarantees.
+Together, these components create a secure, scalable, multi-tenant platform for running LLMs with full data protection guarantees and AI safety controls.
