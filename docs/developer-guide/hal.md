@@ -146,6 +146,7 @@ sudo cp output/images/rootfs.ext4 /etc/cube/
 Once the images are deployed, use the CVM management scripts to launch a confidential VM and run the Cube AI stack.
 
 See the [CVM Management](/developer-guide/cvm-management) guide for:
+
 - Starting CVMs with AMD SEV-SNP or Intel TDX
 - Monitoring CVM health and status
 - Accessing services via SSH and port forwarding
