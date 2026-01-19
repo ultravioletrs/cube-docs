@@ -6,7 +6,7 @@ sidebar_position: 5
 
 ## Managing Confidential VMs
 
-This guide explains how to start, monitor, and manage Confidential Virtual Machines (CVMs) for Cube AI using the Hardware Abstraction Layer (HAL) with Buildroot-based images and the provided management scripts. It is written as a practical, step-by-step reference so you can move from initial launch to ongoing operations without having to infer script behavior.
+This guide explains how to start, monitor, and manage Confidential Virtual Machines (CVMs) for Cube AI using the Hardware Abstraction Layer (HAL) with Buildroot-based images and the provided management scripts.
 
 :::info
 This guide is specifically for CVM deployments using Buildroot images. For public cloud deployments using cloud-init, please refer to the separate cloud deployment documentation instead.
@@ -39,7 +39,7 @@ cd /path/to/cocos/hal/cloud
 This launches a standard KVM-accelerated VM with the following defaults. These settings are intended to be a reasonable baseline for development and smoke testing.
 
 - 10GB RAM, 4 CPU cores
-- Network port forwarding (SSH: 6190, HTTP: 6191, HTTPS: 6192)
+- Network port forwarding (SSH: 6190, Agent: 6193)
 - VirtIO networking and storage
 
 ### Starting an AMD SEV-SNP CVM
@@ -47,7 +47,7 @@ This launches a standard KVM-accelerated VM with the following defaults. These s
 For AMD Secure Encrypted Virtualization, use the SEV-SNP launch path. This mode enables hardware-backed memory protection for the guest.
 
 ```bash
-./qemu.sh start_cvm
+./qemu.sh start_sev
 ```
 
 This enables SEV-SNP memory encryption with the following configuration details. The settings align with typical SNP requirements for encrypted guest memory.
@@ -112,20 +112,12 @@ Launch the CVM without monitoring. This is useful if you only want a one-off run
 ./cvm-monitor.sh start
 ```
 
-#### Run Monitor in Foreground
+#### Run with Background Monitor
 
-Monitor the CVM interactively. Ctrl+C stops monitoring but leaves the CVM running, which makes this mode convenient for temporary observation.
-
-```bash
-./cvm-monitor.sh daemon
-```
-
-#### Run Monitor in Background
-
-Production mode - monitor runs detached in background. Use this when you want the monitor to persist across terminal sessions.
+Production mode - start CVM with monitor running detached in background. Use this when you want the monitor to persist across terminal sessions and auto-restart the CVM on failure.
 
 ```bash
-./cvm-monitor.sh background
+./cvm-monitor.sh start -d
 ```
 
 #### Stop CVM and Monitor
@@ -192,10 +184,10 @@ Ensure the output shows all of the expected checks passing. Each item correspond
 - ✓ QEMU binary found
 - ✓ KVM support available
 
-### 2. Start Monitor in Background
+### 2. Start CVM with Monitor
 
 ```bash
-./cvm-monitor.sh background
+./cvm-monitor.sh start -d
 ```
 
 This starts the CVM and enables auto-restart on failure. Once running, the monitor will continue to manage the process in the background.
@@ -222,8 +214,8 @@ Connect to services via the forwarded ports. These examples assume the default h
 # SSH into CVM
 ssh -p 6190 user@localhost
 
-# Access Ollama API
-curl http://localhost:6194/api/tags
+# Access Cube Agent API
+curl http://localhost:6193/health
 ```
 
 ---
@@ -242,7 +234,7 @@ Common issues include the following. Each one typically prevents QEMU from start
 
 - Missing kernel or rootfs files
 - Insufficient permissions on `/dev/kvm`
-- Port conflicts (another process using 6190-6195)
+- Port conflicts (another process using 6190 or 6193)
 
 **Solution:** Add user to `kvm` group. This grants permission to access KVM acceleration devices.
 

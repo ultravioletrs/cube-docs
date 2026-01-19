@@ -147,7 +147,7 @@ Use the provided scripts to launch a CVM with your HAL image:
 
 ```bash
 # For AMD SEV-SNP
-./qemu.sh start_cvm
+./qemu.sh start_sev
 
 # For Intel TDX
 ./qemu.sh start_tdx
@@ -166,8 +166,8 @@ ssh -p 6190 root@localhost
 # Check Cube Agent status
 systemctl status cube-agent
 
-# Verify Ollama is running
-curl http://localhost:11434/api/tags
+# Verify Cube Agent is responding
+curl http://localhost:7001/health
 ```
 
 ## Next Steps
