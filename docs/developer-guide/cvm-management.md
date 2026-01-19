@@ -32,7 +32,7 @@ Before starting a CVM, ensure the following files exist. These are the default p
 For testing without confidential computing features, use the standard VM mode. This helps confirm that your base image, kernel, and networking all work before adding enclave-specific requirements.
 
 ```bash
-cd /path/to/cocos/hal/cloud
+cd /path/to/cube/hal/cloud
 ./qemu.sh start
 ```
 
@@ -99,7 +99,7 @@ Edit these variables at the top of `cvm-monitor.sh` to customize behavior. Small
 VM_NAME="cube-ai-vm"                        # VM identifier
 CHECK_INTERVAL=30                           # Health check interval (seconds)
 LOG_DIR="/tmp/cube-logs"                    # Log file directory
-QEMU_SCRIPT="/path/to/cocos/hal/cloud/qemu.sh"  # Path to QEMU launch script
+QEMU_SCRIPT="/path/to/cube/hal/cloud/qemu.sh"  # Path to QEMU launch script
 ```
 
 ### Basic Usage

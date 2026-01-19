@@ -53,7 +53,7 @@ Buildroot configuration defines which packages, kernel options, and system setti
 Load the Cube HAL configuration using the BR2_EXTERNAL mechanism:
 
 ```bash
-make BR2_EXTERNAL=../cube/hal/linux cube_defconfig
+make BR2_EXTERNAL=../cube/hal/buildroot/linux cube_defconfig
 ```
 
 This loads the pre-configured settings optimized for Cube confidential computing.
@@ -141,34 +141,15 @@ sudo cp output/images/bzImage /etc/cube/
 sudo cp output/images/rootfs.ext4 /etc/cube/
 ```
 
-### 5. Boot Inside an SEV-SNP CVM
+### 5. Boot and Run Cube AI Services
 
-Use the provided scripts to launch a CVM with your HAL image:
+Once the images are deployed, use the CVM management scripts to launch a confidential VM and run the Cube AI stack.
 
-```bash
-# For AMD SEV-SNP
-./qemu.sh start_sev
-
-# For Intel TDX
-./qemu.sh start_tdx
-```
-
-See the [CVM Management](/developer-guide/cvm-management) guide for detailed CVM launch and monitoring instructions.
-
-### 6. Run Cube AI Services
-
-Once the CVM boots, the Cube AI stack should start automatically via systemd services. Connect to verify:
-
-```bash
-# SSH into the CVM
-ssh -p 6190 root@localhost
-
-# Check Cube Agent status
-systemctl status cube-agent
-
-# Verify Cube Agent is responding
-curl http://localhost:7001/health
-```
+See the [CVM Management](/developer-guide/cvm-management) guide for:
+- Starting CVMs with AMD SEV-SNP or Intel TDX
+- Monitoring CVM health and status
+- Accessing services via SSH and port forwarding
+- Production deployment workflows
 
 ## Next Steps
 
