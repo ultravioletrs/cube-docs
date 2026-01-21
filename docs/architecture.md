@@ -17,27 +17,32 @@ Below is the architecture diagram created by the team:
 Cube AI consists of five primary components:
 
 1. **SuperMQ Services**
+
    - Users Service
    - Auth Service
    - Domains Service
 
 2. **Cube Proxy**
+
    - Secure request gateway
    - Domain-based routing
    - TEE access enforcement
    - Token validation
 
 3. **Guardrails Service**
+
    - Input validation and filtering
    - Output sanitization
    - PII detection and redaction
    - Jailbreak and prompt injection protection
 
 4. **LLM Backend**
+
    - Ollama
    - vLLM
 
 5. **Trusted Execution Environment (TEE)**
+
    - Protects models
    - Protects prompts and responses
    - Ensures confidentiality and integrity
@@ -49,17 +54,21 @@ Cube AI consists of five primary components:
 Cube AI uses SuperMQ’s microservices as its identity and tenant-management layer.
 
 ### ✔ Users Service
+
 Stores user accounts, profile data, and associated metadata.
 
 ### ✔ Auth Service
+
 Issues JWT access tokens and validates them.  
 Cube Proxy uses this service to authenticate every request.
 
 ### ✔ Domains Service
+
 Each **domain** represents an isolated tenant (workspace).  
 Models, permissions, and policies are scoped per domain.
 
 ### Why this matters
+
 SuperMQ allows Cube AI to remain fully multi-tenant, scalable, and secure without duplicating identity logic.
 
 ---
@@ -69,6 +78,7 @@ SuperMQ allows Cube AI to remain fully multi-tenant, scalable, and secure withou
 The **Cube Proxy** is the central entry point for all LLM-related traffic.
 
 It is responsible for:
+
 - Verifying JWT tokens using the SuperMQ Auth Service
 - Checking user permissions and domain membership
 - Routing requests to the correct backend based on domain configuration
@@ -82,6 +92,7 @@ It is responsible for:
 The **Guardrails Service** provides AI safety controls for all LLM interactions.
 
 ### What Guardrails Protect Against
+
 - Jailbreak attempts
 - Prompt injection
 - Toxic content
@@ -89,6 +100,7 @@ The **Guardrails Service** provides AI safety controls for all LLM interactions.
 - Harmful content
 
 ### Key Features
+
 - Input validation
 - Output sanitization
 - PII detection (Microsoft Presidio)
@@ -100,10 +112,12 @@ The **Guardrails Service** provides AI safety controls for all LLM interactions.
 ## 4. LLM Backends (Ollama & vLLM)
 
 ### Ollama
+
 - Lightweight, local-friendly model runner
 - Ideal for development environments
 
 ### vLLM
+
 - High-performance CUDA-accelerated inference
 - Designed for production workloads
 
@@ -112,12 +126,14 @@ The **Guardrails Service** provides AI safety controls for all LLM interactions.
 ## 5. Trusted Execution Environment (TEE)
 
 ### What the TEE protects
+
 - User prompts
 - Model weights
 - Intermediate state
 - Responses before leaving the enclave
 
 ### Key guarantees
+
 - Confidentiality
 - Integrity
 - Remote attestation
@@ -139,6 +155,7 @@ The **Guardrails Service** provides AI safety controls for all LLM interactions.
 ## Summary
 
 Cube AI combines:
+
 - SuperMQ for identity and domain management
 - A secure Cube Proxy for routing and authorization
 - Guardrails Service for AI safety and compliance
