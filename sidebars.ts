@@ -57,7 +57,6 @@ const sidebars: SidebarsConfig = {
         'developer-guide/hal',
         'developer-guide/fine-tuning',
         'developer-guide/auth-and-request-flow',
-        'developer-guide/guardrails',
       ],
     },
   ],
