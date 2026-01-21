@@ -22,7 +22,7 @@ POST /proxy/{domain_id}/v1/completions
 
 ```bash
 curl -k https://localhost/proxy/<domain_id>/v1/completions \
-  -H "Authorization: Bearer <token>" \
+  -H "Authorization: Bearer <pat>" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "tinyllama:1.1b",
@@ -40,7 +40,7 @@ Returns an OpenAI-compatible `completion` object.
 
 ## Notes
 
-- Fully OpenAI-compatible request and response format
-- Executed inside a Trusted Execution Environment (TEE)
+- Requests are authenticated using **Personal Access Tokens (PATs)**
+- Executed inside a **Trusted Execution Environment (TEE)**
 - Domain-isolated execution
 - Prefer **Chat Completions** for conversational or structured prompts

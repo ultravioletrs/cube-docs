@@ -72,6 +72,8 @@ by a superadmin.
 
 Model availability depends on the vLLM runtime configuration.
 
+All requests are authenticated using **Personal Access Tokens (PATs)**.
+
 ---
 
 ## Endpoint
@@ -86,7 +88,7 @@ GET /proxy/{domain_id}/v1/models
 
 ```bash
 curl -k https://localhost/proxy/<domain_id>/v1/models \
-  -H "Authorization: Bearer <access_token>"
+  -H "Authorization: Bearer <pat>"
 ```
 
 ---
@@ -115,11 +117,12 @@ curl -k https://localhost/proxy/<domain_id>/v1/models \
 
 ## Notes
 
+- Requests are authenticated using **Personal Access Tokens (PATs)**
 - Models are **platform-wide**, not domain-specific
 - Model identifiers are backend-specific (Ollama / vLLM)
 - Models are added and removed by a **superadmin**
 - Cube AI does **not** manage model training or fine-tuning
-- All inference is executed inside a Trusted Execution Environment (TEE)
+- All inference runs inside a **Trusted Execution Environment (TEE)**
 
 ---
 

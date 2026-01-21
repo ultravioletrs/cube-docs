@@ -17,31 +17,25 @@ Before you begin, ensure you have:
 
 - A running **Cube AI** instance  
 - **OpenCode** installed locally  
-- A Cube AI user account with an authentication token  
+- A Cube AI user account with a **Personal Access Token (PAT)**  
 - A Cube AI domain with at least one coding-capable model pulled  
   (for example: Qwen Coder models)
 
 ---
 
-## 1. Get Your Authentication Token
+## 1. Create a Personal Access Token (PAT)
 
-If you do not already have a Cube AI access token, generate one from the UI:
+OpenCode uses a **Personal Access Token (PAT)** for authentication.
 
-**UI:**  
-`Profile → Tokens → Create Token`
+To create a PAT:
 
-Or via API:
+1. Log in to the Cube AI UI  
+2. Click your profile avatar  
+3. Navigate to **Profile → Personal Access Tokens**  
+4. Click **Create Token**  
+5. Copy and store the token securely  
 
-```bash
-curl -ksSiX POST https://<cube-ai-instance>/users/tokens/issue \
-  -H "Content-Type: application/json" \
-  -d '{
-    "username": "<your_email>",
-    "password": "<your_password>"
-  }'
-```
-
-Copy the `access_token` from the response.
+> PATs are long-lived and are the recommended authentication method for all integrations.
 
 ---
 
@@ -59,7 +53,7 @@ Pull a model using:
 
 ```bash
 curl -k -X POST https://<cube-ai-instance>/proxy/<your_domain_id>/api/pull \
-  -H "Authorization: Bearer <your_access_token>" \
+  -H "Authorization: Bearer <pat>" \
   -d '{
     "name": "qwen2.5-coder:7b-instruct-q4_K_M"
   }'
@@ -73,7 +67,7 @@ To list all models available in your domain:
 
 ```bash
 curl -k https://<cube-ai-instance>/proxy/<your_domain_id>/v1/models \
-  -H "Authorization: Bearer <your_access_token>"
+  -H "Authorization: Bearer <pat>"
 ```
 
 You should see the models you pulled earlier.
@@ -84,7 +78,7 @@ You should see the models you pulled earlier.
 
 Follow installation instructions from the official guide:
 
-[https://opencode.ai](https://opencode.ai)
+[OpenCode](https://opencode.ai)
 
 Once installed, OpenCode will create its configuration folder:
 
@@ -114,7 +108,7 @@ Add:
       "name": "Cube AI",
       "options": {
         "baseURL": "https://<cube-ai-instance>/proxy/<your_domain_id>/v1",
-        "apiKey": "<your_access_token>"
+        "apiKey": "<pat>"
       },
       "models": {
         "qwen2.5-coder:7b-instruct-q4_K_M": {
@@ -132,7 +126,7 @@ Add:
 
 - `<cube-ai-instance>` → usually `localhost`  
 - `<your_domain_id>` → the domain ID  
-- `<your_access_token>` → your Cube AI token  
+- `<pat>` → your Cube AI **Personal Access Token**  
 
 ### Important
 
@@ -148,59 +142,32 @@ In the OpenCode editor, run:
 opencode /models
 ```
 
-You should see something like:
+You should see your Cube AI models listed.
 
-![OpenCode Models](/img/opencode-models.png)
-
-Select any model (example: `cube/qwen2.5-coder:7b-instruct-q4_K_M`).
-
-Try a simple request:
-
-![OpenCode Example](/img/opencode-example.png)
-
----
-
-## Supported Features
-
-### ✅ Code Generation
-
-Autocompletions, refactors, rewrites, explanations.
-
-### ✅ Chat
-
-General AI interaction, reasoning, documentation queries.
-
-### ✅ Tools (if the model supports them)
-
-File operations, command execution, multi-step workflows.
+Try a simple prompt to verify everything works.
 
 ---
 
 ## Troubleshooting
 
-### ❌ Connection refused
-
-- Ensure Cube AI is running (`make up`)  
-- Check firewall rules  
-- Verify HTTPS/TLS configuration  
-
 ### ❌ Authentication error
 
-- Token may have expired  
-- Ensure `"Authorization: Bearer"` header is present  
-- Confirm the token belongs to the correct domain  
+- Ensure the **PAT** is valid  
+- Verify `"Authorization: Bearer <pat>"` is sent internally  
+- Confirm the token belongs to a user with access to the domain  
 
-### ❌ Certificate errors (self-signed certs)
+### ❌ Connection issues
 
-If running locally:
-
-- Import your local CA certificate, or  
-- Temporarily use **HTTP** during development  
+- Ensure Cube AI is running (`make up`)  
+- Verify HTTPS/TLS configuration  
+- Check firewall rules  
 
 ---
 
 ## Summary
 
-You have now successfully connected OpenCode to your Cube AI instance.  
-This setup allows you to use powerful open-source coding models locally with full
-**privacy**, **TEE security**, and **domain isolation**.
+You have successfully connected OpenCode to your Cube AI instance using
+**Personal Access Tokens (PATs)**.
+
+This setup enables secure, private, and domain-isolated coding assistance
+powered by Cube AI models.
