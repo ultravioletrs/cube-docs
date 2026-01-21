@@ -5,17 +5,24 @@ title: Chat Completions
 
 Cube AI supports OpenAI-compatible **Chat Completions** for conversational LLM usage.
 
+All requests are authenticated using **Personal Access Tokens (PATs)** and executed
+inside **Trusted Execution Environments (TEEs)**.
+
+---
+
 ## Endpoint
 
 ```http
 POST /proxy/{domain_id}/v1/chat/completions
 ```
 
+---
+
 ## Example Request
 
 ```bash
 curl -k https://localhost/proxy/<domain_id>/v1/chat/completions \
-  -H "Authorization: Bearer <access_token>" \
+  -H "Authorization: Bearer <pat>" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "tinyllama:1.1b",
@@ -24,6 +31,8 @@ curl -k https://localhost/proxy/<domain_id>/v1/chat/completions \
     ]
   }'
 ```
+
+---
 
 ## Example Response
 
@@ -51,8 +60,11 @@ curl -k https://localhost/proxy/<domain_id>/v1/chat/completions \
 }
 ```
 
+---
+
 ## Notes
 
+- Requests are authenticated using **Personal Access Tokens (PATs)**
 - All requests are executed inside a **Trusted Execution Environment (TEE)**
 - Requests are **fully domain-isolated**
 - The API follows the OpenAI Chat Completions schema

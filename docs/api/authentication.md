@@ -4,64 +4,64 @@ title: Authentication
 sidebar_position: 2
 ---
 
-Cube AI uses **token-based authentication** provided by the SuperMQ Users and Auth services.
-All API requests must be authenticated using a valid **access token**.
+Cube AI uses **token-based authentication** with **Personal Access Tokens (PATs)**.
 
+All API requests must be authenticated using a valid PAT.  
 Authentication is **required** before interacting with any Cube AI API endpoint.
 
 ---
 
 ## Overview
 
-Cube AI authentication works in two steps:
+Cube AI authentication is based on **long-lived Personal Access Tokens (PATs)**:
 
-1. **Issue an access token** using your username and password
-2. **Use the access token** in API requests via the Cube AI proxy
+- PATs are issued to a **user**
+- PATs are used for **all API access, integrations, and development workflows**
+- API access is **scoped by domain**, not by the token itself
 
-Authentication is **user-based**, while access to models and APIs is **scoped by domain**.
-
----
-
-## Issuing an Access Token
-
-To obtain an access token, send a request to the Users service:
-
-```bash
-curl -ksSiX POST https://<cube-ai-instance>/users/tokens/issue \
-  -H "Content-Type: application/json" \
-  -d '{
-    "username": "<your_email>",
-    "password": "<your_password>"
-  }'
-```
-
-### Response
-
-```json
-{
-  "access_token": "<jwt_access_token>",
-  "refresh_token": "<jwt_refresh_token>"
-}
-```
-
-- `access_token` is used for API calls
-- `refresh_token` can be used to obtain a new access token when it expires
+This approach avoids frequent re-authentication and is recommended for all external usage.
 
 ---
 
-## Using the Access Token
+## Personal Access Tokens (Recommended)
 
-All Cube AI API requests must include the access token as a Bearer token:
+**Personal Access Tokens (PATs)** are long-lived tokens intended for:
+
+- API access
+- CLI tools
+- IDE integrations (Continue, OpenCode, etc.)
+- Automation and scripts
+
+PATs replace short-lived access tokens for all documented API usage.
+
+---
+
+## Creating a Personal Access Token
+
+To create a PAT:
+
+1. Log in to the Cube AI UI
+2. Click your profile avatar in the top-right corner
+3. Navigate to **Profile → Personal Access Tokens**
+4. Click **Create Token**
+5. Copy and store the token securely
+
+> PATs are shown **only once**. Make sure to store them securely.
+
+---
+
+## Using a Personal Access Token
+
+All Cube AI API requests must include the PAT as a Bearer token:
 
 ```http
-Authorization: Bearer <access_token>
+Authorization: Bearer <pat>
 ```
 
 Example:
 
 ```bash
-curl -k https://<cube-ai-instance>/users \
-  -H "Authorization: Bearer <access_token>"
+curl -k https://<cube-ai-instance>/users   -H "Authorization: Bearer <pat>"
 ```
 
 ---
@@ -79,8 +79,7 @@ All OpenAI-compatible API requests must be sent to:
 Example:
 
 ```bash
-curl -k https://<cube-ai-instance>/proxy/<domain_id>/v1/models \
-  -H "Authorization: Bearer <access_token>"
+curl -k https://<cube-ai-instance>/proxy/<domain_id>/v1/models   -H "Authorization: Bearer <pat>"
 ```
 
 The domain determines:
@@ -93,20 +92,35 @@ The domain determines:
 
 ## Token Scope and Security
 
-- Tokens are **issued per user**
+- PATs are **issued per user**
+- PATs are **long-lived**
 - Domains control **model visibility and permissions**
 - Tokens must be kept **secret**
 - Tokens should be transmitted only over **HTTPS**
 
-> For local development, Cube AI may run with self-signed certificates.
+> For local development, Cube AI may run with self-signed certificates.  
 > In production, valid TLS certificates are required.
+
+---
+
+## Short-Lived Access Tokens (UI Only)
+
+Cube AI may issue **short-lived JWT access tokens** internally for UI login sessions.
+
+These tokens:
+
+- Are managed automatically by the UI
+- Are **not intended for direct API usage**
+- Are **not documented** for external integrations
+
+All documentation examples use **Personal Access Tokens (PATs)**.
 
 ---
 
 ## Summary
 
-- Cube AI uses **JWT-based authentication**
-- Tokens are issued via the **Users service**
-- All API calls require `Authorization: Bearer <token>`
+- Cube AI uses **Personal Access Tokens (PATs)** for authentication
+- PATs are created via the Cube AI UI
+- All API calls require `Authorization: Bearer <pat>`
 - Model APIs are accessed via the **domain proxy**
-- Authentication and domain isolation are core security features of Cube AI
+- Domain isolation and PAT-based access are core security features of Cube AI

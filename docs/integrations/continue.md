@@ -24,10 +24,10 @@ This guide explains how to connect Continue with a Cube AI domain.
 ## 1. Install Requirements
 
 1. Install **Visual Studio Code**  
-   [https://code.visualstudio.com](https://code.visualstudio.com)
+   https://code.visualstudio.com
 
 2. Install the **Continue** extension  
-   [https://www.continue.dev](https://www.continue.dev)
+   https://www.continue.dev
 
    ![Continue VS Code Marketplace](/img/continue-marketplace.png)
 
@@ -55,8 +55,8 @@ This opens the configuration file:
 
 Replace the contents of `config.yaml` with the configuration below.
 
-Before editing the file, make sure you have generated a Cube AI access token.
-You can obtain it from the Cube AI UI under **Profile → Tokens**.
+Before editing the file, make sure you have created a **Personal Access Token (PAT)**.
+You can create one from the Cube AI UI under **Profile → Personal Access Tokens**.
 
 ```yaml
 name: Cube AI
@@ -67,7 +67,7 @@ models:
   - name: tinyllama
     provider: ollama
     model: tinyllama:1.1b
-    apiKey: <access_token>
+    apiKey: <pat>
     apiBase: https://<your-cube-instance>/proxy/<your-domain-id>
     requestOptions:
       verifySsl: false
@@ -75,7 +75,7 @@ models:
   - name: starcoder2
     provider: ollama
     model: starcoder2:7b
-    apiKey: <access_token>
+    apiKey: <pat>
     apiBase: https://<your-cube-instance>/proxy/<your-domain-id>
     requestOptions:
       verifySsl: false
@@ -91,9 +91,9 @@ context:
 
 ### Replace
 
-- `<access_token>` → your Cube AI access token  
-- `<your-cube-instance>` → usually `localhost`  
-- `<your-domain-id>` → the domain ID you want VS Code to use  
+- `<pat>` → your Cube AI **Personal Access Token**
+- `<your-cube-instance>` → usually `localhost`
+- `<your-domain-id>` → the domain ID you want VS Code to use
 
 > `verifySsl: false` should be used **only for local development**.
 
@@ -123,7 +123,7 @@ Example prompts:
 
 - Ensure Cube AI is running (`make up`)  
 - Verify that the domain exists  
-- Check that your access token is valid  
+- Check that your **PAT** is valid  
 
 ### SSL issues
 
@@ -141,4 +141,4 @@ For production deployments, always use valid TLS certificates.
 ## 6. Video Tutorial
 
 A complete walkthrough is available here:  
-[https://www.youtube.com/watch?v=BGpv_iTB2NE](https://www.youtube.com/watch?v=BGpv_iTB2NE)
+https://www.youtube.com/watch?v=BGpv_iTB2NE

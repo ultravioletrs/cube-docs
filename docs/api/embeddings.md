@@ -16,6 +16,8 @@ This is the problem that **Embeddings** and **Retrieval-Augmented Generation (RA
 > In a RAG setup, storing embeddings and retrieving relevant context is handled
 > by the application or integration layer outside of Cube AI.
 
+All requests are authenticated using **Personal Access Tokens (PATs)**.
+
 ---
 
 ## The Problem LLMs Have
@@ -68,7 +70,7 @@ POST /proxy/{domain_id}/v1/embeddings
 
 ```bash
 curl -k https://localhost/proxy/<domain_id>/v1/embeddings \
-  -H "Authorization: Bearer <access_token>" \
+  -H "Authorization: Bearer <pat>" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "nomic-embed-text:v1.5",
@@ -107,7 +109,7 @@ Each request must include a Bearer token issued for a specific domain.
 
 ```bash
 curl -k https://localhost/proxy/<domain_id>/v1/embeddings \
-  -H "Authorization: Bearer <access_token>" \
+  -H "Authorization: Bearer <pat>" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "nomic-embed-text:v1.5",
@@ -123,7 +125,7 @@ The returned vector is stored in a vector database outside of Cube AI.
 
 ```bash
 curl -k https://localhost/proxy/<domain_id>/v1/embeddings \
-  -H "Authorization: Bearer <access_token>" \
+  -H "Authorization: Bearer <pat>" \
   -H "Content-Type: application/json" \
   -d '{
     "model": "nomic-embed-text:v1.5",
@@ -155,3 +157,12 @@ Cube AI then generates an answer grounded in the internal documentation.
 - Embeddings and inference run inside a Trusted Execution Environment (TEE)
 - The LLM answers questions using retrieved, relevant context
 - Hallucinations are reduced and answers are verifiable
+
+---
+
+### Notes
+
+- Requests are authenticated using **Personal Access Tokens (PATs)**
+- Embeddings are **domain-scoped**
+- Input text is processed securely inside a **Trusted Execution Environment (TEE)**
+- Use embedding models such as `nomic-embed-text` for best results

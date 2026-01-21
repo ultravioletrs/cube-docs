@@ -32,13 +32,21 @@ https://localhost/proxy/451477f5-828f-46ca-b3fc-c59d6fd34797/v1
 
 Cube AI uses **Bearer token authentication**.
 
-You must include an access token in the `Authorization` header for every request:
+For all API usage, integrations, and development workflows, Cube AI uses
+**Personal Access Tokens (PATs)**.
+
+You must include a PAT in the `Authorization` header for every request:
 
 ```http
-Authorization: Bearer <access_token>
+Authorization: Bearer <pat>
 ```
 
-Tokens can be issued using the Users service or via the Cube AI UI.
+Personal Access Tokens can be created from the Cube AI UI under:
+
+**Profile → Personal Access Tokens**
+
+> PATs are **long-lived tokens** and are the recommended authentication method
+> for all external API access.
 
 ---
 
@@ -72,7 +80,9 @@ This guarantees that:
 Cube AI is suitable for privacy-sensitive workloads in enterprise, healthcare, finance,
 and regulated environments.
 
-Additionally, all requests pass through the **Guardrails Service** for input validation and output sanitization. See the [Guardrails Developer Guide](../developer-guide/guardrails.md) for details.
+Additionally, all requests pass through the **Guardrails Service** for input validation
+and output sanitization. See the
+[Guardrails Developer Guide](../developer-guide/guardrails.md) for details.
 
 ---
 

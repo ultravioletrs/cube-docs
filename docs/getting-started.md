@@ -102,7 +102,23 @@ Available models depend on your backend configuration (Ollama or vLLM).
 
 ---
 
-## 7. What's Next?
+## 7. Create a Personal Access Token (PAT)
+
+For API usage, integrations, and development workflows, Cube AI uses **Personal Access Tokens (PATs)**.
+
+To create a PAT:
+
+1. Click your profile avatar in the top-right corner
+2. Open **Profile → Personal Access Tokens**
+3. Click **Create Token**
+4. Copy and store the token securely
+
+> PATs are **long-lived tokens** and are the recommended authentication method
+> for all external API access.
+
+---
+
+## 8. What's Next?
 
 Now that you have created a domain and used the chat interface, you can explore:
 
@@ -110,7 +126,7 @@ Now that you have created a domain and used the chat interface, you can explore:
 - Assigning roles
 - Creating additional domains
 - Backend configuration (Ollama / vLLM)
-- API access
+- API access using Personal Access Tokens (PATs)
 
 For VS Code and development tooling, continue to the:
 

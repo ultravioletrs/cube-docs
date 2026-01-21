@@ -22,7 +22,7 @@ POST /proxy/{domain_id}/v1/audio/transcriptions
 
 ```bash
 curl -k https://localhost/proxy/<domain_id>/v1/audio/transcriptions \
-  -H "Authorization: Bearer <token>" \
+  -H "Authorization: Bearer <pat>" \
   -H "Content-Type: multipart/form-data" \
   -F "file=@audio.wav" \
   -F "model=whisper"

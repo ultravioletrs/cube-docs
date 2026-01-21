@@ -43,6 +43,10 @@ All processing runs inside a **Trusted Execution Environment (TEE)**, ensuring t
 
 ---
 
+All requests are authenticated using **Personal Access Tokens (PATs)**.
+
+---
+
 ## Endpoint
 
 ```http
@@ -58,11 +62,7 @@ POST /proxy/{domain_id}/v1/audio/translations
 Translate an audio file (e.g., WAV) using a model that supports speech recognition and translation:
 
 ```bash
-curl -k https://localhost/proxy/<domain_id>/v1/audio/translations \
-  -H "Authorization: Bearer <access_token>" \
-  -H "Content-Type: multipart/form-data" \
-  -F "file=@speech.wav" \
-  -F "model=whisper-1"
+curl -k https://localhost/proxy/<domain_id>/v1/audio/translations   -H "Authorization: Bearer <pat>"   -H "Content-Type: multipart/form-data"   -F "file=@speech.wav"   -F "model=whisper-1"
 ```
 
 ---
@@ -72,10 +72,7 @@ curl -k https://localhost/proxy/<domain_id>/v1/audio/translations \
 Translate a text string between languages:
 
 ```bash
-curl -k https://localhost/proxy/<domain_id>/v1/translations \
-  -H "Authorization: Bearer <access_token>" \
-  -H "Content-Type: application/json" \
-  -d '{
+curl -k https://localhost/proxy/<domain_id>/v1/translations   -H "Authorization: Bearer <pat>"   -H "Content-Type: application/json"   -d '{
     "model": "gpt-4o-mini-translator",
     "source_language": "en",
     "target_language": "sr",
@@ -105,6 +102,7 @@ Example (text translation):
 
 ## Notes
 
+- Requests are authenticated using **Personal Access Tokens (PATs)**
 - Translations run inside a **Trusted Execution Environment (TEE)**.
 - Supported models and languages depend on backend configuration (Ollama / vLLM).
 - Cube AI does **not** define new languages — it exposes models that support translation.
