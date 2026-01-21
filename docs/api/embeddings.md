@@ -43,9 +43,6 @@ In simple terms:
 
 > Embeddings make text **searchable by meaning**, not just by keywords.
 
-Cube AI embeddings are generated in a secure execution environment, ensuring
-that input text and resulting vectors remain confidential.
-
 ---
 
 ## What Is RAG?
@@ -57,98 +54,13 @@ that input text and resulting vectors remain confidential.
 3. Retrieved content is injected into an LLM prompt
 4. The LLM generates an answer grounded in that context
 
-RAG allows LLMs to answer questions using **your data**, rather than guessing.
-
----
-
-## Trusted Execution Environments (TEE)
-
-A Trusted Execution Environment (TEE) is a secure, isolated execution context
-provided by modern CPUs. It ensures that code and data remain protected from
-the host operating system, hypervisor, and other workloads running on the same
-machine.
-
-In Cube AI, TEEs are used to protect:
-
-- user prompts
-- embedding inputs
-- generated vectors
-- intermediate model outputs
-
-This is especially important in RAG workflows, where sensitive internal
-documents are embedded and used as context for LLM prompts. By running
-embedding generation and inference inside a TEE, Cube AI ensures that neither
-raw text nor derived vectors can be accessed by infrastructure operators or
-other tenants.
-
-For more details on Trusted Execution Environments (TEEs), see:
-
-- [Trusted Execution Environment (Wikipedia)](https://en.wikipedia.org/wiki/Trusted_execution_environment)
-
----
-
-## How RAG Works with Cube AI
-
-![RAG flow with Cube AI](/img/rag-flow.png)
-
-A typical RAG flow using Cube AI looks like this:
-
-1. Documents are split into chunks by the application
-2. Each chunk is converted into an embedding using Cube AI
-3. Embeddings are stored in a vector database (outside of Cube AI)
-4. A user asks a question
-5. The application retrieves the most relevant chunks
-6. Cube AI generates an answer using the retrieved context
-
-LLM inference and embeddings generation stay inside your Cube AI deployment.
-
----
-
-## Why Use RAG with Cube AI?
-
-Using RAG with Cube AI enables:
-
-- chat over internal documentation
-- question answering over PDFs and files
-- AI assistants for support and operations
-- safer and more accurate LLM responses
-- no data leakage to external model providers
-
----
-
-## Common Use Cases
-
-### Internal Documentation Assistant
-
-Ask questions about internal docs, wikis, or README files.
-
-### Support & Helpdesk Bots
-
-Answer customer questions using company knowledge bases.
-
-### Codebase Search
-
-Query large repositories using natural language.
-
-### Knowledge-Based AI Assistants
-
-Build enterprise-grade assistants backed by private data.
-
 ---
 
 ## Embeddings API Reference
 
-The embeddings endpoint allows you to generate vector representations of text.
-These vectors can be used for semantic search, clustering, retrieval-augmented
-generation (RAG), and similarity comparisons.
-
----
-
 ### Endpoint
 
-```http
 POST /proxy/{domain_id}/v1/embeddings
-```
 
 ---
 
@@ -166,24 +78,80 @@ curl -k https://localhost/proxy/<domain_id>/v1/embeddings \
 
 ---
 
-### Response
+## Real-World Example: Internal Documentation Search
 
-Returns an OpenAI-compatible `embeddings` response object containing one or more
-embedding vectors.
+This example demonstrates a simple, real-life use case for embeddings and RAG
+using Cube AI.
+
+### Scenario
+
+You have internal documentation and want to answer the following question:
+
+**How does Cube AI authentication work?**
+
+The documentation must remain private and must not be sent to external LLM
+providers.
 
 ---
 
-### Notes
+### Step 1: Prepare a Document Chunk
 
-- Embeddings are **domain-scoped**
-- Input text is processed securely inside a Trusted Execution Environment (TEE)
-- Cube AI does **not** store embeddings or perform retrieval
-- Use embedding models such as `nomic-embed-text` for best results
+```text
+Cube AI uses domain-scoped access tokens for authentication.
+Each request must include a Bearer token issued for a specific domain.
+```
 
 ---
 
-## Next Steps
+### Step 2: Generate an Embedding for the Document
 
-- Combine Embeddings with **Chat Completions**
-- Explore available **Models**
-- Build a complete RAG pipeline using Cube AI integrations
+```bash
+curl -k https://localhost/proxy/<domain_id>/v1/embeddings \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "nomic-embed-text:v1.5",
+    "input": "Cube AI uses domain-scoped access tokens for authentication."
+  }'
+```
+
+The returned vector is stored in a vector database outside of Cube AI.
+
+---
+
+### Step 3: Generate an Embedding for the User Question
+
+```bash
+curl -k https://localhost/proxy/<domain_id>/v1/embeddings \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "nomic-embed-text:v1.5",
+    "input": "How does Cube AI authentication work?"
+  }'
+```
+
+---
+
+### Step 4: Retrieve Relevant Context
+
+```text
+Cube AI uses domain-scoped access tokens for authentication.
+Each request must include a Bearer token issued for a specific domain.
+```
+
+---
+
+### Step 5: Generate the Final Answer (RAG)
+
+The retrieved text is injected into a chat completion prompt.
+Cube AI then generates an answer grounded in the internal documentation.
+
+---
+
+### Why This Works
+
+- Private documents never leave your Cube AI environment
+- Embeddings and inference run inside a Trusted Execution Environment (TEE)
+- The LLM answers questions using retrieved, relevant context
+- Hallucinations are reduced and answers are verifiable

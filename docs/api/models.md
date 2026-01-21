@@ -3,19 +3,20 @@ id: models
 title: Models
 ---
 
-Cube AI exposes language models through a **domain-scoped models registry**.
+Cube AI exposes language models through a **platform-wide models registry**.
 
-In Cube AI, a *domain* represents an isolated workspace that groups users,
-permissions, configuration, and available models. Each domain has its own
-isolated view of which models are available for inference.
+Models are managed at the **platform level** and are shared across domains.
+Domains do not own models, but can reference and use models that are available
+on the platform.
 
-This endpoint allows clients to discover which models can be used within
-a specific Cube AI domain (workspace).
+This endpoint allows clients to discover which models are available for
+inference within Cube AI.
 
 Models in Cube AI are used by:
 
 - Chat Completions
 - Continue (VS Code integration)
+- OpenCode
 - Direct API-based inference
 
 > **Cube AI scope**
@@ -34,14 +35,24 @@ Models in Cube AI are used by:
 A *model* in Cube AI represents a **deployable inference target** exposed by the
 configured backend.
 
+Models are **platform-wide** and are made available by a superadmin.
+Once registered, models can be used by any domain according to platform
+policies and permissions.
+
 The available models depend on:
 
-- Domain configuration
 - Selected backend (**Ollama** or **vLLM**)
-- Models that have been pulled, loaded, or registered by the operator
+- Models that have been pulled, loaded, or registered by a **superadmin**
+- Backend runtime configuration
 
-Each domain has an **isolated view** of available models, meaning that models
-enabled in one domain are not automatically visible or accessible in another.
+---
+
+## Model Management
+
+Models are added or removed by a **superadmin**.
+
+Regular users and domains cannot register or modify models, but can list and
+use models that are available on the platform.
 
 ---
 
@@ -52,12 +63,12 @@ enabled in one domain are not automatically visible or accessible in another.
 When using Ollama as a backend, models are referenced by their Ollama identifiers
 (e.g. `tinyllama:1.1b`, `starcoder2:3b`).
 
-Models must be pulled into Ollama before they appear in Cube AI.
+Models must be pulled into Ollama by a superadmin before they appear in Cube AI.
 
 ### vLLM
 
 When using vLLM, models correspond to server-side model deployments configured
-by the operator.
+by a superadmin.
 
 Model availability depends on the vLLM runtime configuration.
 
@@ -104,9 +115,9 @@ curl -k https://localhost/proxy/<domain_id>/v1/models \
 
 ## Notes
 
-- Models are **domain-scoped**, meaning their visibility and usage are limited
-  to the domain (workspace) in which they are configured
+- Models are **platform-wide**, not domain-specific
 - Model identifiers are backend-specific (Ollama / vLLM)
+- Models are added and removed by a **superadmin**
 - Cube AI does **not** manage model training or fine-tuning
 - All inference is executed inside a Trusted Execution Environment (TEE)
 
@@ -116,4 +127,5 @@ curl -k https://localhost/proxy/<domain_id>/v1/models \
 
 - Use models with **Chat Completions**
 - Connect models to **Continue for VS Code**
+- Use models with **OpenCode**
 - Explore **Embeddings** for semantic search workflows
