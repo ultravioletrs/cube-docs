@@ -43,7 +43,7 @@ Authorization: Bearer <pat>
 
 Personal Access Tokens can be created from the Cube AI UI under:
 
-**Profile → Personal Access Tokens**
+## Profile → Personal Access Tokens
 
 > PATs are **long-lived tokens** and are the recommended authentication method
 > for all external API access.
