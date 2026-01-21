@@ -72,6 +72,8 @@ This guarantees that:
 Cube AI is suitable for privacy-sensitive workloads in enterprise, healthcare, finance,
 and regulated environments.
 
+Additionally, all requests pass through the **Guardrails Service** for input validation and output sanitization. See the [Guardrails Developer Guide](../developer-guide/guardrails.md) for details.
+
 ---
 
 ## Compatibility Note

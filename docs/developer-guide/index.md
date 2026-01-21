@@ -19,5 +19,6 @@ as private model upload and fine-tuning.
 - **Hardware Abstraction Layer (HAL)**
 - **Private Model Upload**
 - **Fine-Tuning Models**
+- **Guardrails** - AI safety controls for input validation and output sanitization
 
 Use the sidebar to navigate through each topic.
