@@ -19,6 +19,7 @@ Create a new routing rule.
 **Authentication:** Required (Superadmin only)
 
 **Request Body:**
+
 ```json
 {
   "name": "my-service",
@@ -37,6 +38,7 @@ Create a new routing rule.
 ```
 
 **Response:** `201 Created`
+
 ```json
 {
   "message": "route created successfully"
@@ -44,6 +46,7 @@ Create a new routing rule.
 ```
 
 **Error Responses:**
+
 - `400 Bad Request` - Invalid route configuration
 - `401 Unauthorized` - Not authenticated
 - `403 Forbidden` - Not a superadmin
@@ -60,6 +63,7 @@ Retrieve a specific route by name.
 **Authentication:** Required (Superadmin only)
 
 **Response:** `200 OK`
+
 ```json
 {
   "name": "my-service",
@@ -78,6 +82,7 @@ Retrieve a specific route by name.
 ```
 
 **Error Responses:**
+
 - `401 Unauthorized` - Not authenticated
 - `403 Forbidden` - Not a superadmin
 - `404 Not Found` - Route not found
@@ -93,6 +98,7 @@ List all configured routes.
 **Authentication:** Required (Superadmin only)
 
 **Response:** `200 OK`
+
 ```json
 [
   {
@@ -121,6 +127,7 @@ List all configured routes.
 ```
 
 **Error Responses:**
+
 - `401 Unauthorized` - Not authenticated
 - `403 Forbidden` - Not a superadmin
 
@@ -135,6 +142,7 @@ Update an existing routing rule.
 **Authentication:** Required (Superadmin only)
 
 **Request Body:**
+
 ```json
 {
   "name": "my-service",
@@ -153,6 +161,7 @@ Update an existing routing rule.
 ```
 
 **Response:** `200 OK`
+
 ```json
 {
   "message": "route updated successfully"
@@ -160,6 +169,7 @@ Update an existing routing rule.
 ```
 
 **Error Responses:**
+
 - `400 Bad Request` - Invalid route configuration
 - `401 Unauthorized` - Not authenticated
 - `403 Forbidden` - Not a superadmin or attempting to modify system route
@@ -177,6 +187,7 @@ Delete a routing rule.
 **Authentication:** Required (Superadmin only)
 
 **Response:** `200 OK`
+
 ```json
 {
   "message": "route deleted successfully"
@@ -184,6 +195,7 @@ Delete a routing rule.
 ```
 
 **Error Responses:**
+
 - `401 Unauthorized` - Not authenticated
 - `403 Forbidden` - Not a superadmin or attempting to delete system route
 - `404 Not Found` - Route not found
@@ -194,20 +206,21 @@ Delete a routing rule.
 
 ### Route Fields
 
-| Field | Type | Required | Description |
-|-------|------|----------|-------------|
-| `name` | string | Yes | Unique identifier for the route (alphanumeric, hyphens, underscores only, max 255 chars) |
-| `target_url` | string | Yes | Backend service URL (must include scheme and host) |
-| `matchers` | array | Conditional | Array of matching conditions (required unless `default_rule` is true) |
-| `priority` | integer | No | Route priority (0-1000, higher = checked first, default: 0) |
-| `default_rule` | boolean | No | If true, matches when no other routes match (default: false) |
-| `strip_prefix` | string | No | Path prefix to remove before forwarding (must start with /) |
+| Field       | Type    | Required  | Description                                                                                           |
+| ----------- | ------- | --------- | ----------------------------------------------------------------------------------------------------- |
+| `name`      | string  | Yes       | Unique identifier for the route (alphanumeric, hyphens, underscores only, max 255 chars)            |
+| `target_url` | string | Yes       | Backend service URL (must include scheme and host)                                                   |
+| `matchers`  | array   | Conditional | Array of matching conditions (required unless `default_rule` is true)                               |
+| `priority`  | integer | No        | Route priority (0-1000, higher = checked first, default: 0)                                         |
+| `default_rule` | boolean | No     | If true, matches when no other routes match (default: false)                                         |
+| `strip_prefix` | string | No     | Path prefix to remove before forwarding (must start with /)                                         |
 
 ### Matcher Conditions
 
 Routes can match requests based on various conditions:
 
 #### Path Matching
+
 ```json
 {
   "condition": "path",
@@ -217,6 +230,7 @@ Routes can match requests based on various conditions:
 ```
 
 #### HTTP Method Matching
+
 ```json
 {
   "condition": "method",
@@ -226,6 +240,7 @@ Routes can match requests based on various conditions:
 ```
 
 #### Header Matching
+
 ```json
 {
   "condition": "header",
@@ -236,6 +251,7 @@ Routes can match requests based on various conditions:
 ```
 
 #### Query Parameter Matching
+
 ```json
 {
   "condition": "query_param",
@@ -246,6 +262,7 @@ Routes can match requests based on various conditions:
 ```
 
 #### Body Field Matching (JSON)
+
 ```json
 {
   "condition": "body_field",
@@ -256,6 +273,7 @@ Routes can match requests based on various conditions:
 ```
 
 #### Body Regex Matching
+
 ```json
 {
   "condition": "body_regex",
@@ -297,6 +315,7 @@ Routes can match requests based on various conditions:
 ### System Routes
 
 The following routes are protected and cannot be modified or deleted:
+
 - `attestation` - Attestation service routes
 - `health` - Health check routes
 
@@ -372,6 +391,7 @@ curl -X POST http://localhost:8900/api/routes \
 Routes can be defined in `config.json` and will be loaded at startup. Database routes take precedence over config file routes with the same name.
 
 Example `config.json`:
+
 ```json
 {
   "router": {
