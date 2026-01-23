@@ -35,6 +35,7 @@ const sidebars: SidebarsConfig = {
         'api/embeddings',
         'api/speech-to-text',
         'api/translations',
+        'api/routes',
       ],
     },
 
