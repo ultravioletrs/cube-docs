@@ -206,14 +206,14 @@ Delete a routing rule.
 
 ### Route Fields
 
-| Field          | Type    | Required    | Description                                                                                           |
-| -------------- | ------- | ----------- | ----------------------------------------------------------------------------------------------------- |
-| `name`         | string  | Yes         | Unique identifier for the route (alphanumeric, hyphens, underscores only, max 255 chars)            |
-| `target_url`   | string  | Yes         | Backend service URL (must include scheme and host)                                                   |
-| `matchers`     | array   | Conditional | Array of matching conditions (required unless `default_rule` is true)                               |
-| `priority`     | integer | No          | Route priority (0-1000, higher = checked first, default: 0)                                         |
-| `default_rule` | boolean | No          | If true, matches when no other routes match (default: false)                                         |
-| `strip_prefix` | string  | No          | Path prefix to remove before forwarding (must start with /)                                         |
+| Field          | Type    | Required    | Description                                                                              |
+| -------------- | ------- | ----------- | ---------------------------------------------------------------------------------------- |
+| `name`         | string  | Yes         | Unique identifier for the route (alphanumeric, hyphens, underscores only, max 255 chars) |
+| `target_url`   | string  | Yes         | Backend service URL (must include scheme and host)                                       |
+| `matchers`     | array   | Conditional | Array of matching conditions (required unless `default_rule` is true)                    |
+| `priority`     | integer | No          | Route priority (0-1000, higher = checked first, default: 0)                              |
+| `default_rule` | boolean | No          | If true, matches when no other routes match (default: false)                             |
+| `strip_prefix` | string  | No          | Path prefix to remove before forwarding (must start with /)                              |
 
 ### Matcher Conditions
 
