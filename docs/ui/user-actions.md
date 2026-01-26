@@ -12,87 +12,106 @@ operations.
 
 ## Login
 
-### Purpose
+### Login purpose
+
 Authenticate to Cube AI using an email and password.
 
-### Where in the UI
+### Login location in the UI
+
 Login page.
 
 ![Cube AI login screen](/img/getting-started-login.png)
 
-### Steps
+### Login steps
+
 1. Open the Cube AI UI.
 2. Enter your email address and password.
 3. Click **Sign in**.
 
-### Expected result
+### Login expected result
+
 You are authenticated and redirected to the dashboard or your last active domain.
 
 ---
 
 ## Sign up
 
-### Purpose
+### Sign up purpose
+
 Create a new Cube AI user account.
 
-### Steps
+### Sign up steps
+
 1. Open the Cube AI UI.
 2. Click **Sign up**.
 3. Enter your email address and password.
 4. Submit the registration form.
 
-### Expected result
+### Sign up expected result
+
 A new account is created and a verification email is sent.
 
 ---
 
 ## Account verification
 
-### Purpose
+### Account verification purpose
+
 Verify ownership of the email address associated with a user account.
 
-### How it works
+### Account verification how it works
+
 After registration, Cube AI sends a verification email containing a secure link.
 
-### Steps
+### Account verification steps
+
 1. Open the verification email.
 2. Click the verification link.
 3. Return to the Cube AI UI.
 
-### Expected result
+### Account verification expected result
+
 The account is marked as verified and full access is enabled.
 
 ---
 
 ## Password reset
 
-### Purpose
+### Password reset purpose
+
 Regain access to an account if the password is forgotten.
 
-### Where in the UI
+### Password reset location in the UI
+
 Login page → **Forgot password**.
 
-### Steps
+### Password reset steps
+
 1. Click **Forgot password**.
 2. Enter your email address.
 3. Follow the instructions received by email.
 
-### Expected result
+### Password reset expected result
+
 You can set a new password and log in again.
 
 ---
 
 ## Profile management
 
-### Purpose
+### Profile management purpose
+
 Manage personal account settings.
 
-### How to access
+### Profile management how to access
+
 After logging in, users can access profile-related actions from the user menu in
 the UI (typically available via the user icon).
 
-### Available actions
+### Profile management available actions
+
 Depending on configuration and permissions, users may be able to:
+
 - View their account information
 - Update personal details
 - Change their password
@@ -106,12 +125,15 @@ membership or role assignments.
 
 ## Logout
 
-### Purpose
+### Logout purpose
+
 End the current authenticated session.
 
-### Steps
+### Logout steps
+
 1. Open the user menu.
 2. Click **Log out**.
 
-### Expected result
+### Logout expected result
+
 The session is terminated and the user is redirected to the login page.

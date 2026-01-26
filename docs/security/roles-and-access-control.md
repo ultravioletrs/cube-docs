@@ -15,6 +15,7 @@ actions are performed only by authorized users.
 Access control in Cube AI is **domain-scoped**.
 
 This means that:
+
 - Users can belong to one or more domains
 - A user may have different roles in different domains
 - Permissions apply only within the currently active domain
@@ -57,6 +58,7 @@ permissions granted by the user’s role.
 Users must be members of a domain to access its resources.
 
 Within a domain:
+
 - Each user is assigned a specific role
 - Role assignments apply only to that domain
 - Removing a user from a domain immediately revokes domain access
@@ -71,6 +73,7 @@ with sufficient permissions.
 The Cube AI UI adapts based on the active user’s role.
 
 Depending on permissions:
+
 - Certain navigation items may be hidden
 - Some actions may be disabled or unavailable
 - Administrative sections may only be visible to authorized users
@@ -82,6 +85,7 @@ This ensures that users only interact with features they are allowed to access.
 ## Role Changes
 
 When a user’s role is updated:
+
 - The change takes effect immediately
 - UI visibility and available actions are updated accordingly
 - No page reload may be required, depending on the UI state
@@ -93,6 +97,7 @@ Role changes affect only the selected domain.
 ## Access Control and Security
 
 Role-based access control helps enforce security boundaries by:
+
 - Limiting access to sensitive operations
 - Reducing the risk of accidental or unauthorized changes
 - Ensuring clear separation of responsibilities within a domain

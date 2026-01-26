@@ -32,6 +32,7 @@ or within the context of an active domain.
 Users begin by accessing the Cube AI login screen.
 
 After successful authentication:
+
 - The user is redirected to the dashboard
 - Available domains are displayed
 - The user selects or creates a domain to continue
@@ -48,6 +49,7 @@ profile management are documented in:
 Once a domain is opened, the UI switches into **domain context**.
 
 Within this context:
+
 - All visible resources belong to the active domain
 - Available actions depend on the user’s role in that domain
 - Models and services are scoped to the domain
@@ -79,6 +81,7 @@ Each workflow is documented in its respective section of the UI documentation.
 Access to UI features is controlled by role-based permissions.
 
 Depending on their assigned role, users may be able to:
+
 - Create or manage domains
 - Invite or manage other users
 - Access administrative or security features
@@ -94,6 +97,7 @@ Role definitions and permissions are covered in:
 Cube AI provides visibility into security-relevant actions through audit logs.
 
 Audit logs help track:
+
 - User activity
 - Domain-level changes
 - Security-sensitive operations
@@ -117,6 +121,7 @@ such as the Chat UI, is available in:
 ## Next Steps
 
 To continue exploring the Cube AI UI:
+
 - Start with **UI → Domains** to understand domain workflows
 - Review **UI → User Actions** for account-related operations
 - Explore **Security & Access** for roles and auditing features
