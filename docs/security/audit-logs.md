@@ -15,6 +15,7 @@ requirements.
 
 Audit logs record important events that occur within the Cube AI system,
 particularly those related to:
+
 - User activity
 - Domain-level changes
 - Access control and security-sensitive operations
@@ -36,6 +37,7 @@ Depending on configuration and permissions, audit logs may include events such a
 - Security-related configuration changes
 
 Each audit log entry typically captures:
+
 - The type of action performed
 - The user who performed the action
 - The affected resource or domain
@@ -72,6 +74,7 @@ observability rather than real-time monitoring.
 Visibility into audit logs depends on the user’s role within a domain.
 
 Typically:
+
 - Administrative roles can view audit logs
 - Standard users may not have access to audit information
 
@@ -85,6 +88,7 @@ For more details on role-based permissions, see:
 All audit log entries are associated with a specific domain.
 
 When switching domains:
+
 - The visible audit logs change accordingly
 - Only events related to the active domain are shown
 
@@ -97,6 +101,7 @@ This ensures isolation and clarity when managing multiple domains.
 Audit logging is a key component of Cube AI’s security posture.
 
 By maintaining a record of critical actions, audit logs help:
+
 - Detect misuse or misconfiguration
 - Support forensic analysis
 - Demonstrate accountability and operational transparency

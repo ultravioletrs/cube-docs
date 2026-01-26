@@ -16,6 +16,7 @@ sharing the same Cube AI deployment.
 ## What is a Domain?
 
 A **domain** acts as an isolated environment that groups:
+
 - Users and their roles
 - Models and backend configurations
 - Chat and inference activity
@@ -31,6 +32,7 @@ After logging in, users are presented with the Cube AI dashboard, where availabl
 domains are listed.
 
 From the dashboard, users can:
+
 - Open an existing domain
 - Create a new domain (if permitted)
 
@@ -62,6 +64,7 @@ Once opened, you are redirected into the domain workspace.
 After opening a domain, the UI switches into the domain context.
 
 Inside a domain, users can:
+
 - Access the chat interface
 - Select and interact with available models
 - Perform domain-scoped operations
@@ -75,6 +78,7 @@ Navigation within the domain is handled through the left-side menu.
 ## Domain Context
 
 The active domain determines:
+
 - Which users and roles apply
 - Which models are available
 - Which resources and actions are visible in the UI
@@ -115,6 +119,7 @@ A common user flow in Cube AI looks like this:
 ## Next Steps
 
 After creating and entering a domain, you can explore:
+
 - User actions and profile management
 - Role-based access control
 - Audit logs and security events
