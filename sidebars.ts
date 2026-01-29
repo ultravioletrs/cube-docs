@@ -63,6 +63,27 @@ const sidebars: SidebarsConfig = {
         'developer-guide/auth-and-request-flow',
       ],
     },
+
+    // --- UI ---
+    {
+      type: 'category',
+      label: 'UI',
+      items: [
+        'ui/overview',
+        'ui/domains',
+        'ui/user-actions',
+      ],
+    },
+
+    // --- Security & Access ---
+    {
+      type: 'category',
+      label: 'Security & Access',
+      items: [
+        'security/roles-and-access-control',
+        'security/audit-logs',
+      ],
+    },
   ],
 };
 
