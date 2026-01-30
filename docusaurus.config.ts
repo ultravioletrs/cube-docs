@@ -52,7 +52,11 @@ const config: Config = {
                     remarkPlugins: [math],
                     rehypePlugins: [katex],
                 },
-                blog: false,
+                blog: {
+                    routeBasePath: '/blog',
+                    blogSidebarCount: 'ALL',
+                    blogSidebarTitle: 'All posts',
+                },
                 theme: {
                     customCss: './src/css/custom.css',
                 },
@@ -86,6 +90,7 @@ const config: Config = {
                     position: 'left',
                     label: 'Docs',
                 },
+                { to: '/blog', label: 'Blog', position: 'left' },
                 {
                     href: 'https://github.com/ultravioletrs/cube',
                     label: 'GitHub',
