@@ -134,4 +134,4 @@ By combining the power of open-weights models (like Llama 3, Mistral) with the h
 
 ---
 
-*Ready to secure your AI workloads? Check out our [Getting Started](../docs/getting-started.md) guide or explore the [Attestation Documentation](../docs/attestation.md).*
+*Ready to secure your AI workloads? Check out our [Getting Started](/docs/getting-started) guide or explore the [Attestation Documentation](/docs/attestation).*
