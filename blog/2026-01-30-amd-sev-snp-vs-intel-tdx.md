@@ -29,6 +29,8 @@ AMD SEV-SNP is the third generation of AMD's confidential computing technology. 
 *   **Integrity Protection**: "Secure Nested Paging" (SNP) adds strong integrity protection to prevent hypervisors from remapping memory (e.g., integrity checks on page table lookups).
 *   **VMPL (Virtual Machine Privilege Levels)**: SEV-SNP introduces VMPL rings (0-3), allowing a guest VM to run a "paravisor" or other privileged components within the CVM that are more privileged than the guest OS but less privileged than the hardware root of trust.
 
+**Further Reading**: [AMD SEV-SNP Specification](https://www.amd.com/en/technologies/se/secure-encrypted-virtualization) | [AMD Secure Processor Technical Reference](https://developer.amd.com/sev/)
+
 ### Intel TDX (Trust Domain Extensions)
 
 Intel TDX creates an architectural isolation boundary known as a **Trust Domain (TD)**.
@@ -36,6 +38,8 @@ Intel TDX creates an architectural isolation boundary known as a **Trust Domain 
 *   **Key Mechanism**: The **Intel TDX Module** is a software module that runs in a special CPU mode (SEAM - Secure Arbitration Mode) to manage valid transitions between the host and the guest (TD).
 *   **MKTME (Multi-Key Total Memory Encryption)**: Uses AES-128-XTS encryption engines in the memory controller.
 *   **Measurement**: TDX provides a comprehensive measurement of the initial VM state, including the firmware (TDVF) and the kernel.
+
+**Further Reading**: [Intel TDX Overview](https://www.intel.com/content/www/us/en/architecture-and-technology/trust-domain-extensions.html) | [Intel TDX Module Documentation](https://software.intel.com/content/www/us/en/develop/download/intel-trust-domain-extension-module-documentation.html)
 
 ## Feature Comparison
 
