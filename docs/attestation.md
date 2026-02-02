@@ -76,8 +76,8 @@ Through these logs, users can audit completed aTLS handshakes and verify that no
 
 This design ensures that:
 
-*   Plaintext input is visible only inside the TEE
-*   Sensitive data and AI workloads are processed exclusively within the enclave
-*   The host OS, hypervisor, and cloud provider cannot access user data
-*   No manual attestation steps are required from users
-*   The client can trust the identity and integrity of the remote service
+* Plaintext input is visible only inside the TEE
+* Sensitive data and AI workloads are processed exclusively within the enclave
+* The host OS, hypervisor, and cloud provider cannot access user data
+* No manual attestation steps are required from users
+* The client can trust the identity and integrity of the remote service
