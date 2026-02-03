@@ -46,8 +46,8 @@ Intel TDX creates an architectural isolation boundary known as a **Trust Domain 
 | Feature | AMD SEV-SNP | Intel TDX |
 | :--- | :--- | :--- |
 | **Isolation Boundary** | VM (with VMPLs) | Trust Domain (TD) |
-| **Memory Encryption** | AES-128 (Engine in Memory Controller) | AES-128-XTS (MKTME) |
-| **Attestation Root** | AMD Secure Processor (ASP) | Intel TDX Module / QuickAssist |
+| **Memory Encryption** | AES-128 / AES-256 XTS (Engine in Memory Controller) | AES-128-XTS (MKTME) |
+| **Attestation Root** | AMD Secure Processor (ASP) | SGX Quoting Enclave (QE) |
 | **Register State** | Encrypted (SEV-ES) | Managed by hardware/TDX Module |
 | **Key Management** | Cloud Provider independent (mostly) | Cloud Provider independent |
 
