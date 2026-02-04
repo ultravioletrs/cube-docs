@@ -62,7 +62,9 @@ In simple terms:
 
 ### Endpoint
 
+```
 POST /proxy/{domain_id}/v1/embeddings
+```
 
 ---
 
