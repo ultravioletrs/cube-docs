@@ -1,6 +1,6 @@
 ---
 id: overview
-title: UI Overview
+title: UI Concepts Overview
 sidebar_position: 1
 ---
 

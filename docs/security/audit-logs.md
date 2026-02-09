@@ -35,6 +35,7 @@ Depending on configuration and permissions, audit logs may include events such a
 - Role assignments or updates
 - Administrative actions performed through the UI
 - Security-related configuration changes
+- Model interactions and inference requests
 
 Each audit log entry typically captures:
 
@@ -52,6 +53,24 @@ permissions.
 
 Access to audit logs is restricted to authorized roles to ensure sensitive
 information is not exposed to unauthorized users.
+
+![Audit logs page](/img/ui/audit-logs.png)
+
+---
+
+## Audit Logs in the UI
+
+Audit logs are available from the Cube AI user interface within the context of an
+active domain.
+
+Depending on system activity and configuration, the audit log table may initially
+appear empty until relevant events occur, such as:
+
+- Model interactions (LLM requests)
+- Role or membership changes
+- Administrative or security-related actions
+
+This behavior is expected and does not indicate an error.
 
 ---
 

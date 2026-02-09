@@ -78,6 +78,8 @@ Depending on permissions:
 - Some actions may be disabled or unavailable
 - Administrative sections may only be visible to authorized users
 
+![Domain members and role assignment](/img/ui/domain-members-roles.png)
+
 This ensures that users only interact with features they are allowed to access.
 
 ---

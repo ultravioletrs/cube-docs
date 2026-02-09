@@ -1,6 +1,7 @@
 ---
 id: ui-overview
-title: UI Overview
+title: UI Walkthrough
+sidebar_position: 2
 ---
 
 This section provides a high-level overview of the Cube AI user interface and

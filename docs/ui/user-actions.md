@@ -20,7 +20,7 @@ Authenticate to Cube AI using an email and password.
 
 Login page.
 
-![Cube AI login screen](/img/getting-started-login.png)
+![Cube AI login screen](/img/ui/login.png)
 
 ### Login steps
 
@@ -46,6 +46,9 @@ Create a new Cube AI user account.
 2. Click **Sign up**.
 3. Enter your email address and password.
 4. Submit the registration form.
+
+
+![Sign up screen](/img/ui/signup.png)
 
 ### Sign up expected result
 
@@ -85,6 +88,8 @@ Regain access to an account if the password is forgotten.
 
 Login page → **Forgot password**.
 
+![Password reset screen](/img/ui/password-reset.png)
+
 ### Password reset steps
 
 1. Click **Forgot password**.
@@ -94,6 +99,32 @@ Login page → **Forgot password**.
 ### Password reset expected result
 
 You can set a new password and log in again.
+
+---
+
+## Change password
+
+### Change password purpose
+
+Update the account password while logged in.
+
+### Change password location in the UI
+
+Profile page → **Password** tab.
+
+![Change password screen](/img/ui/change-password.png)
+
+### Change password steps
+
+1. Open the user profile page.
+2. Navigate to the **Password** section.
+3. Enter your current password.
+4. Enter and confirm the new password.
+5. Click **Update**.
+
+### Change password expected result
+
+The password is updated successfully and applies immediately.
 
 ---
 

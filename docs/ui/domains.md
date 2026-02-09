@@ -36,6 +36,8 @@ From the dashboard, users can:
 - Open an existing domain
 - Create a new domain (if permitted)
 
+![Domain selection dashboard](/img/ui/domains.png)
+
 The currently active domain defines the scope of all actions in the UI.
 
 For a step-by-step onboarding flow, see:
@@ -55,7 +57,7 @@ To create a new domain:
 
 Once opened, you are redirected into the domain workspace.
 
-![Create domain screen](/img/getting-started-create-domain.png)
+![Domain creation screen](/img/ui/domains.png)
 
 ---
 
@@ -71,7 +73,7 @@ Inside a domain, users can:
 
 Navigation within the domain is handled through the left-side menu.
 
-![Chat interface](/img/getting-started-chat.png)
+![Chat interface](/img/ui/chat.png)
 
 ---
 
