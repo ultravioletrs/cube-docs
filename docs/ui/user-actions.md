@@ -47,7 +47,6 @@ Create a new Cube AI user account.
 3. Enter your email address and password.
 4. Submit the registration form.
 
-
 ![Sign up screen](/img/ui/signup.png)
 
 ### Sign up expected result
