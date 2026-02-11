@@ -1,14 +1,12 @@
 ---
 id: roles-and-access-control
-title: Roles and Access Control
 sidebar_position: 1
+title: Roles and Access Control
 ---
 
-Cube AI uses role-based access control (RBAC) to manage what users can see and do
-within a domain. Roles define permissions at the domain level and ensure that
-actions are performed only by authorized users.
-
----
+Cube AI uses role-based access control (RBAC) to manage what users can
+see and do within a domain. Roles define permissions at the domain level
+and ensure that actions are performed only by authorized users.
 
 ## Role-Based Access Control Overview
 
@@ -22,55 +20,168 @@ This means that:
 
 Roles determine which UI features and actions are available to a user.
 
----
-
 ## Roles in Cube AI
 
-Cube AI provides a set of predefined roles that control access to domain features.
+Each domain includes a default **Admin** role, which has full control
+over domain resources. The domain creator is automatically assigned the
+Admin role.
 
-While the exact role names and permissions may vary depending on deployment and
-configuration, roles typically differentiate between:
+In addition to the default role, administrators can create custom roles
+with fine-grained permissions.
 
-- **Administrative users** – users with elevated permissions
-- **Standard users** – users with access to core functionality
-- **Restricted users** – users with limited or read-only access
+## Managing Roles
 
----
+Roles can be created and customized within each domain.
 
-## Common Permissions
+To manage roles:
 
-Roles may control access to actions such as:
+1. Open a domain.
+2. Navigate to **Roles** in the left-side menu.
 
-- Creating or managing domains
-- Inviting or managing domain members
-- Assigning or changing user roles
-- Accessing administrative UI sections
-- Viewing or managing security-related information
-- Interacting with models and chat interfaces
+![Roles list page](/img/ui/roles.png)
 
-Not all users have access to all features. The UI dynamically reflects the
-permissions granted by the user’s role.
+The Roles page displays:
 
----
+- Role name
+- Created by
+- Created at
+- Updated by
+- Updated at
 
-## Domain Membership
+### Creating a Domain Role
 
-Users must be members of a domain to access its resources.
+To create a new role:
 
-Within a domain:
+1. Click **Create**.
+2. Enter a **Role name**.
+3. Select one or more **Actions** (permissions).
+4. Optionally assign existing **Members**.
+5. Click **Create**.
 
-- Each user is assigned a specific role
-- Role assignments apply only to that domain
-- Removing a user from a domain immediately revokes domain access
+![Create domain role modal](/img/ui/create-role.png)
 
-Domain membership and role assignments are managed through the Cube AI UI by users
-with sufficient permissions.
+### Role Permissions (Actions)
 
----
+Domain role actions are grouped as follows. This list may vary depending
+on deployment configuration.
+
+#### Domain Management
+
+- update
+- enable
+- disable
+- read
+- delete
+
+#### Role Management
+
+- manage_role
+- add_role_users
+- remove_role_users
+- view_role_users
+
+#### Client Management
+
+- client_create
+- client_update
+- client_read
+- client_delete
+
+#### Channel Management
+
+- channel_create
+- channel_update
+- channel_read
+- channel_delete
+
+#### Group Management
+
+- group_create
+- group_update
+- group_read
+- group_delete
+
+![Role actions selection](/img/ui/role-actions.png)
+
+### Editing a Role
+
+Once created, roles can be modified from their respective role pages.
+
+Users with sufficient permissions can:
+
+- Update the role name
+- Add or remove actions
+- Assign or remove members
+
+Role updates take effect immediately within the domain.
+
+![Domain role details page](/img/ui/role-details.png)
+
+## Inviting Domain Members
+
+Domain administrators can invite users to join a domain.
+
+1. Open a domain.
+2. Navigate to **Invitations**.
+3. Click **Send Invitation**.
+
+![Invitations page](/img/ui/invitations.png)
+
+### Sending an Invitation
+
+1. Select a user.
+2. Select a domain role.
+3. Click **Send**.
+
+![Send invitation modal](/img/ui/invite-member.png)
+
+After sending:
+
+- The invitation appears in the list
+- Its status is set to **Pending**
+- The user must accept the invitation before gaining access
+
+## Accepting an Invitation
+
+An invited user must accept the invitation before becoming a domain
+member.
+
+Acceptance is performed either via an email confirmation link or within
+the UI, depending on deployment configuration.
+
+![Accept invitation screen](/img/ui/accept-invite.png)
+
+Once accepted:
+
+- The user becomes a member of the domain
+- The assigned role is applied immediately
+
+## Assigning Roles to Members
+
+Administrators can assign roles directly from the **Members** section.
+
+1. Navigate to **Members**.
+2. Click **Assign User**.
+3. Select a user and role.
+4. Click **Assign**.
+
+![Members page](/img/ui/members.png)
+
+![Assign user modal](/img/ui/assign-user.png)
+
+## Removing Members
+
+To remove a member from a domain:
+
+1. Navigate to **Members**.
+2. Locate the user.
+3. Use the available actions to remove the member.
+
+Removing a member immediately revokes access to domain resources.
 
 ## UI Behavior Based on Roles
 
-The Cube AI UI adapts based on the active user’s role.
+The Cube AI UI adapts based on the active user's role.
 
 Depending on permissions:
 
@@ -80,48 +191,16 @@ Depending on permissions:
 
 ![Domain members and role assignment](/img/ui/domain-members-roles.png)
 
-This ensures that users only interact with features they are allowed to access.
+## Auditing Role-Related Events
 
----
+Changes to domain membership and roles may be recorded as
+security-relevant events.
 
-## Role Changes
-
-When a user’s role is updated:
-
-- The change takes effect immediately
-- UI visibility and available actions are updated accordingly
-- No page reload may be required, depending on the UI state
-
-Role changes affect only the selected domain.
-
----
-
-## Access Control and Security
-
-Role-based access control helps enforce security boundaries by:
-
-- Limiting access to sensitive operations
-- Reducing the risk of accidental or unauthorized changes
-- Ensuring clear separation of responsibilities within a domain
-
-RBAC works together with other Cube AI security mechanisms, such as authentication
-and auditing, to provide a controlled and observable environment.
-
----
-
-## Auditing and Role-Related Events
-
-Changes to domain membership and roles may be recorded as security-relevant events.
-
-For details on how such events are tracked, see:
-👉 **Security & Access → Audit Logs**
-
----
+For details on how such events are tracked, see: 👉 **Security & Access → Audit Logs**
 
 ## Next Steps
 
 To understand how access-related actions are monitored, continue with:
 👉 **Security & Access → Audit Logs**
 
-For domain workflows, see:
-👉 **UI → Domains**
+For domain workflows, see: 👉 **UI → Domains**
