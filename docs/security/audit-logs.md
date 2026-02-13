@@ -37,12 +37,34 @@ Depending on configuration and permissions, audit logs may include events such a
 - Security-related configuration changes
 - Model interactions and inference requests
 
+### TEE Attestation and Attested mTLS Events
+
+![TEE attestation audit event example](/img/ui/audit-tee-attestation.png)
+
+For model workloads running inside a Trusted Execution Environment (TEE),
+Cube AI establishes secure connections using **attested mutual TLS (mTLS)**.
+
+The following secure interactions are recorded in audit logs:
+
+- Attested mTLS handshake between the Cube AI proxy and the TEE agent  
+- Attested mTLS handshake between the client and the TEE agent  
+- Verification of TEE attestation evidence  
+- Secure session establishment for LLM inference requests  
+
+All attested TLS handshakes are recorded as audit events.
+
+Each such event includes metadata about the handshake and allows viewing
+the associated attestation report for that TEE session.
+
+These records provide cryptographic proof that model inference
+was executed within a verified and trusted environment.
+
 Each audit log entry typically captures:
 
-- The type of action performed
-- The user who performed the action
-- The affected resource or domain
-- A timestamp of when the action occurred
+- The type of action performed  
+- The user who performed the action  
+- The affected resource or domain  
+- A timestamp of when the action occurred  
 
 ---
 
@@ -69,6 +91,7 @@ appear empty until relevant events occur, such as:
 - Model interactions (LLM requests)
 - Role or membership changes
 - Administrative or security-related actions
+- TEE attestation and secure handshake events
 
 This behavior is expected and does not indicate an error.
 
@@ -81,6 +104,7 @@ Audit logs can be used to:
 - Review recent administrative activity
 - Investigate unexpected behavior or configuration changes
 - Track access-related events
+- Verify secure model execution within a TEE
 - Support security reviews and incident analysis
 
 Audit logs provide an immutable record of events and are intended for
@@ -124,6 +148,7 @@ By maintaining a record of critical actions, audit logs help:
 - Detect misuse or misconfiguration
 - Support forensic analysis
 - Demonstrate accountability and operational transparency
+- Provide traceability for confidential LLM workloads executed inside a TEE
 
 ---
 

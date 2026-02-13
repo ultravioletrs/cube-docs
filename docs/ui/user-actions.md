@@ -61,9 +61,10 @@ A new account is created and a verification email is sent.
 
 Verify ownership of the email address associated with a user account.
 
-### Account verification how it works
+### How it works
 
-After registration, Cube AI sends a verification email containing a secure link.
+After registration, Cube AI may send a verification email containing a secure link,
+depending on the deployment configuration.
 
 ### Account verification steps
 
@@ -87,17 +88,24 @@ Regain access to an account if the password is forgotten.
 
 Login page → **Forgot password**.
 
-![Password reset screen](/img/ui/password-reset.png)
+![Forgot password screen](/img/ui/forgot-password.png)
 
 ### Password reset steps
 
-1. Click **Forgot password**.
+1. Click **Forgot password** on the login page.
 2. Enter your email address.
-3. Follow the instructions received by email.
+3. Click **Send reset link**.
+4. Open the password reset email.
+5. Click the reset link.
+6. Enter a new password.
+7. Confirm the new password.
+8. Submit the form.
 
 ### Password reset expected result
 
-You can set a new password and log in again.
+The password is successfully updated and the user can log in using the new password.
+
+> Note: The password reset form is accessed through the secure link sent to the registered email address.
 
 ---
 
@@ -135,6 +143,8 @@ Manage personal account settings.
 
 ### Profile management how to access
 
+![User profile page](/img/ui/profile-page.png)
+
 After logging in, users can access profile-related actions from the user menu in
 the UI (typically available via the user icon).
 
@@ -160,6 +170,8 @@ membership or role assignments.
 End the current authenticated session.
 
 ### Logout steps
+
+![User menu with Log out option](/img/ui/user-menu-logout.png)
 
 1. Open the user menu.
 2. Click **Log out**.

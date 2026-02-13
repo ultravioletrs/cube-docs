@@ -8,8 +8,8 @@ The Cube AI user interface provides a web-based environment for interacting with
 large language models, managing domains, and performing user and
 domain-scoped operations.
 
-This section gives a high-level overview of the Cube AI UI structure and common
-user workflows.
+This section provides both a conceptual overview and a visual walkthrough
+of the Cube AI UI.
 
 ---
 
@@ -18,18 +18,22 @@ user workflows.
 The Cube AI UI is organized around a few core concepts:
 
 - **Authentication** – users log in using their credentials
-- **Domains** – isolated workspaces that define context and scope
-- **Navigation** – access to domain-specific features through the UI menu
-- **Actions** – user and domain operations performed through the interface
+- **Domains** – isolated workspaces that define execution context
+- **Navigation** – domain-scoped features available through the sidebar
+- **Actions** – operations performed within the UI based on permissions
 
-All user interactions occur either before selecting a domain (authentication)
-or within the context of an active domain.
+All interactions occur either:
+
+- Before selecting a domain (authentication phase), or  
+- Within the context of an active domain (domain phase)
 
 ---
 
 ## Authentication Flow
 
 Users begin by accessing the Cube AI login screen.
+
+![Cube AI login screen](/img/ui/login.png)
 
 After successful authentication:
 
@@ -40,7 +44,7 @@ After successful authentication:
 Account-related actions such as sign up, verification, password reset, and
 profile management are documented in:
 
-👉 **UI → User Actions**
+👉 [User Actions](./user-actions)
 
 ---
 
@@ -51,28 +55,59 @@ Once a domain is opened, the UI switches into **domain context**.
 Within this context:
 
 - All visible resources belong to the active domain
-- Available actions depend on the user’s role in that domain
-- Models and services are scoped to the domain
+- Available models and services are scoped to the domain
+- Visible actions depend on the user's assigned role
 
 Switching domains updates the entire UI context accordingly.
 
-For more details, see:
-👉 **UI → Domains**
+![Domain selection screen](/img/ui/domains.png)
+
+For detailed domain workflows, see:
+
+👉 [Domains](./domains)
 
 ---
 
-## Common User Workflows
+## Models and Inference
 
-Typical workflows in the Cube AI UI include:
+Models are scoped to the selected domain.
 
-- Logging in and selecting a domain
-- Creating and managing domains
-- Interacting with models through the chat interface
-- Switching models within a domain
-- Managing users and roles (if permitted)
-- Viewing system and security-related events
+Users can interact with models directly from the Chat interface.
+The list of available models reflects what is enabled in the active domain.
 
-Each workflow is documented in its respective section of the UI documentation.
+![Available models in the selected domain](/img/ui/models.png)
+
+---
+
+## Tokens (API Access)
+
+The Tokens section allows users to:
+
+- Create Personal Access Tokens (PATs)
+- Define token duration and scopes
+- Revoke existing tokens
+- Copy tokens for API and tool usage
+
+Tokens are required for API access and external integrations.
+
+![Personal Access Token creation screen](/img/ui/pats.png)
+
+---
+
+## Chat Interface
+
+The UI provides interactive access to language models through a chat interface.
+
+Users can:
+
+- Select a model from available domain models
+- Send prompts and receive responses
+- Switch models dynamically
+- Execute inference inside a Trusted Execution Environment (TEE), if enabled
+
+Responses are domain-isolated and follow the security policies of the active domain.
+
+![Chat and model selection screen](/img/ui/chat.png)
 
 ---
 
@@ -80,15 +115,17 @@ Each workflow is documented in its respective section of the UI documentation.
 
 Access to UI features is controlled by role-based permissions.
 
-Depending on their assigned role, users may be able to:
+Depending on their assigned role within a domain, users may be able to:
 
 - Create or manage domains
 - Invite or manage other users
-- Access administrative or security features
+- Access administrative features
+- View audit logs
+- Perform secure model operations
 
-Role definitions and permissions are covered in:
+For details, see:
 
-👉 **Security & Access → Roles and Access Control**
+👉 [Roles and Access Control](../security/roles-and-access-control)
 
 ---
 
@@ -100,28 +137,42 @@ Audit logs help track:
 
 - User activity
 - Domain-level changes
-- Security-sensitive operations
+- Role and membership updates
+- Secure model interactions (including TEE-based workloads)
 
-For details, see:
-👉 **Security & Access → Audit Logs**
+For more details:
+
+👉 [Audit Logs](../security/audit-logs)
+
+---
+
+## Typical User Workflow
+
+A common end-to-end workflow looks like this:
+
+1. Log in to the UI  
+2. Select or create a domain  
+3. Select an available model  
+4. Create a Personal Access Token (if API access is needed)  
+5. Interact with the model via Chat or API  
 
 ---
 
 ## Developer-Focused UI Documentation
 
-This section focuses on **user-facing UI behavior**.
+This section focuses on user-facing UI behavior.
 
 Developer-oriented documentation related to UI integration and customization,
-such as the Chat UI, is available in:
+including the Chat UI and backend configuration, is available in:
 
-👉 **Developer Guide → Chat UI**
+👉 [Chat UI](../developer-guide/chat-ui)
 
 ---
 
 ## Next Steps
 
-To continue exploring the Cube AI UI:
+To continue exploring Cube AI:
 
-- Start with **UI → Domains** to understand domain workflows
-- Review **UI → User Actions** for account-related operations
-- Explore **Security & Access** for roles and auditing features
+- Start with [Domains](./domains)
+- Review [User Actions](./user-actions)
+- Explore the **Security & Access** section

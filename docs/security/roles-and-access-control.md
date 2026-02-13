@@ -62,46 +62,19 @@ To create a new role:
 
 ### Role Permissions (Actions)
 
-Domain role actions are grouped as follows. This list may vary depending
-on deployment configuration.
+Each role is assigned a set of actions (permissions) that define what
+operations users can perform within a domain.
 
-#### Domain Management
+Actions cover domain administration, model usage, audit log access, and other Cube-specific capabilities exposed in the UI.
 
-- update
-- enable
-- disable
-- read
-- delete
-
-#### Role Management
-
-- manage_role
-- add_role_users
-- remove_role_users
-- view_role_users
-
-#### Client Management
-
-- client_create
-- client_update
-- client_read
-- client_delete
-
-#### Channel Management
-
-- channel_create
-- channel_update
-- channel_read
-- channel_delete
-
-#### Group Management
-
-- group_create
-- group_update
-- group_read
-- group_delete
+Available actions are displayed directly in the role creation and editing UI.
+The list of actions is Cube-specific and may evolve between releases.
 
 ![Role actions selection](/img/ui/role-actions.png)
+
+Administrators can select one or more actions when creating or editing
+a role. The selected actions determine which UI sections and operations
+are accessible to users assigned to that role.
 
 ### Editing a Role
 
