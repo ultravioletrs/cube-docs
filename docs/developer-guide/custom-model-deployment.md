@@ -24,7 +24,7 @@ The Buildroot HAL embeds model configuration directly into the CVM image. Models
 
 During HAL image configuration (see [HAL guide](/developer-guide/hal)), navigate to:
 
-**Target packages → Cube packages → ollama**
+Menu path: **Target packages → Cube packages → ollama**
 
 Enable these options:
 
@@ -33,7 +33,7 @@ Enable these options:
 
 For example, to add `llama2:7b` and `mistral:7b`:
 
-```
+```bash
 Custom models to install: llama2:7b mistral:7b codellama:13b
 ```
 
@@ -93,7 +93,7 @@ To embed model files directly into the image instead of downloading them:
 BR2_PACKAGE_VLLM_CUSTOM_MODEL_PATH="/path/to/local/model"
 ```
 
-2. The build system copies the model files into `/var/lib/vllm/models/` in the image and automatically configures vLLM to use the local path.
+1. The build system copies the model files into `/var/lib/vllm/models/` in the image and automatically configures vLLM to use the local path.
 
 ### Cube Agent Backend Selection
 
