@@ -1,13 +1,10 @@
 import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 
-// This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
-
 const sidebars: SidebarsConfig = {
   tutorialSidebar: [
     // --- Core docs ---
     'intro',
     'getting-started',
-    'ui/ui-overview', 
     'architecture',
     'guardrails',
 
@@ -28,7 +25,7 @@ const sidebars: SidebarsConfig = {
       items: [
         'api/overview',
         'api/authentication',
-        'auth/pats', 
+        'auth/pats',
         'api/models',
         'api/chat-completions',
         'api/completions',
@@ -61,6 +58,27 @@ const sidebars: SidebarsConfig = {
         'developer-guide/cvm-management',
         'developer-guide/fine-tuning',
         'developer-guide/auth-and-request-flow',
+      ],
+    },
+
+    // --- UI ---
+    {
+      type: 'category',
+      label: 'UI',
+      items: [
+        'ui/overview',
+        'ui/domains',
+        'ui/user-actions',
+      ],
+    },
+
+    // --- Security & Access ---
+    {
+      type: 'category',
+      label: 'Security & Access',
+      items: [
+        'security/roles-and-access-control',
+        'security/audit-logs',
       ],
     },
   ],
