@@ -18,6 +18,7 @@ as private model upload and fine-tuning.
 - **Chat UI**
 - **Hardware Abstraction Layer (HAL)**
 - **CVM Management**
+- **Deploying Custom Models** - Deploy custom models via HAL build-time config or cloud-init
 - **Private Model Upload**
 - **Fine-Tuning Models**
 - **Guardrails** - AI safety controls for input validation and output sanitization
