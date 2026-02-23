@@ -10,6 +10,8 @@ operations.
 
 ---
 
+## Login
+
 ### Login purpose
 
 Authenticate to Cube AI using an email and password.
@@ -103,7 +105,8 @@ Login page → **Forgot password**.
 
 The password is successfully updated and the user can log in using the new password.
 
-> Note: The password reset form is accessed through the secure link sent to the registered email address.
+> Note: The password reset form is accessed through the secure link sent to the
+> registered email address.
 
 ---
 
