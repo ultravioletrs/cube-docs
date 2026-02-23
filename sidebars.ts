@@ -2,83 +2,82 @@ import type { SidebarsConfig } from '@docusaurus/plugin-content-docs';
 
 const sidebars: SidebarsConfig = {
   tutorialSidebar: [
-    // --- Core docs ---
-    'intro',
-    'getting-started',
-    'architecture',
-    'guardrails',
-
-    // --- Platform internals ---
     {
       type: 'category',
-      label: 'Platform Internals',
+      label: 'User Guide',
       items: [
-        'vllm',
-        'attestation',
+        'intro',
+        'user/getting-started',
+        'user/guardrails',
+        {
+          type: 'category',
+          label: 'UI',
+          items: [
+            'user/ui/overview',
+            'user/ui/domains',
+            'user/ui/user-actions',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Security & Access',
+          items: [
+            'user/security/roles-and-access-control',
+            'user/security/audit-logs',
+          ],
+        },
       ],
     },
-
-    // --- API documentation ---
     {
       type: 'category',
-      label: 'API',
+      label: 'Dev Guide',
       items: [
-        'api/overview',
-        'api/authentication',
-        'auth/pats',
-        'api/models',
-        'api/chat-completions',
-        'api/completions',
-        'api/embeddings',
-        'api/speech-to-text',
-        'api/translations',
-        'api/routes',
-      ],
-    },
-
-    // --- Integrations ---
-    {
-      type: 'category',
-      label: 'Integrations',
-      items: [
-        'integrations/continue',
-        'integrations/opencode',
-      ],
-    },
-
-    // --- Developer Guide ---
-    {
-      type: 'category',
-      label: 'Developer Guide',
-      items: [
-        'developer-guide/index',
-        'developer-guide/chat-ui',
-        'developer-guide/private-model-upload',
-        'developer-guide/hal',
-        'developer-guide/cvm-management',
-        'developer-guide/fine-tuning',
-        'developer-guide/auth-and-request-flow',
-      ],
-    },
-
-    // --- UI ---
-    {
-      type: 'category',
-      label: 'UI',
-      items: [
-        'ui/overview',
-        'ui/domains',
-        'ui/user-actions',
-      ],
-    },
-
-    // --- Security & Access ---
-    {
-      type: 'category',
-      label: 'Security & Access',
-      items: [
-        'security/roles-and-access-control',
-        'security/audit-logs',
+        'developer/architecture',
+        {
+          type: 'category',
+          label: 'Platform Internals',
+          items: [
+            'developer/platform/vllm',
+            'developer/attestation',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'API',
+          items: [
+            'developer/api/overview',
+            'developer/api/authentication',
+            'developer/auth/pats',
+            'developer/api/models',
+            'developer/api/chat-completions',
+            'developer/api/completions',
+            'developer/api/embeddings',
+            'developer/api/speech-to-text',
+            'developer/api/translations',
+            'developer/api/routes',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Integrations',
+          items: [
+            'developer/integrations/continue',
+            'developer/integrations/opencode',
+          ],
+        },
+        {
+          type: 'category',
+          label: 'Developer Guide',
+          items: [
+            'developer/guide/index',
+            'developer/guide/chat-ui',
+            'developer/guide/private-model-upload',
+            'developer/guide/hal',
+            'developer/guide/cvm-management',
+            'developer/guide/fine-tuning',
+            'developer/guide/auth-and-request-flow',
+          ],
+        },
       ],
     },
   ],
