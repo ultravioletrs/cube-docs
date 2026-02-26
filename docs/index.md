@@ -4,8 +4,6 @@ title: Overview
 sidebar_position: 1
 ---
 
-## Overview
-
 Cube AI is a secure framework for running and serving GPT-based applications using confidential computing.  
 It deploys Large Language Models (LLMs) inside hardware-protected Trusted Execution Environments (TEEs)  
 to ensure that both user data and model execution remain private and tamper-resistant.
@@ -15,8 +13,6 @@ and cloud operator—from accessing or modifying the data and code running insid
 technology to provide strong confidentiality and integrity guarantees for AI workloads.
 
 ---
-
-## Key Features
 
 - **Confidential LLM Inference**: All prompts, responses, and model weights are processed inside a hardware-protected enclave.
 - **Trusted Execution Environments (TEEs)**: Built-in support for AMD SEV-SNP and Intel TDX provides strong isolation and data protection.
