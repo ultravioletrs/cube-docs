@@ -17,6 +17,7 @@ as private model upload and fine-tuning.
 - **Configuring the Environment**
 - **Chat UI**
 - **Hardware Abstraction Layer (HAL)**
+- **Cloud-Init** - Ubuntu-based deployment with cloud-init provisioning
 - **CVM Management**
 - **Private Model Upload**
 - **Fine-Tuning Models**
