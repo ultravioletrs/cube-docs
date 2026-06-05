@@ -1,48 +1,66 @@
 # Cube AI Documentation
 
-This repo collects the collaborative work on Cube AI documentation.
+Documentation site for [Cube AI](https://github.com/ultravioletrs/cube), served at:
 
-Documentation is auto-generated from Markdown files in this repo using [Docusaurus](https://docusaurus.io/).
+- **Production**: https://www.ultraviolet.rs/docs/cube-ai/
+- **Dev**: http://localhost:3000/docs/cube-ai/
 
-## Installation
+Built with [Next.js](https://nextjs.org) and [Fumadocs](https://fumadocs.dev), deployed to Cloudflare Workers as a static export nested under `/docs/cube-ai/`.
 
-Doc repo can be fetched from GitHub:
-
-```bash
-git clone https://github.com/ultravioletrs/cube-docs.git
-cd cube-docs
-```
-
-Install dependencies:
+## Development
 
 ```bash
-npm install
+pnpm install
+pnpm dev
 ```
 
-## Local Development
+## Validation
 
 ```bash
-npm run start
+pnpm run lint         # Biome check
+pnpm run lint:fix     # Biome check + auto-fix
+pnpm run lint:md      # Markdown lint
+pnpm run types:check  # TypeScript type check
 ```
 
-This command starts a local development server and opens up a browser window at [http://localhost:3000](http://localhost:3000). Most changes are reflected live without having to restart the server.
-
-## Build
+## Build & Deploy
 
 ```bash
-npm run build
+pnpm run build    # next build + nest-static-export
+pnpm run start    # serve ./out locally
+pnpm run deploy   # build + wrangler deploy
+pnpm run upload   # build + wrangler versions upload
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+## Project Structure
 
-## Deployment
-
-The documentation is automatically deployed to GitHub Pages when changes are pushed to the `main` branch.
-
-You can also manually deploy using:
-
-```bash
-npm run serve
+```
+app/
+  layout.tsx          # Root DocsLayout
+  [[...slug]]/        # Catch-all docs page
+  sitemap.ts
+  global.css
+components/
+  BrandLogo.tsx
+content/docs/         # MDX source files
+lib/
+  base-path.ts        # basePath helpers (assetPath, toSiteUrl, …)
+  layout.shared.tsx   # Shared nav options
+  metadata.ts         # createMetadata helper
+  source.ts           # Fumadocs source loader
+public/
+  img/                # Images referenced by docs
+  _headers            # Cloudflare cache headers
+  _redirects          # Cloudflare redirects
+  robots.txt
+scripts/
+  nest-static-export.mjs  # Post-build: nest out/ under docs/cube-ai/
+wrangler.jsonc        # Cloudflare Workers config
+biome.json            # Linter / formatter (Biome)
 ```
 
-This serves the production build locally for testing before deployment.
+## Tooling
+
+- **Linter / Formatter**: [Biome](https://biomejs.dev)
+- **Deployment**: Cloudflare Workers (static assets via `wrangler deploy`)
+- **CI**: GitHub Actions — lint → type check → build
