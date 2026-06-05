@@ -1,0 +1,15 @@
+{
+  "title": "API",
+  "pages": [
+    "overview",
+    "authentication",
+    "../auth/pats",
+    "models",
+    "chat-completions",
+    "completions",
+    "embeddings",
+    "speech-to-text",
+    "translations",
+    "routes"
+  ]
+}

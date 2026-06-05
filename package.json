@@ -1,51 +1,49 @@
 {
-    "name": "cube-docs",
-    "version": "0.0.0",
-    "private": true,
-    "scripts": {
-        "docusaurus": "docusaurus",
-        "start": "docusaurus start",
-        "build": "docusaurus build",
-        "swizzle": "docusaurus swizzle",
-        "deploy": "docusaurus deploy",
-        "clear": "docusaurus clear",
-        "serve": "docusaurus serve",
-        "write-translations": "docusaurus write-translations",
-        "write-heading-ids": "docusaurus write-heading-ids",
-        "typecheck": "tsc"
-    },
-    "dependencies": {
-        "@docusaurus/core": "^3.7.0",
-        "@docusaurus/preset-classic": "^3.7.0",
-        "@docusaurus/theme-mermaid": "^3.8.1",
-        "@mdx-js/react": "^3.0.0",
-        "clsx": "^2.0.0",
-        "katex": "^0.16.22",
-        "prism-react-renderer": "^2.3.0",
-        "react": "^18.0.0",
-        "react-dom": "^18.0.0",
-        "rehype-katex": "^7.0.1",
-        "remark-math": "^6.0.0"
-    },
-    "devDependencies": {
-        "@docusaurus/module-type-aliases": "^3.7.0",
-        "@docusaurus/tsconfig": "^3.7.0",
-        "@docusaurus/types": "^3.7.0",
-        "typescript": "~5.6.2"
-    },
-    "browserslist": {
-        "production": [
-            ">0.5%",
-            "not dead",
-            "not op_mini all"
-        ],
-        "development": [
-            "last 3 chrome version",
-            "last 3 firefox version",
-            "last 5 safari version"
-        ]
-    },
-    "engines": {
-        "node": ">=18.0"
-    }
+  "name": "cube-docs",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "next build && node scripts/nest-static-export.mjs",
+    "dev": "NODE_OPTIONS='--max-old-space-size=3072' next dev",
+    "start": "serve out",
+    "deploy": "pnpm run build && wrangler deploy",
+    "upload": "pnpm run build && wrangler versions upload",
+    "types:check": "fumadocs-mdx && next typegen && tsc --noEmit",
+    "postinstall": "fumadocs-mdx",
+    "lint": "biome check",
+    "format": "biome format --write",
+    "lint:fix": "biome check --write",
+    "lint:md": "markdownlint --disable MD013 MD033 MD007 MD029 MD059 MD024 MD025 -- content/docs"
+  },
+  "dependencies": {
+    "@orama/orama": "^3.1.18",
+    "clsx": "^2.1.1",
+    "fumadocs-core": "^16.6.3",
+    "fumadocs-mdx": "^14.2.7",
+    "fumadocs-ui": "^16.6.3",
+    "lucide-react": "^0.574.0",
+    "mermaid": "^11.12.2",
+    "next": "16.1.6",
+    "next-themes": "^0.4.6",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "remark-directive": "^4.0.0",
+    "tailwind-merge": "^3.4.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.4.16",
+    "@tailwindcss/postcss": "^4",
+    "@types/mdx": "^2.0.13",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "markdownlint-cli": "^0.44.0",
+    "postcss": "^8.5.6",
+    "remark-mdx": "^3.1.1",
+    "serve": "^14.2.5",
+    "tailwindcss": "^4",
+    "typescript": "^5",
+    "wrangler": "^4.81.1"
+  },
+  "packageManager": "pnpm@11.5.2"
 }
