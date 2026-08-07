@@ -13,7 +13,8 @@
     "lint": "biome check",
     "format": "biome format --write",
     "lint:fix": "biome check --write",
-    "lint:md": "markdownlint --disable MD013 MD033 MD007 MD029 MD059 MD024 MD025 -- content/docs"
+    "lint:md": "markdownlint --disable MD013 MD033 MD007 MD029 MD059 MD024 MD025 -- content/docs",
+    "publish-image": "node scripts/publish-image.mjs"
   },
   "dependencies": {
     "@orama/orama": "^3.1.18",

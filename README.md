@@ -7,6 +7,9 @@ Documentation site for [Cube AI](https://github.com/ultravioletrs/cube), served 
 
 Built with [Next.js](https://nextjs.org) and [Fumadocs](https://fumadocs.dev), deployed to Cloudflare Workers as a static export nested under `/docs/cube-ai/`.
 
+Images are served from a shared Cloudflare R2 bucket rather than committed to the repo —
+see [`scripts/README.md`](./scripts/README.md).
+
 ## Development
 
 ```bash
@@ -49,18 +52,22 @@ lib/
   metadata.ts         # createMetadata helper
   source.ts           # Fumadocs source loader
 public/
-  img/                # Images referenced by docs
   _headers            # Cloudflare cache headers
   _redirects          # Cloudflare redirects
   robots.txt
 scripts/
   nest-static-export.mjs  # Post-build: nest out/ under docs/cube-ai/
-wrangler.jsonc        # Cloudflare Workers config
+  publish-image.mjs       # Maintainer-only: upload an image to R2 + purge cache
+worker/
+  index.ts             # Cloudflare Worker (main): serves /img/... from R2, else static assets
+  r2-proxy.ts           # Shared R2 lookup + streaming logic
+wrangler.jsonc        # Cloudflare Workers config (assets + Worker + R2 binding)
 biome.json            # Linter / formatter (Biome)
 ```
 
 ## Tooling
 
 - **Linter / Formatter**: [Biome](https://biomejs.dev)
-- **Deployment**: Cloudflare Workers (static assets via `wrangler deploy`)
+- **Deployment**: Cloudflare Workers (static assets + a small Worker for the R2-backed
+  image route, via `wrangler deploy`)
 - **CI**: GitHub Actions — lint → type check → build
