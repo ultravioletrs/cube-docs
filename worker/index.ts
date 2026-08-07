@@ -1,5 +1,5 @@
 import { BASE_PATH } from "../lib/base-path";
-import { type R2Bucket, serveFromR2 } from "./r2-proxy";
+import { type ExecutionContext, type R2Bucket, serveFromR2 } from "./r2-proxy";
 
 // This site has no server-side Next.js runtime on Cloudflare (it's a plain
 // `output: "export"` build, not @cloudflare/next-on-pages or
@@ -25,12 +25,16 @@ interface Env {
 }
 
 export default {
-  async fetch(request: Request, env: Env): Promise<Response> {
+  async fetch(
+    request: Request,
+    env: Env,
+    ctx: ExecutionContext,
+  ): Promise<Response> {
     const url = new URL(request.url);
 
     if (url.pathname.startsWith(IMG_ROUTE_PREFIX)) {
       const restPath = url.pathname.slice(IMG_ROUTE_PREFIX.length);
-      return serveFromR2(env.IMAGES_BUCKET, KEY_PREFIX, restPath);
+      return serveFromR2(request, env.IMAGES_BUCKET, KEY_PREFIX, restPath, ctx);
     }
 
     return env.ASSETS.fetch(request);
